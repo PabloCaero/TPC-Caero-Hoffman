@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Negocio
+namespace Dominio
 {
-    class AdministradorNegocio
+    public class Estado
     {
+        public string Nombre_Estado { get; set; }
     }
 }

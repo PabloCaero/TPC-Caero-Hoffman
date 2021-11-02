@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Cliente
+    public class Cliente:Persona
     {
+        public DateTime Fecha_Alta { get; set; }
     }
 }

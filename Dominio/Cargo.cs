@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Fecha
+    public class Cargo
     {
+        public string Nombre_Cargo { get; set; }
     }
 }
