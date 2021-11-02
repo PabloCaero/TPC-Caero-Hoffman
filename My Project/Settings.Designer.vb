@@ -63,9 +63,9 @@ Namespace My
     Friend Module MySettingsProperty
 
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")> _
-        Friend ReadOnly Property Settings() As Global.TPC_Caero_Hoffman.My.MySettings
+        Friend ReadOnly Property Settings() As Global.TPC_Hoffman_Caero.My.MySettings
             Get
-                Return Global.TPC_Caero_Hoffman.My.MySettings.Default
+                Return Global.TPC_Hoffman_Caero.My.MySettings.Default
             End Get
         End Property
     End Module

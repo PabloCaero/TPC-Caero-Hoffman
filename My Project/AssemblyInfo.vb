@@ -7,17 +7,17 @@ Imports System.Runtime.InteropServices
 ' asociada a un ensamblado.
 
 ' Revisar los valores de los atributos del ensamblado
-<Assembly: AssemblyTitle("TPC_Caero_Hoffman")>
+<Assembly: AssemblyTitle("TPC_Hoffman_Caero")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("TPC_Caero_Hoffman")>
+<Assembly: AssemblyProduct("TPC_Hoffman_Caero")>
 <Assembly: AssemblyCopyright("Copyright ©  2021")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'El siguiente GUID es para el Id. typelib cuando este proyecto esté expuesto a COM
-<Assembly: Guid("f4381a74-8d1a-411e-99c0-1125fa25a672")>
+<Assembly: Guid("40986250-f1cd-4151-a734-f9e3e60cda16")>
 
 ' La información de versión de un ensamblado consta de los siguientes cuatro valores:
 '
