@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Dominio;
 
 namespace Negocio
 {
@@ -19,9 +20,10 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database= CALLCENTER_DB ; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CALLCENTER_DB_DB; integrated security=true");
             comando = new SqlCommand();
         }
+
 
         public void setearConsulta(string consulta)
         {
@@ -29,10 +31,9 @@ namespace Negocio
             comando.CommandText = consulta;
         }
 
-        public void ejecutarLectua()
+        public void ejecturaLectura()
         {
             comando.Connection = conexion;
-
             try
             {
                 conexion.Open();
@@ -40,16 +41,42 @@ namespace Negocio
             }
             catch (Exception ex)
             {
+                throw ex;
+
+            }
+        }
+
+        public void ejecutarAccion()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
 
                 throw ex;
             }
-
         }
+
+        //PARA VALIDAR LOS PARAMETROS DE CONEXION
+        public void setearParametros(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
+
         public void cerrarConexion()
         {
-                if (lector != null)
-                    lector.Close();
-                conexion.Close();
-         }
+            if (lector != null)
+                lector.Close();
+            conexion.Close();
+        }
+
+
     }
+
+
 }
