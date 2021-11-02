@@ -20,7 +20,7 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CALLCENTER_DB_DB; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CALLCENTER_DB; integrated security=true");
             comando = new SqlCommand();
         }
 

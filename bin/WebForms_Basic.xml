@@ -37,6 +37,15 @@ TPC-Caero-Hoffman
  Devuelve el objeto de registro Asp.
  </summary>
 </member>
+<member name="F:TPC_Caero_Hoffman._Default._dgvIncidentes">
+<summary>
+Control dgvIncidentes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:TPC_Caero_Hoffman.SiteMaster._MainContent">
 <summary>
 Control MainContent.

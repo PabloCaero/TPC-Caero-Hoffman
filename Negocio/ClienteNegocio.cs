@@ -17,13 +17,13 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select NOMBRE, APELLIDO, DNI,IDDIRECCION, EMAIL, TELEFONO From Clientes");
+                datos.setearConsulta("Select NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO From Clientes");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
                 {
                     Cliente aux = new Cliente();
-                    aux.Nombre= (string)datos.Lector["NOMBRE"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Apellido = (string)datos.Lector["APELLIDO"];
                     aux.Dni = (string)datos.Lector["DNI"];
                     aux.Direccion = new Direccion();
