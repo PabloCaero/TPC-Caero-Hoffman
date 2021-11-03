@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls.Resolvers;
 
-namespace TPC_Hoffman_Caero
+namespace TPC_Caero_Hoffman
 {
     public partial class ViewSwitcher : System.Web.UI.UserControl
     {

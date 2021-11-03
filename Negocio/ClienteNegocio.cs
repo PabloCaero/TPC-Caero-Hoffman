@@ -49,6 +49,156 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+
         }
+
+        public void agregar(Cliente nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Insert Into Clientes(NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO) Values(@NOMBRE, @APELLIDO, @DNI, @IDDIRECCION, @EMAIL, @TELEFONO, '2021/08/05')"); //AGREGO FECHA DE NAC PORQUE NO SABEMOS COMO UTILIZARLO
+                datos.setearParametros("@NOMBRE", nuevo.Nombre);
+                datos.setearParametros("@APELLIDO", nuevo.Apellido);
+                datos.setearParametros("@DNI", nuevo.Dni);
+                datos.setearParametros("@IDDIRECCION", nuevo.Direccion.IDDireccion);
+                datos.setearParametros("@EMAIL", nuevo.Email);
+                datos.setearParametros("@TELEFONO", nuevo.Telefono);
+                //FALTA FECHA NAC
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void modificar(Cliente nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Update Clientes set NOMBRE = @NOMBRE, APELLIDO = @APELLIDO, DNI = @DNI, IDDIRECCION = @IDDIRECCION, EMAIL = @EMAIL, TELEFONO = @TELEFONO, FECHANACIMIENTO = '2021/2/2' Where ID = " + nuevo.IDCliente + "");
+                datos.setearParametros("@NOMBRE", nuevo.Nombre);
+                datos.setearParametros("@APELLIDO", nuevo.Apellido);
+                datos.setearParametros("@DNI", nuevo.Dni);
+                datos.setearParametros("@IDDIRECCION", nuevo.Direccion.IDDireccion);
+                datos.setearParametros("@EMAIL", nuevo.Email);
+                datos.setearParametros("@TELEFONO", nuevo.Telefono);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminar(Cliente nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Delete From Clientes Where ID = " + nuevo.IDCliente + "");
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Cliente> buscarDNI(Cliente buscar)
+        {
+            List<Cliente> lista = new List<Cliente>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select DNI, NOMBRE, APELLIDO Where DNI = '" + buscar.Dni + "'");
+                datos.ejecturaLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Cliente aux = new Cliente();
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Dni = (string)datos.Lector["DNI"];
+
+                    //IMPORTANTE PARA COMPOSICION y PARA TRAER COSAS DE OTRAS TABLAS REGISTROS COMPUESTOS
+
+                    /*aux.Marca = new Marca();
+                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];*/
+
+
+                    lista.Add(aux);
+
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<Cliente> buscarNombre(Cliente buscar)
+        {
+            List<Cliente> lista = new List<Cliente>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select DNI, NOMBRE, APELLIDO Where NOMBRE= '" + buscar.Nombre + "'");
+                datos.ejecturaLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Cliente aux = new Cliente();
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Dni = (string)datos.Lector["DNI"];
+
+                    //IMPORTANTE PARA COMPOSICION y PARA TRAER COSAS DE OTRAS TABLAS REGISTROS COMPUESTOS
+
+                    
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 }

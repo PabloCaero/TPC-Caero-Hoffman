@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Optimization;
 using System.Web.UI;
 
-namespace TPC_Hoffman_Caero
+namespace TPC_Caero_Hoffman
 {
     public class BundleConfig
     {

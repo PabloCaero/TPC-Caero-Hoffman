@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
 
-namespace TPC_Hoffman_Caero
+namespace TPC_Caero_Hoffman
 {
     public partial class ClienteForm : System.Web.UI.Page
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TPC_Hoffman_Caero {
+namespace TPC_Caero_Hoffman {
     
     
     public partial class ViewSwitcher {

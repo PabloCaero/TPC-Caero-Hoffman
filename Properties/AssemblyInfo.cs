@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada a un ensamblado.
-[assembly: AssemblyTitle("TPC_Hoffman_Caero")]
+[assembly: AssemblyTitle("TPC_Caero_Hoffman")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TPC_Hoffman_Caero")]
+[assembly: AssemblyProduct("TPC_Caero_Hoffman")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID es para el Id. typelib cuando este proyecto esté expuesto a COM
-[assembly: Guid("8ce509c4-63cf-451d-bf14-c68589f3c193")]
+[assembly: Guid("bd4d689a-8399-4d74-a479-1b894f2e6517")]
 
 // La información de versión de un ensamblado consta de los siguientes cuatro valores:
 //

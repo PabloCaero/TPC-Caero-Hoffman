@@ -14,6 +14,7 @@ namespace Dominio
         public Direccion Direccion { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
+
         //public DateTime Fecha_Nac { get; set;  }
     }
 }
