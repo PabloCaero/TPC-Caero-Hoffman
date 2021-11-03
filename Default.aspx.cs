@@ -4,13 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Negocio;
+using Dominio;
 
 namespace TPC_Caero_Hoffman
 {
     public partial class _Default : Page
     {
+      
         protected void Page_Load(object sender, EventArgs e)
         {
+            ClienteNegocio negocio = new ClienteNegocio();
+            dgvClientes.DataSource = negocio.listar();
+            dgvClientes.DataBind();
+
+            IncidenteNegocio negocio2 = new IncidenteNegocio();
+            dgvIncidentes.DataSource = negocio2.listar();
+            dgvIncidentes.DataBind();
 
         }
     }

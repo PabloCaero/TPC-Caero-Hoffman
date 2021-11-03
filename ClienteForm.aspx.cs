@@ -28,6 +28,9 @@ namespace TPC_Caero_Hoffman
             cliente.Direccion.IDDireccion = 1;
             cliente.Email = "maildeprueba@frgp.com";
             cliente.Telefono = "1163088646";
+
+            negocio.agregar(cliente);
+            Response.Redirect("Default.aspx");
         }
     }
 }

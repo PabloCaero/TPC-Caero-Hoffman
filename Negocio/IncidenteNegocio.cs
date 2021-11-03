@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select Select ID, IDEMPLEADO, IDCLIENTE, DETALLES, IDESTADO, COMENTARIOFINAL From Incidentes");
+                datos.setearConsulta("Select ID, IDEMPLEADO, IDCLIENTE, DETALLES, IDESTADO From Incidentes");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -42,7 +42,7 @@ namespace Negocio
                     aux.Estado = new Estado();
                     aux.Estado.IDEstado = (int)datos.Lector["IDESTADO"];
 
-                    aux.ComentarioFinal = (string)datos.Lector["COMENTARIOFINAL"];
+                    //aux.ComentarioFinal = (string)datos.Lector["COMENTARIOFINAL"];
                   
 
                     lista.Add(aux);
