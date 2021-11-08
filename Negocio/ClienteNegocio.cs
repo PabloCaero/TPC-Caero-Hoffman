@@ -31,6 +31,10 @@ namespace Negocio
                     aux.Direccion.IDDireccion = (int)datos.Lector["IDDIRECCION"];
                     aux.Email = (string)datos.Lector["EMAIL"];
                     aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    //aux.Fecha_Alta = DateTime.Parse((string)datos.Lector["FECHA"]);
+                    aux.Fecha_Alta = (DateTime)datos.Lector["FECHA"];//ES ESTO
+                    
+
                     //aux.Fecha_Alta = new DateTime();
                     //aux.Fecha_Alta.ToString(d) = (DateTime)datos.Lector["FECHANACIMIENTO"];
                     //aux.Fecha_Nac = new DateTime();
@@ -59,13 +63,14 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Insert Into Clientes(NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO) Values(@NOMBRE, @APELLIDO, @DNI, @IDDIRECCION, @EMAIL, @TELEFONO, '2021/08/05')"); //AGREGO FECHA DE NAC PORQUE NO SABEMOS COMO UTILIZARLO
+                datos.setearConsulta("Insert Into Clientes(NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO) Values(@NOMBRE, @APELLIDO, @DNI, @IDDIRECCION, @EMAIL, @TELEFONO, @FECHA_NAC)"); //AGREGO FECHA DE NAC PORQUE NO SABEMOS COMO UTILIZARLO
                 datos.setearParametros("@NOMBRE", nuevo.Nombre);
                 datos.setearParametros("@APELLIDO", nuevo.Apellido);
                 datos.setearParametros("@DNI", nuevo.Dni);
                 datos.setearParametros("@IDDIRECCION", nuevo.Direccion.IDDireccion);
                 datos.setearParametros("@EMAIL", nuevo.Email);
                 datos.setearParametros("@TELEFONO", nuevo.Telefono);
+                datos.setearParametros("@FECHA_NAC", nuevo.Fecha_Alta);//ES ESTO
                 //FALTA FECHA NAC
                 datos.ejecutarAccion();
 

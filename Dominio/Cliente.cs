@@ -9,6 +9,6 @@ namespace Dominio
     public class Cliente:Persona
     {
         public int IDCliente { get; set; }
-        //public DateTime Fecha_Alta { get; set; }
+        public DateTime Fecha_Alta { get; set; }
     }
 }
