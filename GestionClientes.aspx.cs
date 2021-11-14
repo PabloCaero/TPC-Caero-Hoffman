@@ -9,13 +9,13 @@ using Dominio;
 
 namespace TPC_Caero_Hoffman
 {
-    public partial class _Default : Page
+    public partial class GestionClientes : System.Web.UI.Page
     {
-      
         protected void Page_Load(object sender, EventArgs e)
         {
-          
-
+            ClienteNegocio negocio = new ClienteNegocio();
+            dgvClientes.DataSource = negocio.listar();
+            dgvClientes.DataBind();
         }
     }
 }

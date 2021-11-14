@@ -51,11 +51,14 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Inicio</a></li>
-                        <li><a runat="server" href="#">Gestión de Clientes</a></li>
-                        <li><a runat="server" href="#">Gestión de Incidentes</a></li>
-                        <li><a runat="server" href="#">Gestión de Empleados</a></li>
-                        <li><a runat="server" href="#">Informes</a></li>
+                         <!--<li><a runat="server" href="~/">Inicio</a></li>-->
+                        <li><a runat="server" href="GestionClientes.aspx">Gestión de Clientes</a></li>
+                        <li><a runat="server" href="GestionEmpleados.aspx">Gestión de Empleados</a></li>
+                        <li><a runat="server" href="GestionIncidentes.aspx">Gestión de Incidentes</a></li>
+                        <li><a runat="server" href="GestionDirecciones.aspx">Gestión de Direcciones</a></li>
+                        <li><a runat="server" href="GestionCargos.aspx">Cargos</a></li>
+                        <li><a runat="server" href="GestionEstados.aspx">Estados</a></li>
+                        
                     </ul>
                 </div>
             </div>

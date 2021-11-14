@@ -8,6 +8,7 @@ namespace Dominio
 {
     public class Cargo
     {
+        public int IDCargo { get; set; }
         public string Nombre_Cargo { get; set; }
     }
 }

@@ -17,33 +17,37 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select ID, IDEMPLEADO, IDCLIENTE, DETALLES, IDESTADO From Incidentes");
+                datos.setearConsulta("SELECT I.ID, I.FECHA_INICIO, I.FECHA_CIERRE, I.IDEMPLEADO, EM.NOMBRE AS NOMEMPLEADO, EM.APELLIDO AS APEEMPLEADO, I.IDCLIENTE, CS.NOMBRE AS NOMCLIENTE, CS.APELLIDO AS APECLIENTE, I.DETALLES, I.IDESTADO, E.NOMBREESTADO, I.COMENTARIOFINAL FROM INCIDENTES I, ESTADOS E, CLIENTES CS, EMPLEADOS EM WHERE E.ID = I.IDESTADO AND I.IDCLIENTE = CS.ID AND I.IDEMPLEADO = EM.ID");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
                 {
-                    
-                    
                     Incidente aux = new Incidente();
          
                     aux.ID = (int)datos.Lector["ID"];
+                    aux.Fecha_inicio = (DateTime)datos.Lector["FECHA_INICIO"];
+                    if (!(datos.Lector.IsDBNull(datos.Lector.GetOrdinal("FECHA_CIERRE"))))
+                        aux.Fecha_cierre = (DateTime)datos.Lector["FECHA_CIERRE"];
 
                     aux.Empleado = new Empleado();
                     aux.Empleado.Legajo = (int)datos.Lector["IDEMPLEADO"];
+                    aux.Empleado.Nombre = (string)datos.Lector["NOMEMPLEADO"];
+                    aux.Empleado.Apellido = (string)datos.Lector["APEEMPLEADO"];
 
                     aux.Cliente = new Cliente();
                     aux.Cliente.IDCliente = (int)datos.Lector["IDCLIENTE"];
-                    //aux.Fecha_Inicio = new DateTime();
-                    //aux.Fecha_Inicio.ToString() = (DateTime)datos.Lector["FECHANACIMIENTO"];
-                    //aux.Fecha_Cierre = new DateTime();
-                    //aux.Fecha_Cierre.ToString('YYMMDD') = (DateTime)datos.Lector["Fe"]
-                    aux.Detalles = (string)datos.Lector["DETALLES"];
+                    aux.Cliente.Nombre = (string)datos.Lector["NOMCLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APECLIENTE"];
+
+                    if(!(datos.Lector.IsDBNull(datos.Lector.GetOrdinal("DETALLES"))))
+                        aux.Detalles = (string)datos.Lector["DETALLES"];
 
                     aux.Estado = new Estado();
                     aux.Estado.IDEstado = (int)datos.Lector["IDESTADO"];
+                    aux.Estado.Nombre_Estado = (string)datos.Lector["NOMBREESTADO"];
 
-                    //aux.ComentarioFinal = (string)datos.Lector["COMENTARIOFINAL"];
-                  
+                    if (!(datos.Lector.IsDBNull(datos.Lector.GetOrdinal("COMENTARIOFINAL"))))
+                        aux.ComentarioFinal = (string)datos.Lector["COMENTARIOFINAL"];
 
                     lista.Add(aux);
                 }
@@ -67,15 +71,12 @@ namespace Negocio
 
             try
             {
-                
-                datos.setearConsulta("Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, FECHA_CIERRE, DETALLES, IDESTADO, COMENTARIOFINAL) Values(@IDEMPLEADO, @IDCLIENTE, '2021/02/03', '2021/08/02', @DETALLES, @IDESTADO, @COMENTARIOFINAL)"); //AGREGO FECHA DE NAC PORQUE NO SABEMOS COMO UTILIZARLO
+                //PARAMETROS "ABIERTO"
+                datos.setearConsulta("Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, DETALLES, IDESTADO) Values(@IDEMPLEADO, @IDCLIENTE, getDate(), @DETALLES, 1)"); 
                 datos.setearParametros("@IDEMPLEADO", nuevo.Empleado.Legajo);
                 datos.setearParametros("@IDCLIENTE", nuevo.Cliente.IDCliente);
                 datos.setearParametros("@DETALLES", nuevo.Detalles);
-                datos.setearParametros("@IDESTADO", nuevo.Estado.IDEstado);
-                datos.setearParametros("@COMENTARIOFINAL", nuevo.ComentarioFinal);
-              
-                //FALTA FECHA 
+               
                 datos.ejecutarAccion();
 
             }
@@ -90,17 +91,14 @@ namespace Negocio
             }
         }
 
-        public void modificar(Incidente nuevo)
+        public void asignarIncidente(Incidente nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Update Incidentes set IDEMPLEADO = @IDEMPLEADO, IDCLIENTE = @IDCLIENTE, FECHA_INICIO = '2021/01/02', FECHA_CIERRE = getDate(), DETALLES = @DETALLES, IDESTADO = @IDESTADO, COMENTARIOFINAL = @COMENTARIOFINAL Where ID = " + nuevo.ID + "");
+                //PARAMETROS "ASIGNADO"
+                datos.setearConsulta("Update Incidentes set IDEMPLEADO = @IDEMPLEADO, IDESTADO = 5 Where ID = " + nuevo.ID + "");
                 datos.setearParametros("@IDEMPLEADO", nuevo.Empleado.Legajo);
-                datos.setearParametros("@IDCLIENTE", nuevo.Cliente.IDCliente);
-                datos.setearParametros("@DETALLES", nuevo.Detalles);
-                datos.setearParametros("@IDESTADO", nuevo.Estado.IDEstado);
-                datos.setearParametros("@COMENTARIOFINAL", nuevo.ComentarioFinal);
 
                 datos.ejecutarAccion();
 
@@ -115,12 +113,15 @@ namespace Negocio
             }
         }
 
-        public void eliminar(Incidente nuevo)
+        public void modificarDetalles(Incidente nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Delete From Incidentes Where ID = " + nuevo.ID + "");
+                //PARAMETROS "EN ANALISIS"
+                datos.setearConsulta("Update Incidentes set DETALLES = @DETALLES, IDESTADO = 2 Where ID = " + nuevo.ID + "");
+                datos.setearParametros("@DETALLES", nuevo.Detalles);
+   
                 datos.ejecutarAccion();
 
             }
@@ -133,6 +134,72 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void cerrarIncidente(Incidente nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //PARAMETROS "CERRADO"
+                datos.setearConsulta("Update Incidentes set COMENTARIOFINAL=@COMETARIOFINAL, FECHA_CIERRE = GETDATE(), IDESTADO = 3 Where ID = " + nuevo.ID + "");
+                datos.setearParametros("@COMENTARIOFINAL", nuevo.Detalles);              
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void resolverIncidente(Incidente nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //PARAMETROS "RESUELTO"
+                datos.setearConsulta("Update Incidentes set COMENTARIOFINAL=@COMETARIOFINAL, FECHA_CIERRE = GETDATE(), IDESTADO = 6 Where ID = " + nuevo.ID + "");
+                datos.setearParametros("@COMENTARIOFINAL", nuevo.Detalles);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void reabrirIncidente(Incidente nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //PARAMETROS "REABIERTO"
+                datos.setearConsulta("Update Incidentes set FECHA_CIERRE = NULL, IDESTADO = 4 Where ID = " + nuevo.ID + "");
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
         public List<Incidente> buscarID(Incidente buscar)
         {
@@ -141,7 +208,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select ID, IDEMPLEADO, IDCLIENTE, IDESTADO Where ID = '" + buscar.ID + "'");
+                datos.setearConsulta("Select ID, IDEMPLEADO, IDCLIENTE, IDESTADO, DETALLES Where ID = '" + buscar.ID + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -158,11 +225,7 @@ namespace Negocio
                     aux.Estado = new Estado();
                     aux.Estado.IDEstado = (int)datos.Lector["IDESTADO"];
 
-                    //IMPORTANTE PARA COMPOSICION y PARA TRAER COSAS DE OTRAS TABLAS REGISTROS COMPUESTOS
-
-                    /*aux.Marca = new Marca();
-                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];*/
-
+                    aux.Detalles = (string)datos.Lector["DETALLES"];
 
                     lista.Add(aux);
 

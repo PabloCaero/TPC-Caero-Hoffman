@@ -7,23 +7,25 @@ using Dominio;
 
 namespace Negocio
 {
-    public class ClienteNegocio
+    public class EmpleadoNegocio
     {
-        public List<Cliente> listar()
+        public List<Empleado> listar()
         {
-            List<Cliente> lista = new List<Cliente>();
+            List<Empleado> lista = new List<Empleado>();
             AccesoDatos datos = new AccesoDatos();
 
 
             try
             {
-                datos.setearConsulta("Select C.ID, C.NOMBRE, C.APELLIDO, C.DNI, C.IDDIRECCION, D.CALLE, D.ALTURA, D.LOCALIDAD, D.CODIGOPOSTAL, D.PROVINCIA, C.EMAIL, C.TELEFONO, C.FECHANACIMIENTO From Clientes C INNER JOIN Direccion D ON C.IDDIRECCION = D.ID");
+                datos.setearConsulta("Select E.ID, E.NOMBREUSUARIO, E.CONTRASEÑA, E.NOMBRE, E.APELLIDO, E.DNI, E.IDCARGO, C.NOMBRECARGO, E.IDDIRECCION, D.CALLE, D.ALTURA, D.LOCALIDAD, D.CODIGOPOSTAL, D.PROVINCIA, E.EMAIL, E.TELEFONO, E.FECHANACIMIENTO From Empleados E INNER JOIN Direccion D ON E.IDDIRECCION = D.ID INNER JOIN Cargos C ON C.ID = E.IDCARGO");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Cliente aux = new Cliente();
-                    aux.IDCliente = (int)datos.Lector["ID"];
+                    Empleado aux = new Empleado();
+                    aux.Legajo= (int)datos.Lector["ID"];
+                    aux.NombreUsuario = (string)datos.Lector["NOMBREUSUARIO"];
+                    aux.Contrasena = (string)datos.Lector["CONTRASEÑA"];
                     aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Apellido = (string)datos.Lector["APELLIDO"];
                     aux.Dni = (string)datos.Lector["DNI"];
@@ -31,16 +33,20 @@ namespace Negocio
                     aux.Telefono = (string)datos.Lector["TELEFONO"];
                     aux.Fecha_Nac = (DateTime)datos.Lector["FECHANACIMIENTO"];//ES ESTO
 
+                    aux.Cargo = new Cargo();
+                    aux.Cargo.IDCargo = (int)datos.Lector["IDCARGO"];
+                    aux.Cargo.Nombre_Cargo = (string)datos.Lector["NOMBRECARGO"];
+
                     aux.Direccion = new Direccion();
                     aux.Direccion.IDDireccion = (int)datos.Lector["IDDIRECCION"];
                     aux.Direccion.Calle = (string)datos.Lector["CALLE"];
-                    aux.Direccion.Numero = (int)datos.Lector["ALTURA"];  
+                    aux.Direccion.Numero = (int)datos.Lector["ALTURA"];
                     aux.Direccion.Localidad = (string)datos.Lector["LOCALIDAD"];
                     aux.Direccion.Codigo_Postal = (string)datos.Lector["CODIGOPOSTAL"];
                     aux.Direccion.Provincia = (string)datos.Lector["PROVINCIA"];
 
                     lista.Add(aux);
-                } 
+                }
 
                 return lista;
             }
@@ -56,7 +62,7 @@ namespace Negocio
 
         }
 
-        public void agregar(Cliente nuevo)
+        public void agregar(Empleado nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -73,41 +79,44 @@ namespace Negocio
 
                 //AGREGA EL ID DE LA DIRECCION EN EL INCIDENTE   
 
-                datos.setearConsulta("Insert Into Clientes(NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO) Values(@NOMBRE, @APELLIDO, @DNI, (Select ID From Direccion WHERE ID = (Select max(ID) From Direccion)), @EMAIL, @TELEFONO, @FECHANACIMIENTO)"); //AGREGO FECHA DE NAC PORQUE NO SABEMOS COMO UTILIZARLO
+                datos.setearConsulta("Insert Into Empleados(NOMBREUSUARIO, CONTRASEÑA, NOMBRE, APELLIDO, DNI, IDDIRECCION, IDCARGO, EMAIL, TELEFONO, FECHANACIMIENTO) Values(@NOMBREUSUARIO, @CONTRASEÑA, @NOMBRE, @APELLIDO, @DNI, (Select ID From Direccion WHERE ID = (Select max(ID) From Direccion)), @IDCARGO, @EMAIL, @TELEFONO, @FECHANACIMIENTO)"); 
                 datos.setearParametros("@NOMBRE", nuevo.Nombre);
                 datos.setearParametros("@APELLIDO", nuevo.Apellido);
+                datos.setearParametros("@NOMBREUSUARIO", nuevo.NombreUsuario);
+                datos.setearParametros("@CONTRASEÑA", nuevo.Contrasena);
+                datos.setearParametros("@DNI", nuevo.Dni);
+                datos.setearParametros("@EMAIL", nuevo.Email);
+                datos.setearParametros("@IDCARGO", nuevo.Cargo.IDCargo);
+                datos.setearParametros("@TELEFONO", nuevo.Telefono);
+                datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Nac);//ES ESTO
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void modificar(Empleado nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Update Empleados set NOMBRE = @NOMBRE, APELLIDO = @APELLIDO, DNI = @DNI,  EMAIL = @EMAIL, TELEFONO = @TELEFONO, FECHANACIMIENTO = @FECHANACIMIENTO, IDCARGO = @IDCARGO Where ID = " + nuevo.Legajo + "");
+                datos.setearParametros("@NOMBRE", nuevo.Nombre);
+                datos.setearParametros("@APELLIDO", nuevo.Apellido);
+                datos.setearParametros("@IDCARGO", nuevo.Cargo.IDCargo);
                 datos.setearParametros("@DNI", nuevo.Dni);
                 datos.setearParametros("@EMAIL", nuevo.Email);
                 datos.setearParametros("@TELEFONO", nuevo.Telefono);
-                datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Alta);//ES ESTO
-                
-              
-                datos.ejecutarAccion();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
-        public void modificar(Cliente nuevo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearConsulta("Update Clientes set NOMBRE = @NOMBRE, APELLIDO = @APELLIDO, DNI = @DNI,  EMAIL = @EMAIL, TELEFONO = @TELEFONO, FECHANACIMIENTO = @FECHANACIMIENTO Where ID = " + nuevo.IDCliente + "");
-                datos.setearParametros("@NOMBRE", nuevo.Nombre);
-                datos.setearParametros("@APELLIDO", nuevo.Apellido);
-                datos.setearParametros("@DNI", nuevo.Dni);
-                datos.setearParametros("@EMAIL", nuevo.Email);
-                datos.setearParametros("@TELEFONO", nuevo.Telefono);
-                datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Alta);
+                datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Nac);
 
                 datos.ejecutarAccion();
             }
@@ -121,12 +130,32 @@ namespace Negocio
             }
         }
 
-        public void eliminar(Cliente nuevo)
+        public void modificarPassword(Empleado nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Delete From Clientes Where ID = " + nuevo.IDCliente + "");
+                datos.setearConsulta("Update Empleados set CONTRASEÑA = @CONTRASEÑA Where ID = " + nuevo.Legajo + "");
+                datos.setearParametros("@CONTRASEÑA", nuevo.Contrasena);
+               
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminar(Empleado nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Delete From Empleados Where ID = " + nuevo.Legajo + "");
                 datos.ejecutarAccion();
 
             }
@@ -140,54 +169,21 @@ namespace Negocio
             }
         }
 
-        public List<Cliente> buscarDNI(Cliente buscar)
+       
+        public List<Empleado> buscarLegajo(Empleado buscar)
         {
-            List<Cliente> lista = new List<Cliente>();
+            List<Empleado> lista = new List<Empleado>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("Select DNI, NOMBRE, APELLIDO Where DNI = '" + buscar.Dni + "'");
+                datos.setearConsulta("Select ID, DNI, NOMBRE, APELLIDO Where NOMBRE= '" + buscar.Legajo + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Cliente aux = new Cliente();
-                    aux.Nombre = (string)datos.Lector["NOMBRE"];
-                    aux.Apellido = (string)datos.Lector["APELLIDO"];
-                    aux.Dni = (string)datos.Lector["DNI"];
-
- 
-                    lista.Add(aux);
-                }
-
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
-        }
-
-        public List<Cliente> buscarFecha(Cliente buscar)
-        {
-            List<Cliente> lista = new List<Cliente>();
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                datos.setearConsulta("Select FECHAALTA, DNI, NOMBRE, APELLIDO Where NOMBRE= '" + buscar.Fecha_Alta + "'");
-                datos.ejecturaLectura();
-
-                while (datos.Lector.Read())
-                {
-                    Cliente aux = new Cliente();
-                    aux.Fecha_Alta = (DateTime)datos.Lector["FECHAALTA"];
+                    Empleado aux = new Empleado();
+                    aux.Legajo = (int)datos.Lector["ID"];
                     aux.Dni = (string)datos.Lector["DNI"];
                     aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Apellido = (string)datos.Lector["APELLIDO"];
