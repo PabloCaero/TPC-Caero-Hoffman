@@ -34,40 +34,51 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Callcenter Caero&Hoffman</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
+        </li>
+       
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administración
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="GestionClientes.aspx">Clientes</a></li>
+                        <li><a class="dropdown-item" href="GestionEmpleados.aspx">Empleados</a></li>
+                        <li><a class="dropdown-item" href="GestionIncidentes.aspx">Incidentes</a></li>
+                        <li><a class="dropdown-item" href="GestionDirecciones.aspx">Direcciones</a></li>
+                        <li><a class="dropdown-item" href="GestionCargos.aspx">Cargos</a></li>
+                        <li><a class="dropdown-item" href="GestionEstados.aspx">Estados</a></li>
+  
+          </ul>
+        </li>
+       
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">CallCenter Caero&Hoffman</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                         <!--<li><a runat="server" href="~/">Inicio</a></li>-->
-                        <li><a runat="server" href="GestionClientes.aspx">Gestión de Clientes</a></li>
-                        <li><a runat="server" href="GestionEmpleados.aspx">Gestión de Empleados</a></li>
-                        <li><a runat="server" href="GestionIncidentes.aspx">Gestión de Incidentes</a></li>
-                        <li><a runat="server" href="GestionDirecciones.aspx">Gestión de Direcciones</a></li>
-                        <li><a runat="server" href="GestionCargos.aspx">Cargos</a></li>
-                        <li><a runat="server" href="GestionEstados.aspx">Estados</a></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
+       
 
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Caero&Hoffman.NET</p>
             </footer>
-        </div>
+        
 
     </form>
 </body>
