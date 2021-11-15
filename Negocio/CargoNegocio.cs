@@ -9,6 +9,41 @@ namespace Negocio
 {
     public class CargoNegocio
     {
+        //IMPORTANTE PARA DROPDOWNLIST
+        public List<Cargo> listarConSP()
+        {
+            List<Cargo> lista = new List<Cargo>();
+            Cargo aux = new Cargo();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearSP("SP_ListarCargos");
+                datos.ejecturaLectura();
+                while (datos.Lector.Read())
+                {
+                    
+                    aux.IDCargo = (int)datos.Lector["ID"];
+                    aux.Nombre_Cargo = (string)datos.Lector["NOMBRECARGO"];
+
+
+                    lista.Add(aux);
+
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
         public List<Cargo> listar()
         {
             List<Cargo> lista = new List<Cargo>();

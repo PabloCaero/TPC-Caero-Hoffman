@@ -3,10 +3,7 @@
 
      <!--GRID VIEW DE INCIDENTES Y AGREGAR INCIDENTES-->
     <div>
-         <asp:GridView ID="dgvIncidentes" CssClass="table" runat="server"></asp:GridView>
-         <div>
-            <a href="/IncidenteForm">Agregar Incidente</a>
-        </div>
+         <asp:GridView ID="dgvIncidentes" CssClass="table" runat="server"></asp:GridView>     
     </div>
 
 </asp:Content>

@@ -4,10 +4,6 @@
     <!--GRID VIEW DE CLIENTES Y BOTON A FORM AGREGAR CLIENTE-->
     <div>
     <asp:GridView ID="dgvClientes" CssClass="table" runat="server"></asp:GridView>
-        </div>
-    <div>
-    <a href="/ClienteForm">Agregar Cliente</a>
-            </div>
-
-
+    </div>
+  
 </asp:Content>

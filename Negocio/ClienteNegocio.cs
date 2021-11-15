@@ -62,14 +62,7 @@ namespace Negocio
 
             try
             {
-                //AGREGA LA DIRECCION
-                datos.setearConsulta("Insert Into Direccion(CALLE, ALTURA, LOCALIDAD, CODIGO POSTAL, PROVINCIA) Values(@CALLE, @ALTURA, @LOCALIDAD, @CODIGOPOSTAL, @PROVINCIA)");
-                datos.setearParametros("@CALLE", nuevo.Direccion.Calle);
-                datos.setearParametros("@ALTURA", nuevo.Direccion.Numero);
-                datos.setearParametros("@LOCALIDAD", nuevo.Direccion.Localidad);
-                datos.setearParametros("@CODIGOPOSTAL", nuevo.Direccion.Codigo_Postal);
-                datos.setearParametros("@PROVINCIA", nuevo.Direccion.Provincia);
-                datos.ejecutarAccion();
+               
 
                 //AGREGA EL ID DE LA DIRECCION EN EL INCIDENTE   
 
@@ -80,8 +73,6 @@ namespace Negocio
                 datos.setearParametros("@EMAIL", nuevo.Email);
                 datos.setearParametros("@TELEFONO", nuevo.Telefono);
                 datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Alta);//ES ESTO
-                
-              
                 datos.ejecutarAccion();
 
             }

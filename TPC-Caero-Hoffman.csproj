@@ -124,6 +124,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="EmpleadoForm.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionCargos.aspx" />
@@ -189,6 +190,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmpleadoForm.aspx.cs">
+      <DependentUpon>EmpleadoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmpleadoForm.aspx.designer.cs">
+      <DependentUpon>EmpleadoForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionCargos.aspx.cs">
       <DependentUpon>GestionCargos.aspx</DependentUpon>

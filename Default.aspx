@@ -5,23 +5,25 @@
     
       
     <div class="d-grid gap-2 col-6 mx-auto">
-        <h1>Clientes</h1>
-    <button class="btn btn-dark" type="button">Ingresar Cliente</button>
-    <button class="btn btn-dark" type="button">Modificar Cliente</button>
-    <button class="btn btn-dark" type="button">Eliminar Cliente</button>
+    <h1>Clientes</h1>
+    <asp:Button Text="Ingresar Cliente" ID="btnIngresarCliente" CssClass="btn btn-dark" runat="server" OnClick="btnIngresarCliente_Click" />
+    <asp:Button Text="Modificar Cliente" ID="btnModificarCliente" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Ingresar Cliente" ID="brnEliminarCliente" CssClass="btn btn-dark" runat="server" />
     </div>
 
     <div class="d-grid gap-2 col-6 mx-auto">
-        <h1>Incidentes</h1>
-    <button class="btn btn-dark" type="button">Crear Incidente</button>
-    <button class="btn btn-dark" type="button">Modificar Incidente</button>
-    <button class="btn btn-dark" type="button">Reasignar Incidente</button>
+    <h1>Incidentes</h1>
+    <asp:Button Text="Crear Incidente" ID="brnCrearIncidente" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Modificar Incidente" ID="btnModificarIncidente" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Reasignar Incidente" ID="btnReasignarIncidente" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Cerrar Incidente" ID="btnCerrarIncidente" CssClass="btn btn-dark" runat="server" />
     </div>
 
     <div class="d-grid gap-2 col-6 mx-auto">
-        <h1>Empleados</h1>
-    <button class="btn btn-dark" type="button">Ingresar Empleado</button>
-    <button class="btn btn-dark" type="button">Eliminar Empleado</button>
+    <h1>Empleados</h1>
+    <asp:Button Text="Registrar Empleado" ID="btnRegistrarEmpleado" CssClass="btn btn-dark" runat="server" OnClick="btnRegistrarEmpleado_Click" />
+    <asp:Button Text="Modificar Empleado" ID="Button1" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Eliminar Empleado" ID="btnModificarEmpleado" CssClass="btn btn-dark" runat="server" />
     </div>
   
    

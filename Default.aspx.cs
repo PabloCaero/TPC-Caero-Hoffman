@@ -17,5 +17,16 @@ namespace TPC_Caero_Hoffman
           
 
         }
+
+
+        protected void btnIngresarCliente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ClienteForm.aspx");
+        }
+
+        protected void btnRegistrarEmpleado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EmpleadoForm.aspx");
+        }
     }
 }

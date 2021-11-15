@@ -16,21 +16,30 @@ namespace TPC_Caero_Hoffman
 
         }
 
-        protected void btnAceptar_Click(object sender, EventArgs e)
+        protected void btnCargarCliente_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente();
-            ClienteNegocio negocio = new ClienteNegocio();
+            Direccion direccion = new Direccion();
+            ClienteNegocio negocioCliente = new ClienteNegocio();
+            DireccionNegocio negocioDireccion = new DireccionNegocio();
+
+            direccion.Calle = txtDireccion.Text;
+            direccion.Numero = int.Parse(txtAltura.Text);
+            direccion.Localidad = txtLocalidad.Text;
+            direccion.Provincia = txtProvincia.Text;
+            direccion.Codigo_Postal = txtCodigoPostal.Text;
+            negocioDireccion.agregar(direccion);
 
             cliente.Nombre = txtNombre.Text;
             cliente.Apellido = txtApellido.Text;
             cliente.Dni = txtDNI.Text;
-            cliente.Direccion = new Direccion();
-            cliente.Direccion.IDDireccion = 1;
-            cliente.Email = "maildeprueba@frgp.com";
-            cliente.Telefono = "1163088646";
-
-            negocio.agregar(cliente);
+            cliente.Email = txtEmail.Text;
+            cliente.Fecha_Nac = DateTime.Parse(txtFechaNacimiento.Text);
+            cliente.Telefono = txtTelefono.Text;
+            negocioCliente.agregar(cliente);
+          
             Response.Redirect("Default.aspx");
+
         }
     }
 }
