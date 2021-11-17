@@ -25,13 +25,13 @@ namespace TPC_Caero_Hoffman
             IncidenteNegocio negocio = new IncidenteNegocio();
 
             //FALTA PODER 
-            incidente.Cliente = new Cliente();
+            /*incidente.Cliente = new Cliente();
             incidente.Cliente.IDCliente = int.Parse(dgvClientes.DataKeys);
 
             incidente.Empleado = new Empleado();
             incidente.Empleado.Legajo = int.Parse(dgvEmpleados.DataKeys.GetEnumerator );
 
-            incidente.Detalles = txtDetalles.Text;
+            incidente.Detalles = txtDetalles.Text;*/
 
 
             negocio.agregar(incidente);

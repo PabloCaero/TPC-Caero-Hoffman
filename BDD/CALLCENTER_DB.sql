@@ -1,5 +1,6 @@
 Create Database CALLCENTER_DB
 go
+
 Use CALLCENTER_DB
 go
 
@@ -50,9 +51,6 @@ EMAIL VARCHAR(250) NOT NULL,
 TELEFONO VARCHAR(30) NOT NULL,
 FECHANACIMIENTO DATE NOT NULL CHECK(YEAR(FECHANACIMIENTO) > 1900)
 )
-
-
-
 
 
 Create Table Estados(
@@ -121,10 +119,10 @@ Select * From Direccion
 --Select max(ID) From Direccion
 --Delete From Clientes Where ID = 3
 
-Create Procedure SP_ListarCargos AS
+/*Create Procedure SP_ListarCargos AS
 BEGIN
 Select ID, NOMBRECARGO From Cargos
-END
+END*/
 
 
 

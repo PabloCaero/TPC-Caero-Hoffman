@@ -127,6 +127,8 @@
     <Content Include="EmpleadoForm.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="frmBuscarClientePorDNI.aspx" />
+    <Content Include="frmBuscarIncidentePorID.aspx" />
     <Content Include="GestionCargos.aspx" />
     <Content Include="GestionClientes.aspx" />
     <Content Include="GestionDirecciones.aspx" />
@@ -197,6 +199,20 @@
     </Compile>
     <Compile Include="EmpleadoForm.aspx.designer.cs">
       <DependentUpon>EmpleadoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarClientePorDNI.aspx.cs">
+      <DependentUpon>frmBuscarClientePorDNI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmBuscarClientePorDNI.aspx.designer.cs">
+      <DependentUpon>frmBuscarClientePorDNI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarIncidentePorID.aspx.cs">
+      <DependentUpon>frmBuscarIncidentePorID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmBuscarIncidentePorID.aspx.designer.cs">
+      <DependentUpon>frmBuscarIncidentePorID.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionCargos.aspx.cs">
       <DependentUpon>GestionCargos.aspx</DependentUpon>

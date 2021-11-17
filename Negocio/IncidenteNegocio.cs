@@ -208,7 +208,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select ID, IDEMPLEADO, IDCLIENTE, IDESTADO, DETALLES Where ID = '" + buscar.ID + "'");
+                datos.setearConsulta("Select ID, IDEMPLEADO, IDCLIENTE, IDESTADO, DETALLES From Incidentes Where ID = '" + buscar.ID + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())

@@ -24,6 +24,15 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnIngresarCliente;
 
         /// <summary>
+        /// Control btnBuscarClientexDNI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarClientexDNI;
+
+        /// <summary>
         /// Control btnModificarCliente.
         /// </summary>
         /// <remarks>
@@ -42,13 +51,22 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button brnEliminarCliente;
 
         /// <summary>
-        /// Control brnCrearIncidente.
+        /// Control btnCrearIncidente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button brnCrearIncidente;
+        protected global::System.Web.UI.WebControls.Button btnCrearIncidente;
+
+        /// <summary>
+        /// Control btnBuscarIncidentexID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexID;
 
         /// <summary>
         /// Control btnModificarIncidente.
