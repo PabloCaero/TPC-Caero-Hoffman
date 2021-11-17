@@ -1,44 +1,52 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IncidenteForm.aspx.cs" Inherits="TPC_Caero_Hoffman.IncidenteForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <!--ESTILOS-->
-    <style> 
-     .div-form{
-         margin: 10px;
-     }
-
-    </style>
-
-    <!--TEXT BOX Y BOTON ACEPTAR-->
-     <div class="div-form">
-        <asp:Label Text="ID Empleado: " runat="server" />
-        <asp:TextBox runat="server" ID="txtIDEmpleado" />
+    <div>
+    <h2>Crear Incidente</h2>
     </div>
+    <div >
+     <div class="col-9">
+    <label for="inputEmail4" class="form-label">Buscar Cliente</label>
+        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
+        <asp:Button ID="btnBuscarClientexDNI" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />  
+   
+        <div class="row" > 
+            <asp:GridView ID="dgvClientes" CssClass="table" runat="server" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField DataField="DNI" HeaderText="DNI"/>
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre"/>
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido"/>
+                </Columns>
+
+            </asp:GridView>
+        </div>
+        </div>
         
-    <div class="div-form">
-        <asp:Label Text="ID Cliente: " runat="server" />
-        <asp:TextBox runat="server" ID="txtIDCliente" />
-    </div>
+     <div class="col-9">
+        <label for="inputEmail4" class="form-label">Buscar Empleado</label>
+    <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxLegajo" />
+        <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />
+         <div class="row" > 
+             <asp:GridView ID="dgvEmpleados" CssClass="table" runat="server" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField DataField="Legajo" HeaderText="Legajo"/>
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre"/>
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido"/>
+                </Columns>
 
-    <div class="div-form">
-        <asp:Label Text="Detalles: " runat="server" />
-        <asp:TextBox runat="server" ID="txtDetalles" />
-    </div>
+            </asp:GridView>
+             </div>
+     </div>
+  <div class="col-9">
+    <label for="inputAddress" class="form-label">Detalles del Incidente</label>
+    <asp:TextBox type="text" runat="server"  class="form-control" id="txtDetalles" />
+  </div>
+         
 
-    <div class="div-form">
-        <asp:Label Text="Estado: " runat="server" />
-        <asp:TextBox runat="server" ID="txtEstado" />
-    </div>
-
-    <div class="div-form">
-        <asp:Label Text="Comentario Final: " runat="server" />
-        <asp:TextBox runat="server" ID="txtComentarioFinal" />
-    </div>
-
-    <div class="div-form">
-        <asp:Button Text="Aceptar" ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" />
-
-    </div>
-
-
+  <div class="col-md-6">
+      <asp:Button ID="btnCargarIncidente" runat="server" OnClick="btnCargarIncidente_Click" Text="Cargar Incidente" />
+  </div>
+</div>
+ 
+    
 </asp:Content>

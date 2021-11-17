@@ -21,8 +21,8 @@ namespace TPC_Caero_Hoffman
                     List<Cargo> listCargo = cargonegocio.listar();
 
                     ddlCargos.DataSource = listCargo;
-                    ddlCargos.DataTextField = "NOMBRECARGO";
-                    ddlCargos.DataValueField = "ID";
+                    ddlCargos.DataTextField = "Nombre_Cargo"; 
+                    ddlCargos.DataValueField = "IDCargo";
                     ddlCargos.DataBind();
                 }
 
@@ -35,6 +35,34 @@ namespace TPC_Caero_Hoffman
 
         }
 
-      
+        protected void btnCargarEmpleado_Click(object sender, EventArgs e)
+        {
+            Empleado empleado = new Empleado();
+            Direccion direccion = new Direccion();
+            EmpleadoNegocio negocioEmpleado = new EmpleadoNegocio();
+            DireccionNegocio negocioDireccion = new DireccionNegocio();
+
+            direccion.Calle = txtCalle.Text;
+            direccion.Numero = int.Parse(txtAltura.Text);
+            direccion.Localidad = txtLocalidad.Text;
+            direccion.Provincia = txtProvincia.Text;
+            direccion.Codigo_Postal = txtCodigoPostal.Text;
+            negocioDireccion.agregar(direccion);
+
+            empleado.Cargo = new Cargo();
+            empleado.Cargo.IDCargo = int.Parse(ddlCargos.SelectedValue);
+
+            empleado.Nombre = txtNombre.Text;
+            empleado.NombreUsuario = txtNombreUsuario.Text;
+            empleado.Contrasena = txtContrasena.Text;
+            empleado.Apellido = txtApellido.Text;
+            empleado.Dni = txtDNI.Text;
+            empleado.Email = txtEmail.Text;
+            empleado.Fecha_Nac = DateTime.Parse(txtFechaNacimiento.Text);
+            empleado.Telefono = txtTelefono.Text;
+            negocioEmpleado.agregar(empleado);
+
+            Response.Redirect("Default.aspx");
+        }
     }
 }

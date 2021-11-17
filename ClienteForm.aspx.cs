@@ -23,7 +23,7 @@ namespace TPC_Caero_Hoffman
             ClienteNegocio negocioCliente = new ClienteNegocio();
             DireccionNegocio negocioDireccion = new DireccionNegocio();
 
-            direccion.Calle = txtDireccion.Text;
+            direccion.Calle = txtCalle.Text;
             direccion.Numero = int.Parse(txtAltura.Text);
             direccion.Localidad = txtLocalidad.Text;
             direccion.Provincia = txtProvincia.Text;

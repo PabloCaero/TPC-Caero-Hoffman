@@ -68,17 +68,6 @@ namespace Negocio
 
             try
             {
-                //AGREGA LA DIRECCION
-                datos.setearConsulta("Insert Into Direccion(CALLE, ALTURA, LOCALIDAD, CODIGO POSTAL, PROVINCIA) Values(@CALLE, @ALTURA, @LOCALIDAD, @CODIGOPOSTAL, @PROVINCIA)");
-                datos.setearParametros("@CALLE", nuevo.Direccion.Calle);
-                datos.setearParametros("@ALTURA", nuevo.Direccion.Numero);
-                datos.setearParametros("@LOCALIDAD", nuevo.Direccion.Localidad);
-                datos.setearParametros("@CODIGOPOSTAL", nuevo.Direccion.Codigo_Postal);
-                datos.setearParametros("@PROVINCIA", nuevo.Direccion.Provincia);
-                datos.ejecutarAccion();
-
-                //AGREGA EL ID DE LA DIRECCION EN EL INCIDENTE   
-
                 datos.setearConsulta("Insert Into Empleados(NOMBREUSUARIO, CONTRASEÑA, NOMBRE, APELLIDO, DNI, IDDIRECCION, IDCARGO, EMAIL, TELEFONO, FECHANACIMIENTO) Values(@NOMBREUSUARIO, @CONTRASEÑA, @NOMBRE, @APELLIDO, @DNI, (Select ID From Direccion WHERE ID = (Select max(ID) From Direccion)), @IDCARGO, @EMAIL, @TELEFONO, @FECHANACIMIENTO)"); 
                 datos.setearParametros("@NOMBRE", nuevo.Nombre);
                 datos.setearParametros("@APELLIDO", nuevo.Apellido);
@@ -177,7 +166,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select ID, DNI, NOMBRE, APELLIDO Where NOMBRE= '" + buscar.Legajo + "'");
+                datos.setearConsulta("Select ID, DNI, NOMBRE, APELLIDO From Empleados Where ID = '" + buscar.Legajo + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -187,7 +176,7 @@ namespace Negocio
                     aux.Dni = (string)datos.Lector["DNI"];
                     aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Apellido = (string)datos.Lector["APELLIDO"];
-
+                    lista.Add(aux);
                 }
 
                 return lista;

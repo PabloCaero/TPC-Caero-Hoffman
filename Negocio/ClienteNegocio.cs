@@ -62,8 +62,6 @@ namespace Negocio
 
             try
             {
-               
-
                 //AGREGA EL ID DE LA DIRECCION EN EL INCIDENTE   
 
                 datos.setearConsulta("Insert Into Clientes(NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO) Values(@NOMBRE, @APELLIDO, @DNI, (Select ID From Direccion WHERE ID = (Select max(ID) From Direccion)), @EMAIL, @TELEFONO, @FECHANACIMIENTO)"); //AGREGO FECHA DE NAC PORQUE NO SABEMOS COMO UTILIZARLO
@@ -72,7 +70,7 @@ namespace Negocio
                 datos.setearParametros("@DNI", nuevo.Dni);
                 datos.setearParametros("@EMAIL", nuevo.Email);
                 datos.setearParametros("@TELEFONO", nuevo.Telefono);
-                datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Alta);//ES ESTO
+                datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Nac);//ES ESTO
                 datos.ejecutarAccion();
 
             }
@@ -138,7 +136,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select DNI, NOMBRE, APELLIDO Where DNI = '" + buscar.Dni + "'");
+                datos.setearConsulta("Select DNI, NOMBRE, APELLIDO From Clientes Where DNI = '" + buscar.Dni + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -172,7 +170,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select FECHAALTA, DNI, NOMBRE, APELLIDO Where NOMBRE= '" + buscar.Fecha_Alta + "'");
+                datos.setearConsulta("Select FECHAALTA, DNI, NOMBRE, APELLIDO From Clientes Where FECHAALTA= '" + buscar.Fecha_Alta + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -182,7 +180,7 @@ namespace Negocio
                     aux.Dni = (string)datos.Lector["DNI"];
                     aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Apellido = (string)datos.Lector["APELLIDO"];
-
+                    lista.Add(aux);
                 }
 
                 return lista;

@@ -28,5 +28,10 @@ namespace TPC_Caero_Hoffman
         {
             Response.Redirect("EmpleadoForm.aspx");
         }
+
+        protected void brnCrearIncidente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("IncidenteForm.aspx");
+        }
     }
 }

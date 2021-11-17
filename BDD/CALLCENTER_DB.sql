@@ -38,7 +38,7 @@ NOMBRECARGO VARCHAR(150) NOT NULL
 )
 
 Create Table Empleados(
-ID INT NOT NULL PRIMARY KEY,
+ID INT NOT NULL PRIMARY KEY IDENTITY(1000, 1),
 NOMBREUSUARIO VARCHAR(150) NOT NULL UNIQUE,
 CONTRASEÑA VARCHAR(150) NOT NULL,
 NOMBRE VARCHAR(150) NOT NULL,
@@ -91,20 +91,20 @@ VALUES('Abierto'),
 Insert Into Direccion(CALLE, ALTURA, LOCALIDAD, CODIGOPOSTAL, PROVINCIA) 
 VALUES('Tomas Iriarte', 1576, 'Benavidez', 'CP1621', 'Buenos Aires'),
 	  ('Bartolomé Mitre', 1786, 'Capital Federal', 'CP A1741', 'Buenos Aires'),
-	  ('Tejeringo Heloyo', 2054, 'Lugones', 'CP 9741', 'Buenos Aires'),
-	  ('Mirácom Semuev', 3786, 'Tortuguitas', 'CP 2741', 'Buenos Aires');
+	  ('Almirante Brown', 2054, 'Lugones', 'CP 9741', 'Buenos Aires'),
+	  ('Diaz Velez', 3786, 'Tortuguitas', 'CP 2741', 'Buenos Aires');
 
 Insert Into Clientes(NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO)
 VALUES('Nicolas', 'Hoffman', '37327693', 1, 'nhoffman@alumnos.frgp.edu.ar', '+54 1163088646', '1994-08-05'),
 	  ('Pablo', 'Caero', '38327693', 2, 'pcaero@alumnos.frgp.edu.ar', '+54 3327413030', '1995-09-25');
 
-Insert Into Empleados(ID, NOMBREUSUARIO, CONTRASEÑA, NOMBRE, APELLIDO, IDCARGO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO)
-VALUES(17982, 'nhoffman', 'voyaentrar1234', 'Nicole', 'Hoffman', 2,  '32327693', 3, 'nicolehoffman@alumnos.frgp.edu.ar', '+54 1163088642', '1994-08-05'),
-	  (20156, 'paucaero', 'ahientro234', 'Paula', 'Caero',3, '31327693', 4, 'paulacaero@alumnos.frgp.edu.ar', '+54 3327413031', '1995-09-25');
+Insert Into Empleados(NOMBREUSUARIO, CONTRASEÑA, NOMBRE, APELLIDO, IDCARGO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO)
+VALUES('nhoffman', 'voyaentrar1234', 'Nicole', 'Hoffman', 2,  '32327693', 3, 'nicolehoffman@alumnos.frgp.edu.ar', '+54 1163088642', '1994-08-05'),
+	  ('paucaero', 'ahientro234', 'Paula', 'Caero',3, '31327693', 4, 'paulacaero@alumnos.frgp.edu.ar', '+54 3327413031', '1995-09-25');
 
 Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, FECHA_CIERRE, DETALLES, IDESTADO, COMENTARIOFINAL)
-VALUES(17982, 1, getDate(), NULL, 'Se solicita un número telefónico del embajador de Rusia', 2, NULL),
-	  (20156, 2, getDate(), NULL, 'Se solicita un número telefónico del embajador de China', 3, NULL);
+VALUES(1000, 1, getDate(), NULL, 'Se solicita un número telefónico del embajador de Rusia', 2, NULL),
+	  (1001, 2, getDate(), NULL, 'Se solicita un número telefónico del embajador de China', 3, NULL);
 
 
 Select * From Cargos
@@ -114,8 +114,6 @@ Select * From Empleados
 Select * From Estados
 Select * From Direccion
 
-SELECT ID, FECHA_INICIO, FECHA_CIERRE, IDEMPLEADO, NOMEMPLEADO, APEEMPLEADO, IDCLIENTE, NOMCLIENTE, APECLIENTE, DETALLES, IDESTADO, NOMBREESTADO, COMENTARIOFINAL FROM VW_INCIDENTES
-SELECT ID, FECHA_INICIO, FECHA_CIERRE, IDEMPLEADO, NOMEMPLEADO, APEEMPLEADO, IDCLIENTE, NOMCLIENTE, APECLIENTE, DETALLES, IDESTADO, NOMBREESTADO, COMENTARIOFINAL FROM VW_INCIDENTES
 
 --Use CALLCENTER_DB
 --Insert Into Clientes(NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO)
@@ -123,8 +121,10 @@ SELECT ID, FECHA_INICIO, FECHA_CIERRE, IDEMPLEADO, NOMEMPLEADO, APEEMPLEADO, IDC
 --Select max(ID) From Direccion
 --Delete From Clientes Where ID = 3
 
-Use CALLCENTER_DB
 Create Procedure SP_ListarCargos AS
 BEGIN
 Select ID, NOMBRECARGO From Cargos
 END
+
+
+

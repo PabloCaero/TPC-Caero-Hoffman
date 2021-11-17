@@ -31,8 +31,8 @@
     <asp:TextBox type="text" runat="server" class="form-control" id="txtFechaNacimiento" placeholder="DD/MM/AAAA"/>
   </div>
   <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Dirección</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtDireccion"/>
+    <label for="inputAddress" class="form-label">Calle</label>
+    <asp:TextBox type="text" runat="server" class="form-control" id="txtCalle"/>
   </div>
         <div class="col-md-2">
     <label for="inputAddress" class="form-label">Altura</label>

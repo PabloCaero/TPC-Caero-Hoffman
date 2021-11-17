@@ -13,7 +13,7 @@
 
     <div class="d-grid gap-2 col-6 mx-auto">
     <h1>Incidentes</h1>
-    <asp:Button Text="Crear Incidente" ID="brnCrearIncidente" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Crear Incidente" ID="brnCrearIncidente" OnClick="brnCrearIncidente_Click" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Modificar Incidente" ID="btnModificarIncidente" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Reasignar Incidente" ID="btnReasignarIncidente" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Cerrar Incidente" ID="btnCerrarIncidente" CssClass="btn btn-dark" runat="server" />
