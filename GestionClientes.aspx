@@ -3,7 +3,7 @@
 
     <!--GRID VIEW DE CLIENTES Y BOTON A FORM AGREGAR CLIENTE-->
     <div>
-    <asp:GridView ID="dgvClientes" CssClass="table" runat="server"></asp:GridView>
+    <asp:GridView ID="dgvClientes" CssClass="table table-success table-striped" runat="server"></asp:GridView>
     </div>
   
 </asp:Content>

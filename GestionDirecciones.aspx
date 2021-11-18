@@ -4,7 +4,7 @@
      <!--GRID VIEW DE DIRECCIONES-->
 
     <div>
-        <asp:GridView  ID="dgvDirecciones" CssClass="table" runat="server"></asp:GridView>
+        <asp:GridView  ID="dgvDirecciones" CssClass="table table-success table-striped" runat="server"></asp:GridView>
     </div>
 
 </asp:Content>

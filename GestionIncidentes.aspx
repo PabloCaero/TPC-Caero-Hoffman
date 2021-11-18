@@ -3,7 +3,7 @@
 
      <!--GRID VIEW DE INCIDENTES Y AGREGAR INCIDENTES-->
     <div>
-         <asp:GridView ID="dgvIncidentes" CssClass="table" runat="server"></asp:GridView>     
+         <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server"></asp:GridView>     
     </div>
 
 </asp:Content>

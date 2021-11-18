@@ -4,7 +4,8 @@
     <!--GRID VIEW DE CARGOS-->
 
     <div>
-        <asp:GridView  ID="dgvCargos" CssClass="table" runat="server"></asp:GridView>
+
+        <asp:GridView  ID="dgvCargos" CssClass="table table-success table-striped" runat="server"></asp:GridView>
     </div>
 
 </asp:Content>

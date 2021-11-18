@@ -4,7 +4,7 @@
     <!--GRID VIEW DE EMPLEADOS-->
 
     <div>
-        <asp:GridView  ID="dgvEmpleados" CssClass="table" runat="server"></asp:GridView>
+        <asp:GridView  ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server"></asp:GridView>
     </div>
 
 

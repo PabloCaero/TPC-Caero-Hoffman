@@ -14,7 +14,11 @@ namespace TPC_Caero_Hoffman
       
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+          if(Session["NombreUsuario"] == null)
+          {
+                Session.Add("Error", "Debes loguearte para ingresar");
+                Response.Redirect("Error.aspx", false);
+          }
 
         }
 
@@ -45,6 +49,11 @@ namespace TPC_Caero_Hoffman
         protected void btnCrearIncidente_Click(object sender, EventArgs e)
         {
             Response.Redirect("IncidenteForm.aspx");
+        }
+
+        protected void btnModificarCliente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmModificarCliente.aspx");
         }
     }
 }

@@ -12,5 +12,8 @@ namespace Dominio
         public string NombreUsuario { get; set; }
         public string Contrasena { get; set; }
         public Cargo Cargo { get; set; }
+       
     }
+
+    
 }

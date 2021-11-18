@@ -7,6 +7,7 @@ using Dominio;
 
 namespace Negocio
 {
+    
     public class EmpleadoNegocio
     {
         public List<Empleado> listar()
@@ -86,6 +87,36 @@ namespace Negocio
             {
 
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public int Loguear(Empleado usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {            
+                datos.setearConsulta("Select C.ID From Cargos C INNER JOIN Empleados E ON E.IDCargo = C.ID Where E.NOMBREUSUARIO = @NOMBREUSUARIO AND E.CONTRASEÑA = @CONTRASEÑA");
+                datos.setearParametros("@NOMBREUSUARIO", usuario.NombreUsuario);
+                datos.setearParametros("@CONTRASEÑA", usuario.Contrasena);
+
+                datos.ejecturaLectura();
+                while (datos.Lector.Read())
+                {
+                    usuario.Cargo = new Cargo();
+                    usuario.Cargo.IDCargo = (int)datos.Lector["ID"];
+
+                    return usuario.Cargo.IDCargo;
+                }
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+           
             }
             finally
             {

@@ -10,7 +10,7 @@
         <asp:Button ID="btnBuscarIncidentexID" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
    
         <div class="row" > 
-            <asp:GridView ID="dgvIncidentes" CssClass="table" runat="server" AutoGenerateColumns="false" >
+            <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false" >
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="Numero de Incidente"/>
                     <asp:BoundField DataField="Cliente.IDCliente" HeaderText="Numero de Cliente"/>

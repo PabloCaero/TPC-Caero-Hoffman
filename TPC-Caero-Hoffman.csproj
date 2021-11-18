@@ -125,10 +125,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="EmpleadoForm.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="frmBuscarClientePorDNI.aspx" />
     <Content Include="frmBuscarIncidentePorID.aspx" />
+    <Content Include="frmLogin.aspx" />
+    <Content Include="frmMenuSupervisor.aspx" />
+    <Content Include="frmMenuTelefonista.aspx" />
+    <Content Include="frmModificarCliente.aspx" />
     <Content Include="GestionCargos.aspx" />
     <Content Include="GestionClientes.aspx" />
     <Content Include="GestionDirecciones.aspx" />
@@ -200,6 +205,13 @@
     <Compile Include="EmpleadoForm.aspx.designer.cs">
       <DependentUpon>EmpleadoForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmBuscarClientePorDNI.aspx.cs">
       <DependentUpon>frmBuscarClientePorDNI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,6 +225,34 @@
     </Compile>
     <Compile Include="frmBuscarIncidentePorID.aspx.designer.cs">
       <DependentUpon>frmBuscarIncidentePorID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.aspx.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmLogin.aspx.designer.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuSupervisor.aspx.cs">
+      <DependentUpon>frmMenuSupervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMenuSupervisor.aspx.designer.cs">
+      <DependentUpon>frmMenuSupervisor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuTelefonista.aspx.cs">
+      <DependentUpon>frmMenuTelefonista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMenuTelefonista.aspx.designer.cs">
+      <DependentUpon>frmMenuTelefonista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarCliente.aspx.cs">
+      <DependentUpon>frmModificarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmModificarCliente.aspx.designer.cs">
+      <DependentUpon>frmModificarCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionCargos.aspx.cs">
       <DependentUpon>GestionCargos.aspx</DependentUpon>

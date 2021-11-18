@@ -11,7 +11,7 @@
         <asp:Button ID="btnBuscarClientexDNI" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />  
    
         <div class="row" > 
-            <asp:GridView ID="dgvClientes" CssClass="table" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="dgvClientes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField DataField="DNI" HeaderText="DNI"/>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre"/>
@@ -27,7 +27,7 @@
     <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxLegajo" />
         <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />
          <div class="row" > 
-             <asp:GridView ID="dgvEmpleados" CssClass="table" runat="server" AutoGenerateColumns="false">
+             <asp:GridView ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField DataField="Legajo" HeaderText="Legajo"/>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre"/>
