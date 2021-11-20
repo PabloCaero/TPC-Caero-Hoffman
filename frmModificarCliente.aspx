@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmModificarCliente.aspx.cs" Inherits="TPC_Caero_Hoffman.frmModificarCliente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div>
+     <div>
     <h2>Modificar Cliente</h2>
     </div>
     <div>
@@ -8,59 +8,87 @@
     <label for="inputEmail4" class="form-label">Ingrese DNI</label>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
         <asp:Button ID="btnBuscarClientexDNI" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />  
+   
+        <div class="row" > 
+            <asp:GridView ID="dgvClientes" CssClass="table table-success table-striped" runat="server"
+                AutoGenerateColumns="false" 
+                OnRowCancelingEdit="rowCancelEditEvent" 
+                OnRowDeleting="rowDeletingEvent" 
+                OnRowEditing="rowEditingEvent" 
+                OnRowUpdating="rowUpdatingEvent"
+                DataKeyNames="IDCliente">
+                <Columns>
+                    <asp:TemplateField HeaderText="DNI">
+                        <ItemTemplate> 
+                            <asp:Label Text=<%# Bind("DNI")%> runat="server" ID="lblDNI" />
+                        </ItemTemplate>              
+                        <EditItemTemplate> 
+                            <asp:TextBox runat="server" ID="txtDNI" Text=<%# Bind("DNI")%> />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Nombre">
+                    <ItemTemplate> 
+                            <asp:Label Text=<%# Bind("Nombre")%> runat="server" ID="lblNombre" />
+                        </ItemTemplate>              
+                        <EditItemTemplate> 
+                            <asp:TextBox runat="server" ID="txtNombre" Text=<%# Bind("Nombre")%> />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Apellido">
+                    <ItemTemplate> 
+                            <asp:Label Text=<%# Bind("Apellido")%> runat="server" ID="lblApellido" />
+                        </ItemTemplate>              
+                        <EditItemTemplate> 
+                            <asp:TextBox runat="server" ID="txtApellido" Text=<%# Bind("Apellido")%> />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Calle">
+                    <ItemTemplate> 
+                            <asp:Label Text=<%# Bind("Direccion.Calle")%> runat="server" ID="lblCalle" />
+                        </ItemTemplate>              
+                        <EditItemTemplate> 
+                            <asp:TextBox runat="server" ID="txtCalle" Text=<%# Bind("Direccion.Calle")%> />
+                        </EditItemTemplate>
+                    </asp:TemplateField>  
+
+                    <asp:TemplateField HeaderText="Altura">
+                    <ItemTemplate> 
+                            <asp:Label Text=<%# Bind("Direccion.Numero")%> runat="server" ID="lblAltura" />
+                        </ItemTemplate>              
+                        <EditItemTemplate> 
+                            <asp:TextBox runat="server" ID="txtAltura" Text=<%# Bind("Direccion.Numero")%> />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Localidad">
+                    <ItemTemplate> 
+                            <asp:Label Text=<%# Bind("Direccion.Localidad")%> runat="server" ID="lblLocalidad" />
+                        </ItemTemplate>              
+                        <EditItemTemplate> 
+                            <asp:TextBox runat="server" ID="txtLocalidad" Text=<%# Bind("Direccion.Localidad")%> />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="Provincia">
+                    <ItemTemplate> 
+                            <asp:Label Text=<%# Bind("Direccion.Provincia")%> runat="server" ID="lblProvincia" />
+                        </ItemTemplate>              
+                        <EditItemTemplate> 
+                            <asp:TextBox runat="server" ID="txtProvincia" Text=<%# Bind("Direccion.Provincia")%> />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true" />
+                </Columns>
+
+            </asp:GridView>
+        </div>
         </div>
        </div>
 
-      <div class="row">
-     <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Nombre/s</label>
-    <asp:TextBox type="text" class="form-control" runat="server" ID="txtNombre" />
-
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Apellido/s</label>
-    <asp:TextBox type="text" runat="server"  class="form-control" id="txtApellido" />
-  </div>
-          <div class="col-md-6">
-    <label for="inputAddress" class="form-label">DNI</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtDNI"/>
-  </div>
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtEmail"/>
-  </div>
-     <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Teléfono</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtTelefono"/>
-  </div>
-         <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Fecha de Nacimiento</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtFechaNacimiento" placeholder="DD/MM/AAAA"/>
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Calle</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtCalle"/>
-  </div>
-        <div class="col-md-2">
-    <label for="inputAddress" class="form-label">Altura</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtAltura" placeholder="1234"/>
-  </div>
-        <div class="col-md-2">
-    <label for="inputZip" class="form-label">Código Postal</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtCodigoPostal"/>
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">Localidad</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtLocalidad"/>
-  </div>
-   <div class="col-md-6">
-    <label for="inputCity" class="form-label">Provincia</label>
-    <asp:TextBox type="text" runat="server" class="form-control" id="txtProvincia"/>
-  </div>
-  
-  <div class="col-md-6">
-      <asp:Button ID="btnModificarCliente" runat="server" OnClick="btnModificarCliente_Click" Text="Cargar Cliente" />
-  </div>
-</div>
+      
 
 </asp:Content>
