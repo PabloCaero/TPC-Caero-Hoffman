@@ -129,14 +129,13 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Update Empleados set NOMBRE = @NOMBRE, APELLIDO = @APELLIDO, DNI = @DNI,  EMAIL = @EMAIL, TELEFONO = @TELEFONO, FECHANACIMIENTO = @FECHANACIMIENTO, IDCARGO = @IDCARGO Where ID = " + nuevo.Legajo + "");
+                datos.setearConsulta("Update Empleados set NOMBRE = @NOMBRE, APELLIDO = @APELLIDO, DNI = @DNI,  EMAIL = @EMAIL, TELEFONO = @TELEFONO Where ID = " + nuevo.Legajo + "");
                 datos.setearParametros("@NOMBRE", nuevo.Nombre);
                 datos.setearParametros("@APELLIDO", nuevo.Apellido);
-                datos.setearParametros("@IDCARGO", nuevo.Cargo.IDCargo);
                 datos.setearParametros("@DNI", nuevo.Dni);
                 datos.setearParametros("@EMAIL", nuevo.Email);
                 datos.setearParametros("@TELEFONO", nuevo.Telefono);
-                datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Nac);
+               
 
                 datos.ejecutarAccion();
             }
@@ -197,7 +196,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select ID, DNI, NOMBRE, APELLIDO From Empleados Where ID = '" + buscar.Legajo + "'");
+                datos.setearConsulta("Select E.ID, E.DNI, E.NOMBRE, E.APELLIDO, E.IDCARGO, C.NOMBRECARGO, E.EMAIL, E.TELEFONO From Empleados E INNER JOIN Cargos C ON C.ID = E.IDCARGO Where E.ID = '" + buscar.Legajo + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -207,6 +206,11 @@ namespace Negocio
                     aux.Dni = (string)datos.Lector["DNI"];
                     aux.Nombre = (string)datos.Lector["NOMBRE"];
                     aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Email = (string)datos.Lector["EMAIL"];
+                    aux.Cargo = new Cargo();
+                    aux.Cargo.IDCargo = (int)datos.Lector["IDCARGO"];
+                    aux.Cargo.Nombre_Cargo = (string)datos.Lector["NOMBRECARGO"];
                     lista.Add(aux);
                 }
 

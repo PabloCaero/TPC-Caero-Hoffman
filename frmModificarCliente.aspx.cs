@@ -37,21 +37,35 @@ namespace TPC_Caero_Hoffman
 
         protected void rowCancelEditEvent(object sender, GridViewCancelEditEventArgs e)
         {
-
+            Response.Redirect("frmModificarCliente.aspx");
+                 
         }
 
-        protected void rowDeletingEvent(object sender, GridViewDeleteEventArgs e)
-        {
-
-        }
+      
 
         protected void rowEditingEvent(object sender, GridViewEditEventArgs e)
         {
+
 
         }
 
         protected void rowUpdatingEvent(object sender, GridViewUpdateEventArgs e)
         {
+            Cliente cliente = new Cliente();     
+            ClienteNegocio negocioCliente = new ClienteNegocio();         
+            GridViewRow fila = dgvClientes.Rows[e.RowIndex];
+
+            //PASOS PARA EDITAR CLIENTE
+            cliente.IDCliente = Convert.ToInt32(dgvClientes.DataKeys[e.RowIndex].Values[0]);
+            cliente.Dni = ((fila.FindControl("txtDNI")) as TextBox).Text.ToUpper();
+            cliente.Nombre = ((fila.FindControl("txtNombre")) as TextBox).Text.ToUpper();
+            cliente.Apellido = ((fila.FindControl("txtApellido")) as TextBox).Text.ToUpper();           
+            cliente.Email = ((fila.FindControl("txtEmail")) as TextBox).Text.ToUpper();
+            cliente.Telefono = ((fila.FindControl("txtTelefono")) as TextBox).Text.ToUpper();
+
+            negocioCliente.modificar(cliente);
+
+            Response.Redirect("Default.aspx");
 
         }
     }

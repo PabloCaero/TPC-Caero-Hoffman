@@ -8,7 +8,7 @@
     <asp:Button Text="Ingresar Cliente" ID="btnIngresarCliente" CssClass="btn btn-dark" runat="server" OnClick="btnIngresarCliente_Click" />
     <asp:Button Text="Buscar Cliente Por DNI" ID="btnBuscarClientexDNI" OnClick="btnBuscarClientexDNI_Click" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Modificar Cliente" ID="btnModificarCliente" OnClick="btnModificarCliente_Click" CssClass="btn btn-dark" runat="server" />
-    <asp:Button Text="Eliminar Cliente" ID="brnEliminarCliente" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Eliminar Cliente" ID="brnEliminarCliente" CssClass="btn btn-dark" runat="server" OnClick="brnEliminarCliente_Click" />
     </div>
 
     <div class="d-grid gap-2 col-6 mx-auto">
@@ -22,9 +22,10 @@
 
     <div class="d-grid gap-2 col-6 mx-auto">
     <h1>Empleados</h1>
-    <asp:Button Text="Registrar Empleado" ID="btnRegistrarEmpleado" CssClass="btn btn-dark" runat="server" OnClick="btnRegistrarEmpleado_Click" />
-    <asp:Button Text="Modificar Empleado" ID="Button1" CssClass="btn btn-dark" runat="server" />
-    <asp:Button Text="Eliminar Empleado" ID="btnModificarEmpleado" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Registrar Empleado" ID="Button1" CssClass="btn btn-dark" runat="server" OnClick="btnRegistrarEmpleado_Click" />
+    <asp:Button Text="Buscar Empleado" ID="btnBuscarEmpleado" CssClass="btn btn-dark" runat="server" OnClick="btnBuscarEmpleado_Click" />
+    <asp:Button Text="Modificar Empleado" ID="btnModificarEmpleado" OnClick="btnModificarEmpleado_Click" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Eliminar Empleado" ID="btnEliminarEmpleado" OnClick="btnEliminarEmpleado_Click" CssClass="btn btn-dark" runat="server" />
     </div>
 
  

@@ -129,11 +129,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="frmBuscarClientePorDNI.aspx" />
+    <Content Include="frmBuscarEmpleado.aspx" />
     <Content Include="frmBuscarIncidentePorID.aspx" />
+    <Content Include="frmEliminarCliente.aspx" />
+    <Content Include="frmEliminarEmpleado.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmMenuSupervisor.aspx" />
     <Content Include="frmMenuTelefonista.aspx" />
     <Content Include="frmModificarCliente.aspx" />
+    <Content Include="frmModificarEmpleado.aspx" />
     <Content Include="GestionCargos.aspx" />
     <Content Include="GestionClientes.aspx" />
     <Content Include="GestionDirecciones.aspx" />
@@ -219,12 +223,33 @@
     <Compile Include="frmBuscarClientePorDNI.aspx.designer.cs">
       <DependentUpon>frmBuscarClientePorDNI.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmBuscarEmpleado.aspx.cs">
+      <DependentUpon>frmBuscarEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmBuscarEmpleado.aspx.designer.cs">
+      <DependentUpon>frmBuscarEmpleado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmBuscarIncidentePorID.aspx.cs">
       <DependentUpon>frmBuscarIncidentePorID.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmBuscarIncidentePorID.aspx.designer.cs">
       <DependentUpon>frmBuscarIncidentePorID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmEliminarCliente.aspx.cs">
+      <DependentUpon>frmEliminarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmEliminarCliente.aspx.designer.cs">
+      <DependentUpon>frmEliminarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmEliminarEmpleado.aspx.cs">
+      <DependentUpon>frmEliminarEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmEliminarEmpleado.aspx.designer.cs">
+      <DependentUpon>frmEliminarEmpleado.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
@@ -253,6 +278,13 @@
     </Compile>
     <Compile Include="frmModificarCliente.aspx.designer.cs">
       <DependentUpon>frmModificarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarEmpleado.aspx.cs">
+      <DependentUpon>frmModificarEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmModificarEmpleado.aspx.designer.cs">
+      <DependentUpon>frmModificarEmpleado.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionCargos.aspx.cs">
       <DependentUpon>GestionCargos.aspx</DependentUpon>

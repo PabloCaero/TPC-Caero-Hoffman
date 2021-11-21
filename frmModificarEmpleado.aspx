@@ -1,27 +1,33 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmModificarCliente.aspx.cs" Inherits="TPC_Caero_Hoffman.frmModificarCliente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmModificarEmpleado.aspx.cs" Inherits="TPC_Caero_Hoffman.frmModificarEmpleado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <div>
-    <h2>Modificar Cliente</h2>
+    <div>
+    <h2>Modificar Empleado</h2>
     </div>
     <div>
      <div class="col-9">
-    <label for="inputEmail4" class="form-label">Ingrese DNI</label>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
-        <asp:Button ID="btnBuscarClientexDNI" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />  
+    <label for="inputEmail4" class="form-label">Ingrese Legajo</label>
+        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxID" />
+        <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />  
    
         <div class="row" > 
-            <asp:GridView ID="dgvClientes" CssClass="table table-success table-striped" runat="server"
-                AutoGenerateColumns="false" 
-                OnRowCancelingEdit="rowCancelEditEvent"     
+            <asp:GridView ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server"
+                AutoGenerateColumns="false"    
+                DataKeyNames="Legajo" 
+                OnRowCancelingEdit="rowCancelEditEvent" 
                 OnRowEditing="rowEditingEvent" 
-                OnRowUpdating="rowUpdatingEvent"
-                DataKeyNames="IDCliente">
+                OnRowUpdating="rowUpdatingEvent">
                 <Columns>
 
-                    <asp:TemplateField HeaderText="ID">
+                    <asp:TemplateField HeaderText="Legajo">
                         <ItemTemplate> 
-                            <asp:Label Text=<%# Bind("IDCliente")%> runat="server" ID="lblIDCliente" />
+                            <asp:Label Text=<%# Bind("Legajo")%> runat="server" ID="lblLegajo" />
                         </ItemTemplate>             
+                    </asp:TemplateField>
+
+                      <asp:TemplateField HeaderText="Cargo">
+                    <ItemTemplate> 
+                            <asp:Label Text=<%# Bind("Cargo.Nombre_Cargo")%> runat="server" ID="lblNombreCargo" />
+                        </ItemTemplate>                  
                     </asp:TemplateField>
    
                     <asp:TemplateField HeaderText="DNI">
@@ -51,7 +57,8 @@
                         </EditItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="Email">
+     
+                     <asp:TemplateField HeaderText="Email">
                     <ItemTemplate> 
                             <asp:Label Text=<%# Bind("Email")%> runat="server" ID="lblEmail" />
                         </ItemTemplate>              
@@ -69,7 +76,7 @@
                         </EditItemTemplate>
                     </asp:TemplateField>
 
-                 
+     
 
                     <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="false" />
                 </Columns>
@@ -79,6 +86,5 @@
         </div>
        </div>
 
-      
 
 </asp:Content>

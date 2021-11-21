@@ -22,38 +22,62 @@ namespace TPC_Caero_Hoffman
 
         }
 
-
+        //MENU DE CLIENTES
         protected void btnIngresarCliente_Click(object sender, EventArgs e)
         {
             Response.Redirect("ClienteForm.aspx");
         }
 
-        protected void btnRegistrarEmpleado_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("EmpleadoForm.aspx");
-        }
-
        
-
+      
         protected void btnBuscarClientexDNI_Click(object sender, EventArgs e)
         {
             Response.Redirect("frmBuscarClientePorDNI.aspx");
-        }
-
-        protected void btnBuscarIncidentexID_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frmBuscarIncidentePorID.aspx");
-        }
-
-
-        protected void btnCrearIncidente_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("IncidenteForm.aspx");
         }
 
         protected void btnModificarCliente_Click(object sender, EventArgs e)
         {
             Response.Redirect("frmModificarCliente.aspx");
         }
+
+        protected void brnEliminarCliente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmEliminarCliente.aspx");
+        }
+
+        //MENU DE INCIDENTES
+        protected void btnCrearIncidente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("IncidenteForm.aspx");
+        }
+        protected void btnBuscarIncidentexID_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmBuscarIncidentePorID.aspx");
+        }
+
+
+
+        //MENU DE EMPLEADOS
+        protected void btnRegistrarEmpleado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EmpleadoForm.aspx");
+        }
+
+        protected void btnModificarEmpleado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmModificarEmpleado.aspx");
+        }
+
+        protected void btnEliminarEmpleado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmEliminarEmpleado.aspx");
+        }
+
+        protected void btnBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmBuscarEmpleado.aspx");
+        }
+
+       
     }
 }

@@ -90,13 +90,13 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Update Clientes set NOMBRE = @NOMBRE, APELLIDO = @APELLIDO, DNI = @DNI,  EMAIL = @EMAIL, TELEFONO = @TELEFONO, FECHANACIMIENTO = @FECHANACIMIENTO Where ID = " + nuevo.IDCliente + "");
+                datos.setearConsulta("Update Clientes set NOMBRE = @NOMBRE, APELLIDO = @APELLIDO, DNI = @DNI,  EMAIL = @EMAIL, TELEFONO = @TELEFONO Where ID = " + nuevo.IDCliente + "");
                 datos.setearParametros("@NOMBRE", nuevo.Nombre);
                 datos.setearParametros("@APELLIDO", nuevo.Apellido);
                 datos.setearParametros("@DNI", nuevo.Dni);
                 datos.setearParametros("@EMAIL", nuevo.Email);
                 datos.setearParametros("@TELEFONO", nuevo.Telefono);
-                datos.setearParametros("@FECHANACIMIENTO", nuevo.Fecha_Alta);
+                
 
                 datos.ejecutarAccion();
             }
@@ -115,6 +115,9 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                datos.setearConsulta("Delete From Incidentes Where IDCliente = " + nuevo.IDCliente + "");
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
                 datos.setearConsulta("Delete From Clientes Where ID = " + nuevo.IDCliente + "");
                 datos.ejecutarAccion();
 
