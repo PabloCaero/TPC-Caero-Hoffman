@@ -13,6 +13,16 @@ CODIGOPOSTAL VARCHAR(10) NOT NULL,
 PROVINCIA VARCHAR(100) NOT NULL
 )
 
+Create Table Especialidades(
+ID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+ESPECIALIDAD VARCHAR(100) NOT NULL UNIQUE
+)
+
+Create Table Prioridades(
+ID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+PRIORIDAD VARCHAR(100) NOT NULL UNIQUE
+)
+
 Create Table Clientes(
 ID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 NOMBRE VARCHAR(150) NOT NULL,
@@ -62,6 +72,8 @@ Create Table Incidentes(
 ID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 IDEMPLEADO INT NOT NULL FOREIGN KEY REFERENCES Empleados(ID),
 IDCLIENTE INT NOT NULL FOREIGN KEY REFERENCES Clientes(ID),
+IDESPECIALIDAD INT NOT NULL FOREIGN KEY REFERENCES Especialidades(ID),
+IDPRIORIDAD INT NOT NULL FOREIGN KEY REFERENCES Prioridades(ID),
 FECHA_INICIO DATE NOT NULL,
 FECHA_CIERRE DATE NULL,
 DETALLES VARCHAR(2000) NOT NULL,
@@ -72,6 +84,20 @@ CHECK(FECHA_INICIO <= FECHA_CIERRE)
 ALTER TABLE Incidentes  
 ADD COMENTARIOFINAL VARCHAR(2000) NULL
 
+Insert Into Especialidades(ESPECIALIDAD) 
+VALUES('Hardware'),
+	  ('Software'),
+	  ('Servidor'),
+	  ('Red'),
+	  ('Consulta'),
+	  ('Otro');
+	  
+
+Insert Into Prioridades(PRIORIDAD) 
+VALUES('Prioridad Baja'),
+	  ('Prioridad Mediana'),
+	  ('Prioridad Alta'),
+	  ('Crítico');
 
 Insert Into Cargos(NOMBRECARGO) 
 VALUES('Administrador'),
@@ -100,9 +126,9 @@ Insert Into Empleados(NOMBREUSUARIO, CONTRASEÑA, NOMBRE, APELLIDO, IDCARGO, DNI,
 VALUES('nhoffman', 'voyaentrar1234', 'Nicole', 'Hoffman', 2,  '32327693', 3, 'nicolehoffman@alumnos.frgp.edu.ar', '+54 1163088642', '1994-08-05'),
 	  ('paucaero', 'ahientro234', 'Paula', 'Caero',3, '31327693', 4, 'paulacaero@alumnos.frgp.edu.ar', '+54 3327413031', '1995-09-25');
 
-Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, FECHA_CIERRE, DETALLES, IDESTADO, COMENTARIOFINAL)
-VALUES(1000, 1, getDate(), NULL, 'Se solicita un número telefónico del embajador de Rusia', 2, NULL),
-	  (1001, 2, getDate(), NULL, 'Se solicita un número telefónico del embajador de China', 3, NULL);
+Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, FECHA_CIERRE, DETALLES, IDPRIORIDAD, IDESPECIALIDAD, IDESTADO, COMENTARIOFINAL)
+VALUES(1000, 1, getDate(), NULL, 'Se solicita un número telefónico del embajador de Rusia', 1, 1, 2, NULL),
+	  (1001, 2, getDate(), NULL, 'Se solicita un número telefónico del embajador de China', 2, 2, 3, NULL);
 use CALLCENTER_DB
 
 Select * From Cargos

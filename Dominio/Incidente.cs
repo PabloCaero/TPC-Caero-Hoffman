@@ -10,6 +10,8 @@ namespace Dominio
     {
         public int ID { get; set; }
         public Cliente Cliente { get; set; }
+        public Prioridad Prioridad { get; set; }
+        public Especialidad Especialidad { get; set; }
         public DateTime Fecha_inicio { get; set; }
         public DateTime Fecha_cierre { get; set; }
         public string Detalles { get; set; }

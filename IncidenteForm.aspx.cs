@@ -16,7 +16,36 @@ namespace TPC_Caero_Hoffman
        
         protected void Page_Load(object sender, EventArgs e)
         {
+            EspecialidadNegocio especialidadnegocio = new EspecialidadNegocio();
+            PrioridadNegocio prioridadnegocio = new PrioridadNegocio();
+            try
+            {
+                if (!IsPostBack)
+                {
+                    List<Especialidad> listEspecialidad = especialidadnegocio.listar();
 
+                    ddlEspecialidad.DataSource = listEspecialidad;
+                    ddlEspecialidad.DataTextField = "Nombre_Especialidad";
+                    ddlEspecialidad.DataValueField = "IDEspecialidad";
+                    ddlEspecialidad.DataBind();
+                }
+
+                if (!IsPostBack)
+                {
+                    List<Prioridad> listPrioridad = prioridadnegocio.listar();
+
+                    ddlPrioridad.DataSource = listPrioridad;
+                    ddlPrioridad.DataTextField = "Nombre_Prioridad";
+                    ddlPrioridad.DataValueField = "IDPrioridad";
+                    ddlPrioridad.DataBind();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
         }
 
   
@@ -67,6 +96,12 @@ namespace TPC_Caero_Hoffman
 
             nuevo.Empleado = new Empleado();
             nuevo.Empleado.Legajo = int.Parse(lblLegajoEmpleado.Text);
+
+            nuevo.Especialidad = new Especialidad();
+            nuevo.Especialidad.IDEspecialidad = int.Parse(ddlEspecialidad.SelectedValue);
+
+            nuevo.Prioridad = new Prioridad();
+            nuevo.Prioridad.IDPrioridad = int.Parse(ddlPrioridad.SelectedValue);
 
             nuevo.Detalles = txtDetalles.Text;
             negocioIncidente.agregar(nuevo);

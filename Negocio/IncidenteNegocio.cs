@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT I.ID, I.FECHA_INICIO, I.FECHA_CIERRE, I.IDEMPLEADO, EM.NOMBRE AS NOMEMPLEADO, EM.APELLIDO AS APEEMPLEADO, I.IDCLIENTE, CS.NOMBRE AS NOMCLIENTE, CS.APELLIDO AS APECLIENTE, I.DETALLES, I.IDESTADO, E.NOMBREESTADO, I.COMENTARIOFINAL FROM INCIDENTES I, ESTADOS E, CLIENTES CS, EMPLEADOS EM WHERE E.ID = I.IDESTADO AND I.IDCLIENTE = CS.ID AND I.IDEMPLEADO = EM.ID");
+                datos.setearConsulta("SELECT I.ID, I.FECHA_INICIO, I.FECHA_CIERRE, I.IDEMPLEADO, EM.NOMBRE AS NOMEMPLEADO, EM.APELLIDO AS APEEMPLEADO, I.IDCLIENTE, CS.NOMBRE AS NOMCLIENTE, CS.APELLIDO AS APECLIENTE, I.DETALLES, I.IDPRIORIDAD, P.PRIORIDAD, I.IDESPECIALIDAD, SP.ESPECIALIDAD, I.IDESTADO, E.NOMBREESTADO, I.COMENTARIOFINAL FROM INCIDENTES I, ESTADOS E, CLIENTES CS, EMPLEADOS EM, Prioridades P, Especialidades SP WHERE E.ID = I.IDESTADO AND I.IDCLIENTE = CS.ID AND I.IDEMPLEADO = EM.ID AND I.IDESPECIALIDAD = SP.ID AND I.IDPRIORIDAD = P.ID");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -33,6 +33,14 @@ namespace Negocio
                     aux.Empleado.Legajo = (int)datos.Lector["IDEMPLEADO"];
                     aux.Empleado.Nombre = (string)datos.Lector["NOMEMPLEADO"];
                     aux.Empleado.Apellido = (string)datos.Lector["APEEMPLEADO"];
+
+                    aux.Especialidad = new Especialidad();
+                    aux.Especialidad.IDEspecialidad = (int)datos.Lector["IDESPECIALIDAD"];
+                    aux.Especialidad.Nombre_Especialidad = (string)datos.Lector["ESPECIALIDAD"];
+
+                    aux.Prioridad = new Prioridad();
+                    aux.Prioridad.IDPrioridad = (int)datos.Lector["IDPRIORIDAD"];
+                    aux.Prioridad.Nombre_Prioridad = (string)datos.Lector["PRIORIDAD"];
 
                     aux.Cliente = new Cliente();
                     aux.Cliente.IDCliente = (int)datos.Lector["IDCLIENTE"];
@@ -72,11 +80,13 @@ namespace Negocio
             try
             {
                 //PARAMETROS "ABIERTO"
-                datos.setearConsulta("Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, DETALLES, IDESTADO) Values(@IDEMPLEADO, @IDCLIENTE, getDate(), @DETALLES, 1)"); 
+                datos.setearConsulta("Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, DETALLES, IDESTADO, IDPRIORIDAD, IDESPECIALIDAD) Values(@IDEMPLEADO, @IDCLIENTE, getDate(), @DETALLES, 1, @IDPRIORIDAD, @IDESPECIALIDAD)"); 
                 datos.setearParametros("@IDEMPLEADO", nuevo.Empleado.Legajo);
                 datos.setearParametros("@IDCLIENTE", nuevo.Cliente.IDCliente);
                 datos.setearParametros("@DETALLES", nuevo.Detalles);
-               
+                datos.setearParametros("@IDESPECIALIDAD", nuevo.Especialidad.IDEspecialidad);
+                datos.setearParametros("@IDPRIORIDAD", nuevo.Prioridad.IDPrioridad);
+
                 datos.ejecutarAccion();
 
             }
@@ -208,7 +218,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select I.ID, I.IDEMPLEADO, I.IDCLIENTE, I.IDESTADO, I.DETALLES, I.COMENTARIOFINAL, I.FECHA_INICIO, I.FECHA_CIERRE, E.NOMBRE AS NOMBREEMPLEADO, E.APELLIDO AS APELLIDOEMPLEADO, C.NOMBRE AS NOMBRECLIENTE, C.APELLIDO AS APELLIDOCLIENTE, ES.NOMBREESTADO From Incidentes I, Empleados E, Clientes C, Estados ES Where I.IDCLIENTE = C.ID AND I.IDESTADO = ES.ID AND I.IDEMPLEADO = E.ID AND I.ID = '" + buscar.ID + "'");
+                datos.setearConsulta("SELECT I.ID, I.FECHA_INICIO, I.FECHA_CIERRE, I.IDEMPLEADO, EM.NOMBRE AS NOMEMPLEADO, EM.APELLIDO AS APEEMPLEADO, I.IDCLIENTE, CS.NOMBRE AS NOMCLIENTE, CS.APELLIDO AS APECLIENTE, I.DETALLES, I.IDPRIORIDAD, P.PRIORIDAD, I.IDESPECIALIDAD, SP.ESPECIALIDAD, I.IDESTADO, E.NOMBREESTADO, I.COMENTARIOFINAL FROM INCIDENTES I, ESTADOS E, CLIENTES CS, EMPLEADOS EM, Prioridades P, Especialidades SP WHERE E.ID = I.IDESTADO AND I.IDCLIENTE = CS.ID AND I.IDEMPLEADO = EM.ID AND I.IDESPECIALIDAD = SP.ID AND I.IDPRIORIDAD = P.ID AND I.ID = '" + buscar.ID + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -227,13 +237,21 @@ namespace Negocio
 
                     aux.Empleado = new Empleado();
                     aux.Empleado.Legajo = (int)datos.Lector["IDEMPLEADO"];
-                    aux.Empleado.Nombre = (string)datos.Lector["NOMBREEMPLEADO"];
-                    aux.Empleado.Apellido = (string)datos.Lector["APELLIDOEMPLEADO"];
+                    aux.Empleado.Nombre = (string)datos.Lector["NOMEMPLEADO"];
+                    aux.Empleado.Apellido = (string)datos.Lector["APEEMPLEADO"];
+
+                    aux.Especialidad = new Especialidad();
+                    aux.Especialidad.IDEspecialidad = (int)datos.Lector["IDESPECIALIDAD"];
+                    aux.Especialidad.Nombre_Especialidad = (string)datos.Lector["ESPECIALIDAD"];
+
+                    aux.Prioridad = new Prioridad();
+                    aux.Prioridad.IDPrioridad = (int)datos.Lector["IDPRIORIDAD"];
+                    aux.Prioridad.Nombre_Prioridad = (string)datos.Lector["PRIORIDAD"];
 
                     aux.Cliente = new Cliente();
                     aux.Cliente.IDCliente = (int)datos.Lector["IDCLIENTE"];
-                    aux.Cliente.Nombre = (string)datos.Lector["NOMBRECLIENTE"];
-                    aux.Cliente.Apellido = (string)datos.Lector["APELLIDOCLIENTE"];
+                    aux.Cliente.Nombre = (string)datos.Lector["NOMCLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APECLIENTE"];
 
                     aux.Estado = new Estado();
                     aux.Estado.IDEstado = (int)datos.Lector["IDESTADO"];
@@ -265,7 +283,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select I.ID, I.IDEMPLEADO, I.IDCLIENTE, I.IDESTADO, I.DETALLES, I.COMENTARIOFINAL, I.FECHA_INICIO, I.FECHA_CIERRE, E.NOMBRE AS NOMBREEMPLEADO, E.APELLIDO AS APELLIDOEMPLEADO, C.NOMBRE AS NOMBRECLIENTE, C.APELLIDO AS APELLIDOCLIENTE, ES.NOMBREESTADO From Incidentes I, Empleados E, Clientes C, Estados ES Where I.IDCLIENTE = C.ID AND I.IDESTADO = ES.ID AND I.IDEMPLEADO = E.ID AND C.NOMBRE LIKE '%" + buscar.Cliente.Nombre + "%' OR C.APELLIDO LIKE '%"+ buscar.Cliente.Apellido +"'%");
+                datos.setearConsulta("SELECT I.ID, I.FECHA_INICIO, I.FECHA_CIERRE, I.IDEMPLEADO, EM.NOMBRE AS NOMEMPLEADO, EM.APELLIDO AS APEEMPLEADO, I.IDCLIENTE, CS.NOMBRE AS NOMCLIENTE, CS.APELLIDO AS APECLIENTE, I.DETALLES, I.IDPRIORIDAD, P.PRIORIDAD, I.IDESPECIALIDAD, SP.ESPECIALIDAD, I.IDESTADO, E.NOMBREESTADO, I.COMENTARIOFINAL FROM INCIDENTES I, ESTADOS E, CLIENTES CS, EMPLEADOS EM, Prioridades P, Especialidades SP WHERE E.ID = I.IDESTADO AND I.IDCLIENTE = CS.ID AND I.IDEMPLEADO = EM.ID AND I.IDESPECIALIDAD = SP.ID AND I.IDPRIORIDAD = P.ID AND C.NOMBRE LIKE '%" + buscar.Cliente.Nombre + "%' OR C.APELLIDO LIKE '%"+ buscar.Cliente.Apellido +"'%");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -281,6 +299,14 @@ namespace Negocio
                     aux.Empleado.Legajo = (int)datos.Lector["IDEMPLEADO"];
                     aux.Empleado.Nombre = (string)datos.Lector["NOMBREEMPLEADO"];
                     aux.Empleado.Apellido = (string)datos.Lector["APELLIDOEMPLEADO"];
+
+                    aux.Especialidad = new Especialidad();
+                    aux.Especialidad.IDEspecialidad = (int)datos.Lector["IDESPECIALIDAD"];
+                    aux.Especialidad.Nombre_Especialidad = (string)datos.Lector["ESPECIALIDAD"];
+
+                    aux.Prioridad = new Prioridad();
+                    aux.Prioridad.IDPrioridad = (int)datos.Lector["IDPRIORIDAD"];
+                    aux.Prioridad.Nombre_Prioridad = (string)datos.Lector["PRIORIDAD"];
 
                     aux.Cliente = new Cliente();
                     aux.Cliente.IDCliente = (int)datos.Lector["IDCLIENTE"];

@@ -61,6 +61,21 @@
         </div>
        </div>
 
+    <!--ESPECIALIDAD DEL INCIDENTE-->
+    <div class="col-md-6">
+         <label for="inputEmail4" class="form-label">Especialidad</label>
+         <asp:DropDownList runat="server" ID="ddlEspecialidad" CssClass="btn btn-outline-dark dropdown-toggle" AutoPostBack="true" >
+         </asp:DropDownList>
+             </div>
+
+    <!--PRIORIDAD DEL INCIDENTE-->
+    <div class="col-md-6">
+         <label for="inputEmail4" class="form-label">Prioridad</label>
+         <asp:DropDownList runat="server" ID="ddlPrioridad" CssClass="btn btn-outline-dark dropdown-toggle" AutoPostBack="true" >
+         </asp:DropDownList>
+             </div>
+    
+
     <!--DETALLES DEL INCIDENTE-->
      <div class="col-9">
     <label for="inputEmail4" class="form-label">Describa los detalles del incidente: </label>
