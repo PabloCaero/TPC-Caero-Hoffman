@@ -15,9 +15,10 @@
     <h1>Incidentes</h1>
     <asp:Button Text="Crear Incidente" ID="btnCrearIncidente" OnClick="btnCrearIncidente_Click" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Buscar Por Numero de Incidente" ID="btnBuscarIncidentexID" OnClick="btnBuscarIncidentexID_Click" CssClass="btn btn-dark" runat="server" />
-    <asp:Button Text="Modificar Incidente" ID="btnModificarIncidente" CssClass="btn btn-dark" runat="server" />
-    <asp:Button Text="Reasignar Incidente" ID="btnReasignarIncidente" CssClass="btn btn-dark" runat="server" />
-    <asp:Button Text="Cerrar Incidente" ID="btnCerrarIncidente" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Modificar Incidente" ID="btnModificarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnModificarIncidente_Click" />
+    <asp:Button Text="Reasignar Incidente" ID="btnReasignarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnReasignarIncidente_Click" />
+    <asp:Button Text="Cerrar Incidente" ID="btnCerrarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnCerrarIncidente_Click" />
+    <asp:Button Text="Reabrir Incidente" ID="btnReabrirIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnReabrirIncidente_Click" />
     </div>
 
     <div class="d-grid gap-2 col-6 mx-auto">

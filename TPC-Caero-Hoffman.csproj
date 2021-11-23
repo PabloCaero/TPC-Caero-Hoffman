@@ -131,13 +131,17 @@
     <Content Include="frmBuscarClientePorDNI.aspx" />
     <Content Include="frmBuscarEmpleado.aspx" />
     <Content Include="frmBuscarIncidentePorID.aspx" />
+    <Content Include="frmCerrarIncidente.aspx" />
     <Content Include="frmEliminarCliente.aspx" />
     <Content Include="frmEliminarEmpleado.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmMenuSupervisor.aspx" />
     <Content Include="frmMenuTelefonista.aspx" />
     <Content Include="frmModificarCliente.aspx" />
+    <Content Include="frmModificarDetallesIncidente.aspx" />
     <Content Include="frmModificarEmpleado.aspx" />
+    <Content Include="frmReabrirIncidente.aspx" />
+    <Content Include="frmReasignarIncidente.aspx" />
     <Content Include="GestionCargos.aspx" />
     <Content Include="GestionClientes.aspx" />
     <Content Include="GestionDirecciones.aspx" />
@@ -237,6 +241,13 @@
     <Compile Include="frmBuscarIncidentePorID.aspx.designer.cs">
       <DependentUpon>frmBuscarIncidentePorID.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmCerrarIncidente.aspx.cs">
+      <DependentUpon>frmCerrarIncidente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCerrarIncidente.aspx.designer.cs">
+      <DependentUpon>frmCerrarIncidente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmEliminarCliente.aspx.cs">
       <DependentUpon>frmEliminarCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -279,12 +290,33 @@
     <Compile Include="frmModificarCliente.aspx.designer.cs">
       <DependentUpon>frmModificarCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmModificarDetallesIncidente.aspx.cs">
+      <DependentUpon>frmModificarDetallesIncidente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmModificarDetallesIncidente.aspx.designer.cs">
+      <DependentUpon>frmModificarDetallesIncidente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmModificarEmpleado.aspx.cs">
       <DependentUpon>frmModificarEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmModificarEmpleado.aspx.designer.cs">
       <DependentUpon>frmModificarEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmReabrirIncidente.aspx.cs">
+      <DependentUpon>frmReabrirIncidente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmReabrirIncidente.aspx.designer.cs">
+      <DependentUpon>frmReabrirIncidente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmReasignarIncidente.aspx.cs">
+      <DependentUpon>frmReasignarIncidente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmReasignarIncidente.aspx.designer.cs">
+      <DependentUpon>frmReasignarIncidente.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionCargos.aspx.cs">
       <DependentUpon>GestionCargos.aspx</DependentUpon>

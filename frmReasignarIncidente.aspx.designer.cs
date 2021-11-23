@@ -11,44 +11,44 @@ namespace TPC_Caero_Hoffman
 {
 
 
-    public partial class IncidenteForm
+    public partial class frmReasignarIncidente
     {
 
         /// <summary>
-        /// Control txtBuscarClientexDNI.
+        /// Control txtBuscarIncidentexID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarClientexDNI;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarIncidentexID;
 
         /// <summary>
-        /// Control btnBuscarClientexDNI.
+        /// Control btnBuscarIncidentexID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarClientexDNI;
+        protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexID;
 
         /// <summary>
-        /// Control dgvClientes.
+        /// Control dgvIncidentes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvClientes;
+        protected global::System.Web.UI.WebControls.GridView dgvIncidentes;
 
         /// <summary>
-        /// Control lblIDCliente.
+        /// Control lblIDIncidente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIDCliente;
+        protected global::System.Web.UI.WebControls.Label lblIDIncidente;
 
         /// <summary>
         /// Control txtBuscarEmpleadoxID.
@@ -87,21 +87,12 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Label lblLegajoEmpleado;
 
         /// <summary>
-        /// Control txtDetalles.
+        /// Control btnReasignarIncidente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDetalles;
-
-        /// <summary>
-        /// Control btnCrearIncidente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCrearIncidente;
+        protected global::System.Web.UI.WebControls.Button btnReasignarIncidente;
     }
 }

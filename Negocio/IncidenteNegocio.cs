@@ -141,7 +141,7 @@ namespace Negocio
             try
             {
                 //PARAMETROS "CERRADO"
-                datos.setearConsulta("Update Incidentes set COMENTARIOFINAL=@COMETARIOFINAL, FECHA_CIERRE = GETDATE(), IDESTADO = 3 Where ID = " + nuevo.ID + "");
+                datos.setearConsulta("Update Incidentes set COMENTARIOFINAL=@COMENTARIOFINAL, FECHA_CIERRE = GETDATE(), IDESTADO = 3 Where ID = '" + nuevo.ID + "'");
                 datos.setearParametros("@COMENTARIOFINAL", nuevo.Detalles);              
 
                 datos.ejecutarAccion();
@@ -208,7 +208,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select ID, IDEMPLEADO, IDCLIENTE, IDESTADO, DETALLES From Incidentes Where ID = '" + buscar.ID + "'");
+                datos.setearConsulta("Select I.ID, I.IDEMPLEADO, I.IDCLIENTE, I.IDESTADO, I.DETALLES, I.COMENTARIOFINAL, I.FECHA_INICIO, I.FECHA_CIERRE, E.NOMBRE AS NOMBREEMPLEADO, E.APELLIDO AS APELLIDOEMPLEADO, C.NOMBRE AS NOMBRECLIENTE, C.APELLIDO AS APELLIDOCLIENTE, ES.NOMBREESTADO From Incidentes I, Empleados E, Clientes C, Estados ES Where I.IDCLIENTE = C.ID AND I.IDESTADO = ES.ID AND I.IDEMPLEADO = E.ID AND I.ID = '" + buscar.ID + "'");
                 datos.ejecturaLectura();
 
                 while (datos.Lector.Read())
@@ -216,16 +216,134 @@ namespace Negocio
                     Incidente aux = new Incidente();
                     aux.ID = (int)datos.Lector["ID"];
 
+                    if(!(datos.Lector["FECHA_CIERRE"] is DBNull))
+                        aux.Fecha_cierre = (DateTime)datos.Lector["FECHA_CIERRE"];
+
+                    aux.Fecha_inicio = (DateTime)datos.Lector["FECHA_INICIO"];
+                    aux.Detalles = (string)datos.Lector["DETALLES"];
+
+                    if (!(datos.Lector["COMENTARIOFINAL"] is DBNull))
+                        aux.ComentarioFinal = (string)datos.Lector["COMENTARIOFINAL"];
+
                     aux.Empleado = new Empleado();
                     aux.Empleado.Legajo = (int)datos.Lector["IDEMPLEADO"];
+                    aux.Empleado.Nombre = (string)datos.Lector["NOMBREEMPLEADO"];
+                    aux.Empleado.Apellido = (string)datos.Lector["APELLIDOEMPLEADO"];
 
                     aux.Cliente = new Cliente();
                     aux.Cliente.IDCliente = (int)datos.Lector["IDCLIENTE"];
+                    aux.Cliente.Nombre = (string)datos.Lector["NOMBRECLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APELLIDOCLIENTE"];
 
                     aux.Estado = new Estado();
                     aux.Estado.IDEstado = (int)datos.Lector["IDESTADO"];
+                    aux.Estado.Nombre_Estado = (string)datos.Lector["NOMBREESTADO"];
 
+
+
+                    lista.Add(aux);
+
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<Incidente> buscarxApenomCliente(Incidente buscar)
+        {
+            List<Incidente> lista = new List<Incidente>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select I.ID, I.IDEMPLEADO, I.IDCLIENTE, I.IDESTADO, I.DETALLES, I.COMENTARIOFINAL, I.FECHA_INICIO, I.FECHA_CIERRE, E.NOMBRE AS NOMBREEMPLEADO, E.APELLIDO AS APELLIDOEMPLEADO, C.NOMBRE AS NOMBRECLIENTE, C.APELLIDO AS APELLIDOCLIENTE, ES.NOMBREESTADO From Incidentes I, Empleados E, Clientes C, Estados ES Where I.IDCLIENTE = C.ID AND I.IDESTADO = ES.ID AND I.IDEMPLEADO = E.ID AND C.NOMBRE LIKE '%" + buscar.Cliente.Nombre + "%' OR C.APELLIDO LIKE '%"+ buscar.Cliente.Apellido +"'%");
+                datos.ejecturaLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Incidente aux = new Incidente();
+                    aux.ID = (int)datos.Lector["ID"];
+                    aux.Fecha_cierre = (DateTime)datos.Lector["FECHA_CIERRE"];
+                    aux.Fecha_inicio = (DateTime)datos.Lector["FECHA_INICIO"];
                     aux.Detalles = (string)datos.Lector["DETALLES"];
+                    aux.ComentarioFinal = (string)datos.Lector["COMENTARIOFINAL"];
+
+                    aux.Empleado = new Empleado();
+                    aux.Empleado.Legajo = (int)datos.Lector["IDEMPLEADO"];
+                    aux.Empleado.Nombre = (string)datos.Lector["NOMBREEMPLEADO"];
+                    aux.Empleado.Apellido = (string)datos.Lector["APELLIDOEMPLEADO"];
+
+                    aux.Cliente = new Cliente();
+                    aux.Cliente.IDCliente = (int)datos.Lector["IDCLIENTE"];
+                    aux.Cliente.Nombre = (string)datos.Lector["NOMBRECLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APELLIDOCLIENTE"];
+
+                    aux.Estado = new Estado();
+                    aux.Estado.IDEstado = (int)datos.Lector["IDESTADO"];
+                    aux.Estado.Nombre_Estado = (string)datos.Lector["NOMBREESTADO"];
+
+
+
+                    lista.Add(aux);
+
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<Incidente> buscarxApenomEmpleado(Incidente buscar)
+        {
+            List<Incidente> lista = new List<Incidente>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select I.ID, I.IDEMPLEADO, I.IDCLIENTE, I.IDESTADO, I.DETALLES, I.COMENTARIOFINAL, I.FECHA_INICIO, I.FECHA_CIERRE, E.NOMBRE AS NOMBREEMPLEADO, E.APELLIDO AS APELLIDOEMPLEADO, C.NOMBRE AS NOMBRECLIENTE, C.APELLIDO AS APELLIDOCLIENTE, ES.NOMBREESTADO From Incidentes I, Empleados E, Clientes C, Estados ES Where I.IDCLIENTE = C.ID AND I.IDESTADO = ES.ID AND I.IDEMPLEADO = E.ID AND C.NOMBRE LIKE '%" + buscar.Cliente.Nombre + "%' OR C.APELLIDO LIKE '%" + buscar.Cliente.Apellido + "%'");
+                datos.ejecturaLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Incidente aux = new Incidente();
+                    aux.ID = (int)datos.Lector["ID"];
+                    aux.Fecha_cierre = (DateTime)datos.Lector["FECHA_CIERRE"];
+                    aux.Fecha_inicio = (DateTime)datos.Lector["FECHA_INICIO"];
+                    aux.Detalles = (string)datos.Lector["DETALLES"];
+                    aux.ComentarioFinal = (string)datos.Lector["COMENTARIOFINAL"];
+
+                    aux.Empleado = new Empleado();
+                    aux.Empleado.Legajo = (int)datos.Lector["IDEMPLEADO"];
+                    aux.Empleado.Nombre = (string)datos.Lector["NOMBREEMPLEADO"];
+                    aux.Empleado.Apellido = (string)datos.Lector["APELLIDOEMPLEADO"];
+
+                    aux.Cliente = new Cliente();
+                    aux.Cliente.IDCliente = (int)datos.Lector["IDCLIENTE"];
+                    aux.Cliente.Nombre = (string)datos.Lector["NOMBRECLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APELLIDOCLIENTE"];
+
+                    aux.Estado = new Estado();
+                    aux.Estado.IDEstado = (int)datos.Lector["IDESTADO"];
+                    aux.Estado.Nombre_Estado = (string)datos.Lector["NOMBREESTADO"];
+
+
 
                     lista.Add(aux);
 

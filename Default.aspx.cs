@@ -55,6 +55,26 @@ namespace TPC_Caero_Hoffman
             Response.Redirect("frmBuscarIncidentePorID.aspx");
         }
 
+        protected void btnModificarIncidente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmModificarDetallesIncidente.aspx");
+        }
+
+        protected void btnReasignarIncidente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmReasignarIncidente.aspx");
+
+        }
+
+        protected void btnCerrarIncidente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmReabrirIncidente");
+        }
+
+        protected void btnReabrirIncidente_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
         //MENU DE EMPLEADOS

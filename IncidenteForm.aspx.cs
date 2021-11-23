@@ -13,40 +13,20 @@ namespace TPC_Caero_Hoffman
     {
         private List<Cliente> buscaCliente;
         private List<Empleado> buscaEmpleado;
-
+       
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
         }
 
-        protected void btnCargarIncidente_Click(object sender, EventArgs e)
-        {
-            Incidente incidente = new Incidente();
-            IncidenteNegocio negocio = new IncidenteNegocio();
-
-            //FALTA PODER 
-            /*incidente.Cliente = new Cliente();
-            incidente.Cliente.IDCliente = int.Parse(dgvClientes.DataKeys);
-
-            incidente.Empleado = new Empleado();
-            incidente.Empleado.Legajo = int.Parse(dgvEmpleados.DataKeys.GetEnumerator );
-
-            incidente.Detalles = txtDetalles.Text;*/
-
-
-            negocio.agregar(incidente);
-            Response.Redirect("Default.aspx");
-        }
-
-     
-
+  
         protected void btnBuscarClientexDNI_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente();
             ClienteNegocio clientenegocio = new ClienteNegocio();
-          
+
             try
-            {     
+            {
                 cliente.Dni = txtBuscarClientexDNI.Text;
                 buscaCliente = clientenegocio.buscarDNI(cliente);
                 dgvClientes.DataSource = buscaCliente;
@@ -55,9 +35,7 @@ namespace TPC_Caero_Hoffman
             catch (Exception ex)
             {
                 Session.Add("error", ex);
-
             }
-
         }
 
         protected void btnBuscarEmpleadoxLegajo_Click(object sender, EventArgs e)
@@ -67,16 +45,45 @@ namespace TPC_Caero_Hoffman
 
             try
             {
-                empleado.Legajo = int.Parse(txtBuscarEmpleadoxLegajo.Text);
+                empleado.Legajo = int.Parse(txtBuscarEmpleadoxID.Text);
                 buscaEmpleado = empleadonegocio.buscarLegajo(empleado);
                 dgvEmpleados.DataSource = buscaEmpleado;
                 dgvEmpleados.DataBind();
+               
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex);
-
             }
+        }
+
+        protected void btnCrearIncidente_Click(object sender, EventArgs e)
+        {      
+            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+            Incidente nuevo = new Incidente();
+
+            nuevo.Cliente = new Cliente();
+            nuevo.Cliente.IDCliente = int.Parse(lblIDCliente.Text);
+
+            nuevo.Empleado = new Empleado();
+            nuevo.Empleado.Legajo = int.Parse(lblLegajoEmpleado.Text);
+
+            nuevo.Detalles = txtDetalles.Text;
+            negocioIncidente.agregar(nuevo);
+
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void dgvClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = dgvClientes.Rows[e.NewSelectedIndex];
+            lblIDCliente.Text = row.Cells[0].Text;     
+        }
+
+        protected void dgvEmpleados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = dgvEmpleados.Rows[e.NewSelectedIndex];
+            lblLegajoEmpleado.Text = row.Cells[0].Text;
         }
     }
 }
