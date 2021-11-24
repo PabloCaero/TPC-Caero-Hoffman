@@ -1,0 +1,11 @@
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\obj\Debug\Servicios.csproj.AssemblyReference.cache
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\bin\Debug\Servicios.dll
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\bin\Debug\Servicios.pdb
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\obj\Debug\Servicios.dll
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\obj\Debug\Servicios.pdb
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\bin\Debug\Dominio.dll
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\bin\Debug\Negocio.dll
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\bin\Debug\Dominio.pdb
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\bin\Debug\Negocio.pdb
+C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Servicios\obj\Debug\Servicios.csproj.CopyComplete

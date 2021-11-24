@@ -110,6 +110,49 @@ namespace Negocio
             }
         }
 
+        public Cliente buscarIndividualDNI(Cliente buscar)
+        {
+            Cliente aux = new Cliente();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select C.ID, C.NOMBRE, C.APELLIDO, C.DNI, C.IDDIRECCION, D.CALLE, D.ALTURA, D.LOCALIDAD, D.CODIGOPOSTAL, D.PROVINCIA, C.EMAIL, C.TELEFONO, C.FECHANACIMIENTO From Clientes C INNER JOIN Direccion D ON C.IDDIRECCION = D.ID AND C.DNI = '" + buscar.Dni + "'");
+                datos.ejecturaLectura();
+
+               
+                    aux.IDCliente = (int)datos.Lector["ID"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Dni = (string)datos.Lector["DNI"];
+                    aux.Email = (string)datos.Lector["EMAIL"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Fecha_Nac = (DateTime)datos.Lector["FECHANACIMIENTO"];//ES ESTO
+
+                    aux.Direccion = new Direccion();
+                    aux.Direccion.IDDireccion = (int)datos.Lector["IDDIRECCION"];
+                    aux.Direccion.Calle = (string)datos.Lector["CALLE"];
+                    aux.Direccion.Numero = (int)datos.Lector["ALTURA"];
+                    aux.Direccion.Localidad = (string)datos.Lector["LOCALIDAD"];
+                    aux.Direccion.Codigo_Postal = (string)datos.Lector["CODIGOPOSTAL"];
+                    aux.Direccion.Provincia = (string)datos.Lector["PROVINCIA"];
+
+                   
+                
+
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
         public void eliminar(Cliente nuevo)
         {
             AccesoDatos datos = new AccesoDatos();

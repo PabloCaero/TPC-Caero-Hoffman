@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
+using Servicios;
 
 namespace TPC_Caero_Hoffman
 {
@@ -13,7 +14,8 @@ namespace TPC_Caero_Hoffman
     {
         private List<Cliente> buscaCliente;
         private List<Empleado> buscaEmpleado;
-       
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             EspecialidadNegocio especialidadnegocio = new EspecialidadNegocio();
@@ -105,6 +107,21 @@ namespace TPC_Caero_Hoffman
 
             nuevo.Detalles = txtDetalles.Text;
             negocioIncidente.agregar(nuevo);
+
+            nuevo = negocioIncidente.buscarIndividualID(nuevo);
+
+            EmailService emailService = new EmailService();
+            emailService.armarCorreoIncidenteAbierto(nuevo);
+            try
+            {
+                emailService.enviarMail();
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error", ex);
+            }
 
             Response.Redirect("Default.aspx");
         }

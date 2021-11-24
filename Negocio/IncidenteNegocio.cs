@@ -276,6 +276,66 @@ namespace Negocio
 
         }
 
+        public Incidente buscarIndividualID(Incidente buscar)
+        {
+            Incidente aux = new Incidente();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT I.ID, I.FECHA_INICIO, I.FECHA_CIERRE, I.IDEMPLEADO, EM.EMAIL AS EMAILEMPLEADO, EM.NOMBRE AS NOMEMPLEADO, EM.APELLIDO AS APEEMPLEADO, I.IDCLIENTE, CS.EMAIL AS EMAILCLIENTE, CS.NOMBRE AS NOMCLIENTE, CS.APELLIDO AS APECLIENTE, I.DETALLES, I.IDPRIORIDAD, P.PRIORIDAD, I.IDESPECIALIDAD, SP.ESPECIALIDAD, I.IDESTADO, E.NOMBREESTADO, I.COMENTARIOFINAL FROM INCIDENTES I, ESTADOS E, CLIENTES CS, EMPLEADOS EM, Prioridades P, Especialidades SP WHERE E.ID = I.IDESTADO AND I.IDCLIENTE = CS.ID AND I.IDEMPLEADO = EM.ID AND I.IDESPECIALIDAD = SP.ID AND I.IDPRIORIDAD = P.ID AND I.ID = '" + buscar.ID + "'");
+                datos.ejecturaLectura();
+
+            
+                    aux.ID = (int)datos.Lector["ID"];
+
+                    if (!(datos.Lector["FECHA_CIERRE"] is DBNull))
+                        aux.Fecha_cierre = (DateTime)datos.Lector["FECHA_CIERRE"];
+
+                    aux.Fecha_inicio = (DateTime)datos.Lector["FECHA_INICIO"];
+                    aux.Detalles = (string)datos.Lector["DETALLES"];
+
+                    if (!(datos.Lector["COMENTARIOFINAL"] is DBNull))
+                        aux.ComentarioFinal = (string)datos.Lector["COMENTARIOFINAL"];
+
+                    aux.Empleado = new Empleado();
+                    aux.Empleado.Legajo = (int)datos.Lector["IDEMPLEADO"];
+                    aux.Empleado.Nombre = (string)datos.Lector["NOMEMPLEADO"];
+                    aux.Empleado.Apellido = (string)datos.Lector["APEEMPLEADO"];
+                    aux.Empleado.Email = (string)datos.Lector["EMAILEMPLEADO"];
+
+                    aux.Especialidad = new Especialidad();
+                    aux.Especialidad.IDEspecialidad = (int)datos.Lector["IDESPECIALIDAD"];
+                    aux.Especialidad.Nombre_Especialidad = (string)datos.Lector["ESPECIALIDAD"];
+
+                    aux.Prioridad = new Prioridad();
+                    aux.Prioridad.IDPrioridad = (int)datos.Lector["IDPRIORIDAD"];
+                    aux.Prioridad.Nombre_Prioridad = (string)datos.Lector["PRIORIDAD"];
+
+                    aux.Cliente = new Cliente();
+                    aux.Cliente.IDCliente = (int)datos.Lector["IDCLIENTE"];
+                    aux.Cliente.Nombre = (string)datos.Lector["NOMCLIENTE"];
+                    aux.Cliente.Apellido = (string)datos.Lector["APECLIENTE"];
+                    aux.Cliente.Email = (string)datos.Lector["EMAILCLIENTE"];
+
+                    aux.Estado = new Estado();
+                    aux.Estado.IDEstado = (int)datos.Lector["IDESTADO"];
+                    aux.Estado.Nombre_Estado = (string)datos.Lector["NOMBREESTADO"];
+
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
         public List<Incidente> buscarxApenomCliente(Incidente buscar)
         {
             List<Incidente> lista = new List<Incidente>();
