@@ -18,20 +18,27 @@ namespace Servicios
         public EmailService()
         {
             server = new SmtpClient();
-            server.Credentials = new NetworkCredential("programationiii@gmail.com", "programacion3");
+            server.Credentials = new NetworkCredential("pcaero_programacion@hotmail.com", "123698745PROGRAMACION");
             server.EnableSsl = true;
-            server.Port = 587;
-            server.Host = "smtp.gmail.com";
+            server.Port = 25;
+            server.Host = "smtp.live.com";
         }
 
-        public void armarCorreoIncidenteAbierto(Cliente cliente)
+        public void armarCorreoIncidenteAbierto(Incidente incidente)
         {
-            email = new MailMessage();
-            email.From = new MailAddress("noresponder@callcenter.com");
-            email.To.Add(cliente.Email);
-            email.Subject = "Apertura de incidente #";
-            email.IsBodyHtml = true;
-            email.Body = "<h1> Prueba Apertura </h1>";
+            try
+            {
+                email = new MailMessage();
+                email.From = new MailAddress("pcaero_programacion@hotmail.com");
+                email.To.Add(incidente.Cliente.Email);
+                email.Subject = "Apertura de incidente #" + incidente.ID + "";
+                email.IsBodyHtml = true;
+                email.Body = "<h1>******DETALLES DE INCIDENTE #"+ incidente.ID + "******</h1>";
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void enviarMail()

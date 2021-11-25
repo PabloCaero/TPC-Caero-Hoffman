@@ -108,10 +108,13 @@ namespace TPC_Caero_Hoffman
             nuevo.Detalles = txtDetalles.Text;
             negocioIncidente.agregar(nuevo);
 
-            nuevo = negocioIncidente.buscarIndividualID(nuevo);
+            IncidenteNegocio negocio = new IncidenteNegocio();
+            Incidente ultimo = new Incidente();
+
+            ultimo = negocio.traerUltimoIncidente();
 
             EmailService emailService = new EmailService();
-            emailService.armarCorreoIncidenteAbierto(nuevo);
+            emailService.armarCorreoIncidenteAbierto(ultimo);
             try
             {
                 emailService.enviarMail();
@@ -120,7 +123,7 @@ namespace TPC_Caero_Hoffman
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex);
+                throw ex;
             }
 
             Response.Redirect("Default.aspx");
