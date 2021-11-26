@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCerrarIncidente.aspx.cs" Inherits="TPC_Caero_Hoffman.frmCerrarIncidente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCerrarResolverIncidente.aspx.cs" Inherits="TPC_Caero_Hoffman.frmCerrarIncidente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div>
@@ -45,6 +45,7 @@
     <label for="inputEmail4" class="form-label">Describa los detalles de cierre del incidente: </label>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtComentarioFinal" Height="50px" />
         <asp:Button ID="btnCerrarIncidente" runat="server" OnClick="btnCerrarIncidente_Click" Text="Cerrar Incidente" />  
+         <asp:Button ID="btnResolverIncidente" runat="server" OnClick="btnResolverIncidente_Click" Text="Resolver Incidente" />  
      </div>
 
 </asp:Content>

@@ -68,12 +68,12 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCerrarIncidente_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmCerrarIncidente");
+            Response.Redirect("frmCerrarResolverIncidente.aspx");
         }
 
         protected void btnReabrirIncidente_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmReabrirIncidente");
+            Response.Redirect("frmReabrirIncidente.aspx");
 
         }
 

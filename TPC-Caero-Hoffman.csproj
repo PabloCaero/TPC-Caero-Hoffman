@@ -131,7 +131,7 @@
     <Content Include="frmBuscarClientePorDNI.aspx" />
     <Content Include="frmBuscarEmpleado.aspx" />
     <Content Include="frmBuscarIncidentePorID.aspx" />
-    <Content Include="frmCerrarIncidente.aspx" />
+    <Content Include="frmCerrarResolverIncidente.aspx" />
     <Content Include="frmEliminarCliente.aspx" />
     <Content Include="frmEliminarEmpleado.aspx" />
     <Content Include="frmLogin.aspx" />
@@ -154,6 +154,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="IncidenteForm.aspx" />
+    <Content Include="ReportesExcel.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -241,12 +242,12 @@
     <Compile Include="frmBuscarIncidentePorID.aspx.designer.cs">
       <DependentUpon>frmBuscarIncidentePorID.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmCerrarIncidente.aspx.cs">
-      <DependentUpon>frmCerrarIncidente.aspx</DependentUpon>
+    <Compile Include="frmCerrarResolverIncidente.aspx.cs">
+      <DependentUpon>frmCerrarResolverIncidente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmCerrarIncidente.aspx.designer.cs">
-      <DependentUpon>frmCerrarIncidente.aspx</DependentUpon>
+    <Compile Include="frmCerrarResolverIncidente.aspx.designer.cs">
+      <DependentUpon>frmCerrarResolverIncidente.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmEliminarCliente.aspx.cs">
       <DependentUpon>frmEliminarCliente.aspx</DependentUpon>
@@ -371,6 +372,13 @@
       <DependentUpon>IncidenteForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportesExcel.aspx.cs">
+      <DependentUpon>ReportesExcel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportesExcel.aspx.designer.cs">
+      <DependentUpon>ReportesExcel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -440,6 +448,9 @@
       <Project>{cb763b9f-6cb1-4aec-b36c-b0cfab7e3f99}</Project>
       <Name>Servicios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

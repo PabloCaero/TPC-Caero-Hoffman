@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
+using Servicios;
 
 namespace TPC_Caero_Hoffman
 {
@@ -61,6 +62,40 @@ namespace TPC_Caero_Hoffman
 
             nuevo.ID = int.Parse(lblIDIncidente.Text);
             negocioIncidente.asignarIncidente(nuevo);
+
+
+            //ENVIA MAIL AL CLIENTE
+            IncidenteNegocio negocio = new IncidenteNegocio();
+            Incidente ultimo = new Incidente();
+
+            ultimo = negocio.buscarIndividualID(nuevo);
+
+            EmailService emailService = new EmailService();
+            emailService.armarCorreoIncidenteAsignadoCliente(ultimo);
+            try
+            {
+                emailService.enviarMail();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            //ENVIA MAIL AL EMPLEADO  
+            emailService.armarCorreoIncidenteAsignadoEmpleado(ultimo);
+            try
+            {
+                emailService.enviarMail();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
 
             Response.Redirect("Default.aspx");
         }

@@ -42,7 +42,7 @@ namespace TPC_Caero_Hoffman
             IncidenteNegocio negocioincidente = new IncidenteNegocio();
             GridViewRow fila = dgvIncidentes.Rows[e.RowIndex];
 
-            //PASOS PARA EDITAR EMPLEADO
+            //MODIFICACION DE DETALLES DE INCIDENTE
             incidente.ID = Convert.ToInt32(dgvIncidentes.DataKeys[e.RowIndex].Values[0]);
             incidente.Detalles = ((fila.FindControl("txtDetalles")) as TextBox).Text.ToUpper();
 

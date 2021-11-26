@@ -108,13 +108,27 @@ namespace TPC_Caero_Hoffman
             nuevo.Detalles = txtDetalles.Text;
             negocioIncidente.agregar(nuevo);
 
+            //ENVIA MAIL AL CLIENTE
             IncidenteNegocio negocio = new IncidenteNegocio();
             Incidente ultimo = new Incidente();
 
             ultimo = negocio.traerUltimoIncidente();
 
+            
             EmailService emailService = new EmailService();
             emailService.armarCorreoIncidenteAbierto(ultimo);
+            try
+            {
+                emailService.enviarMail();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            //ENVIA MAIL AL EMPLEADO
+            emailService.armarCorreoIncidenteAbiertoEmpleado(ultimo);
             try
             {
                 emailService.enviarMail();

@@ -10,11 +10,62 @@ using Servicios;
 
 namespace TPC_Caero_Hoffman
 {
-    public partial class frmReabrirIncidente : System.Web.UI.Page
+    public partial class frmCerrarIncidente : System.Web.UI.Page
     {
         private List<Incidente> buscaIncidente;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        protected void dgvIncidentes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
+            lblIDIncidente.Text = row.Cells[0].Text;
+        }
+
+        protected void btnCerrarIncidente_Click(object sender, EventArgs e)
+        {
+            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+            Incidente nuevo = new Incidente();
+
+            nuevo.ID = int.Parse(lblIDIncidente.Text);
+            nuevo.Detalles = txtComentarioFinal.Text;
+            negocioIncidente.cerrarIncidente(nuevo);
+
+            //ENVIA MAIL AL CLIENTE
+            IncidenteNegocio negocio = new IncidenteNegocio();
+            Incidente ultimo = new Incidente();
+
+            ultimo = negocio.buscarIndividualID(nuevo);
+
+            EmailService emailService = new EmailService();
+            emailService.armarCorreoIncidenteCerradoCliente(ultimo);
+            try
+            {
+                emailService.enviarMail();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            //ENVIA MAIL AL EMPLEADO  
+            emailService.armarCorreoIncidenteCerradoEmpleado(ultimo);
+            try
+            {
+                emailService.enviarMail();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            Response.Redirect("Default.aspx");
 
         }
 
@@ -37,20 +88,14 @@ namespace TPC_Caero_Hoffman
             }
         }
 
-        protected void dgvIncidentes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
-            lblIDIncidente.Text = row.Cells[0].Text;
-        }
-
-        protected void btnReabrirIncidente_Click(object sender, EventArgs e)
+        protected void btnResolverIncidente_Click(object sender, EventArgs e)
         {
             IncidenteNegocio negocioIncidente = new IncidenteNegocio();
             Incidente nuevo = new Incidente();
 
             nuevo.ID = int.Parse(lblIDIncidente.Text);
-            negocioIncidente.reabrirIncidente(nuevo);
-
+            nuevo.Detalles = txtComentarioFinal.Text;
+            negocioIncidente.resolverIncidente(nuevo);
 
             //ENVIA MAIL AL CLIENTE
             IncidenteNegocio negocio = new IncidenteNegocio();
@@ -59,7 +104,7 @@ namespace TPC_Caero_Hoffman
             ultimo = negocio.buscarIndividualID(nuevo);
 
             EmailService emailService = new EmailService();
-            emailService.armarCorreoIncidenteReabierto(ultimo);
+            emailService.armarCorreoIncidenteResueltoCliente(ultimo);
             try
             {
                 emailService.enviarMail();
@@ -72,7 +117,7 @@ namespace TPC_Caero_Hoffman
             }
 
             //ENVIA MAIL AL EMPLEADO  
-            emailService.armarCorreoIncidenteReabiertoEmpleado(ultimo);
+            emailService.armarCorreoIncidenteResueltoEmpleado(ultimo);
             try
             {
                 emailService.enviarMail();
