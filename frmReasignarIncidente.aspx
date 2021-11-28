@@ -33,7 +33,7 @@
 
 
               <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
-            <asp:Label ID="lblIDIncidente" runat="server" />
+            <asp:Label ID="lblIDIncidente" runat="server" Visible="false" />
            </div>
          </div>
           
@@ -57,7 +57,7 @@
 
             </asp:GridView>
             <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
-            <asp:Label ID="lblLegajoEmpleado" runat="server" />
+            <asp:Label ID="lblLegajoEmpleado" runat="server" Visible="false" />
 
         </div>
         </div>

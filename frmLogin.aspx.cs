@@ -13,7 +13,9 @@ namespace TPC_Caero_Hoffman
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //PARA CERRAR SESION 
+            Session.Add("_IDCargo", 0);
+            Session.Add("_NombreUsuario", null);
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
@@ -24,26 +26,48 @@ namespace TPC_Caero_Hoffman
             {              
                 empleado.NombreUsuario = txtNombreUsuario.Text;
                 empleado.Contrasena = txtPassword.Text;
+                
 
-             //INGRESO SEGUN CARGO
+                    //INGRESO SEGUN CARGO
                     if (negocio.Loguear(empleado) == 3)
                     {
-                        Session.Add("NombreUsuario", empleado);
+                    //TELEFONISTA
+                        empleado = negocio.buscarNombreUsuario(empleado);
+                      
+                        Session.Add("_NombreUsuario", empleado.NombreUsuario);
+                        Session.Add("_Nombre", empleado.Nombre);
+                        Session.Add("_Apellido", empleado.Apellido);            
+                        Session.Add("_IDCargo", 3);//ID CARGO TELEFONISTA                
+                        Session.Add("_Legajo", empleado.Legajo);
                         Response.Redirect("frmMenuTelefonista.aspx");
                     }
                     else
                     {
                         if (negocio.Loguear(empleado) == 2)
                         {
-                            Session.Add("NombreUsuario", empleado);
-                            Response.Redirect("frmMenuSupervisor.aspx");
+                        //SUPERVISOR
+                        empleado = negocio.buscarNombreUsuario(empleado);
+                       
+                        Session.Add("_NombreUsuario", empleado.NombreUsuario);
+                        Session.Add("_Nombre", empleado.Nombre);
+                        Session.Add("_Apellido", empleado.Apellido);
+                        Session.Add("_IDCargo", 2);//ID CARGO SUPERVISOR
+                        Session.Add("_Legajo", empleado.Legajo);     
+                        Response.Redirect("frmMenuSupervisor.aspx");
                         }
                         else
                         {
                             if (negocio.Loguear(empleado) == 1)
                             {
-                                Session.Add("NombreUsuario", empleado);
-                                Response.Redirect("Default.aspx");
+                            //ADMINISTRADOR
+                            empleado = negocio.buscarNombreUsuario(empleado);
+                       
+                            Session.Add("_NombreUsuario", empleado.NombreUsuario);
+                            Session.Add("_Nombre", empleado.Nombre);
+                            Session.Add("_Apellido", empleado.Apellido);
+                            Session.Add("_IDCargo", 1);//ID CARGO ADMINISTRADOR    
+                            Session.Add("_Legajo", empleado.Legajo);           
+                            Response.Redirect("frmMenuAdministrador.aspx");
                             }
                             else
                             {

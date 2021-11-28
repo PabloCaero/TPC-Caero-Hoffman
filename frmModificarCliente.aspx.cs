@@ -14,7 +14,11 @@ namespace TPC_Caero_Hoffman
         private List<Cliente> buscaCliente;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            if (Session["_NombreUsuario"] == null && (int)Session["_IDCargo"] != 1)
+            {
+                Session.Add("Error", "Debes loguearte para ingresar");
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void btnBuscarClientexDNI_Click(object sender, EventArgs e)
@@ -64,8 +68,8 @@ namespace TPC_Caero_Hoffman
             cliente.Telefono = ((fila.FindControl("txtTelefono")) as TextBox).Text.ToUpper();
 
             negocioCliente.modificar(cliente);
-
-            Response.Redirect("Default.aspx");
+           
+            Response.Redirect("frmMenuAdministrador.aspx");
 
         }
     }

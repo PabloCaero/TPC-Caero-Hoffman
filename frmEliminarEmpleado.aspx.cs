@@ -14,7 +14,11 @@ namespace TPC_Caero_Hoffman
         private List<Empleado> buscaEmpleado;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["_NombreUsuario"] == null && (int)Session["_Cargo"] != 1)
+            {
+                Session.Add("Error", "Debes loguearte para ingresar");
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void rowDeletingEvent(object sender, GridViewDeleteEventArgs e)

@@ -15,6 +15,42 @@ namespace TPC_Caero_Hoffman
     {
 
         /// <summary>
+        /// Control lblNombreCargo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNombreCargo;
+
+        /// <summary>
+        /// Control lblNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNombre;
+
+        /// <summary>
+        /// Control lblLegajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLegajo;
+
+        /// <summary>
+        /// Control btnCambiarContrasena.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCambiarContrasena;
+
+        /// <summary>
         /// Control btnIngresarCliente.
         /// </summary>
         /// <remarks>
@@ -96,13 +132,22 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnCerrarIncidente;
 
         /// <summary>
-        /// Control btnReabrirIncidente.
+        /// Control Button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReabrirIncidente;
+        protected global::System.Web.UI.WebControls.Button Button2;
+
+        /// <summary>
+        /// Control btnReporteIncidentes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReporteIncidentes;
 
         /// <summary>
         /// Control Button1.

@@ -15,6 +15,7 @@
                 OnRowCancelingEdit="rowCancelEditEvent"     
                 OnRowEditing="rowEditingEvent" 
                 OnRowUpdating="rowUpdatingEvent"
+            
                 DataKeyNames="IDCliente">
                 <Columns>
 
@@ -71,7 +72,7 @@
 
                  
 
-                    <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="false" />
+                    <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="false"/>
                 </Columns>
 
             </asp:GridView>

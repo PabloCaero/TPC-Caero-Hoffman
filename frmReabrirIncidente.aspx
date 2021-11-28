@@ -35,7 +35,7 @@
 
 
               <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
-            <asp:Label ID="lblIDIncidente" runat="server" />
+            <asp:Label ID="lblIDIncidente" runat="server" Visible="false"/>
            </div>
          </div>
 

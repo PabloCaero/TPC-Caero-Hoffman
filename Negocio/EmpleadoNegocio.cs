@@ -149,13 +149,13 @@ namespace Negocio
             }
         }
 
-        public void modificarPassword(Empleado nuevo)
+        public void modificarPassword(Empleado nuevo, string nuevoPassword)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Update Empleados set CONTRASEÑA = @CONTRASEÑA Where ID = " + nuevo.Legajo + "");
-                datos.setearParametros("@CONTRASEÑA", nuevo.Contrasena);
+                datos.setearConsulta("Update Empleados set CONTRASEÑA = @CONTRASEÑA Where ID = '" + nuevo.Legajo + "' AND CONTRASEÑA= '"+nuevo.Contrasena+"'");
+                datos.setearParametros("@CONTRASEÑA", nuevoPassword);
                
                 datos.ejecutarAccion();
             }
@@ -215,6 +215,45 @@ namespace Negocio
                 }
 
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public Empleado buscarNombreUsuario(Empleado buscar)
+        {
+            
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select E.ID, E.DNI, E.NOMBRE, E.NOMBREUSUARIO, E.APELLIDO, E.IDCARGO, C.NOMBRECARGO, E.EMAIL, E.TELEFONO From Empleados E INNER JOIN Cargos C ON C.ID = E.IDCARGO Where E.NOMBREUSUARIO LIKE '" + buscar.NombreUsuario + "'");
+                datos.ejecturaLectura();
+                datos.Lector.Read();
+
+               
+                
+                    Empleado aux = new Empleado();
+                    aux.Legajo = (int)datos.Lector["ID"];
+                    aux.Dni = (string)datos.Lector["DNI"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.NombreUsuario = (string)datos.Lector["NOMBREUSUARIO"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Email = (string)datos.Lector["EMAIL"];
+                    aux.Cargo = new Cargo();
+                    aux.Cargo.IDCargo = (int)datos.Lector["IDCARGO"];
+                    aux.Cargo.Nombre_Cargo = (string)datos.Lector["NOMBRECARGO"];
+               
+
+                return aux;
             }
             catch (Exception ex)
             {

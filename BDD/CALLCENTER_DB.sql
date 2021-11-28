@@ -116,19 +116,22 @@ Insert Into Direccion(CALLE, ALTURA, LOCALIDAD, CODIGOPOSTAL, PROVINCIA)
 VALUES('Tomas Iriarte', 1576, 'Benavidez', 'CP1621', 'Buenos Aires'),
 	  ('Bartolomé Mitre', 1786, 'Capital Federal', 'CP A1741', 'Buenos Aires'),
 	  ('Almirante Brown', 2054, 'Lugones', 'CP 9741', 'Buenos Aires'),
+	  ('Roca', 3411, 'San Fernando', 'CP 9741', 'Buenos Aires'),
 	  ('Diaz Velez', 3786, 'Tortuguitas', 'CP 2741', 'Buenos Aires');
 
 Insert Into Clientes(NOMBRE, APELLIDO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO)
-VALUES('Nicolas', 'Hoffman', '37327693', 1, 'nhoffman@alumnos.frgp.edu.ar', '+54 1163088646', '1994-08-05'),
-	  ('Pablo', 'Caero', '38327693', 2, 'pcaero@alumnos.frgp.edu.ar', '+54 3327413030', '1995-09-25');
+VALUES('Camila', 'Arrico', '37327693', 1, 'pablo_ieme@hotmail.com', '+54 1163088646', '1994-08-05'),
+	  ('Agustina', 'Arrico', '38327693', 2, 'pablo_ieme@hotmail.com', '+54 3327413030', '1995-09-25');
 
 Insert Into Empleados(NOMBREUSUARIO, CONTRASEÑA, NOMBRE, APELLIDO, IDCARGO, DNI, IDDIRECCION, EMAIL, TELEFONO, FECHANACIMIENTO)
-VALUES('nhoffman', 'voyaentrar1234', 'Nicole', 'Hoffman', 2,  '32327693', 3, 'nicolehoffman@alumnos.frgp.edu.ar', '+54 1163088642', '1994-08-05'),
-	  ('paucaero', 'ahientro234', 'Paula', 'Caero',3, '31327693', 4, 'paulacaero@alumnos.frgp.edu.ar', '+54 3327413031', '1995-09-25');
+VALUES('administrador', 'administrador', 'Pablo', 'Caero', 1,  '32327693', 3, 'pablo_ieme@hotmail.com', '+54 1163088642', '1994-08-05'),
+	  ('supervisor', 'supervisor', 'Cristian', 'Otero',2, '31327693', 4, 'pablo_ieme@hotmail.com', '+54 3327413031', '1995-09-25'),
+	  ('telefonista', 'telefonista', 'Facundo', 'Fernandez',3, '37327693', 5, 'pablo_ieme@hotmail.com', '+54 3327413031', '1995-09-25');
 
-Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, FECHA_CIERRE, DETALLES, IDPRIORIDAD, IDESPECIALIDAD, IDESTADO, COMENTARIOFINAL)
+/*Insert Into Incidentes(IDEMPLEADO, IDCLIENTE, FECHA_INICIO, FECHA_CIERRE, DETALLES, IDPRIORIDAD, IDESPECIALIDAD, IDESTADO, COMENTARIOFINAL)
 VALUES(1000, 1, getDate(), NULL, 'Se solicita un número telefónico del embajador de Rusia', 1, 1, 2, NULL),
-	  (1001, 2, getDate(), NULL, 'Se solicita un número telefónico del embajador de China', 2, 2, 3, NULL);
+	  (1001, 2, getDate(), NULL, 'Se solicita un número telefónico del embajador de China', 2, 2, 3, NULL);*/
+
 use CALLCENTER_DB
 
 Select * From Cargos

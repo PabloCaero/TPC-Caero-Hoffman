@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IncidenteForm.aspx.cs" Inherits="TPC_Caero_Hoffman.IncidenteForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCrearIncidentePropio.aspx.cs" Inherits="TPC_Caero_Hoffman.frmCrearIncidentePropio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- <div>
-    <h2>Crear Incidente</h2>
-    </div>
+
+     <h2>Crear Incidente</h2>
+
 
     <!--BUSQUEDA DE CLIENTE-->
     <div>
@@ -31,35 +31,7 @@
         </div>
         </div>
        </div>
-
-    <!--BUSQUEDA DE EMPLEADO-->
-
-    <div>
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Asigne a un empleado por su Legajo: </label>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxID" />
-        <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />  
-   
-        <div class="row" > 
-            <asp:GridView ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server"
-                AutoGenerateColumns="false"          
-                DataKeyNames="Legajo" OnSelectedIndexChanging="dgvEmpleados_SelectedIndexChanging" >
-                <Columns>
-                    <asp:BoundField DataField="Legajo" HeaderText="ID" />
-                    <asp:BoundField DataField="Cargo.Nombre_Cargo" HeaderText="Cargo" />    
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombre"/>
-                    <asp:BoundField DataField="Apellido" HeaderText="Apellido"/>
-
-                    <asp:CommandField ButtonType="Link" ShowSelectButton="true"  />
-                </Columns>
-
-            </asp:GridView>
-            <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
-            <asp:Label ID="lblLegajoEmpleado" runat="server" Visible="false"  />
-        
-        </div>
-        </div>
-       </div>
+ 
 
     <!--ESPECIALIDAD DEL INCIDENTE-->
     <div class="col-md-6">
@@ -85,6 +57,4 @@
 
 
 
-
-    
 </asp:Content>

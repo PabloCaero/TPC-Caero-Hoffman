@@ -13,24 +13,32 @@ namespace TPC_Caero_Hoffman
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargoNegocio cargonegocio = new CargoNegocio();
-            try
+            if (Session["_NombreUsuario"] == null && (int)Session["_Cargo"] == 2 || (int)Session["_Cargo"] == 3)
             {
-                if (!IsPostBack)
-                {
-                    List<Cargo> listCargo = cargonegocio.listar();
-
-                    ddlCargos.DataSource = listCargo;
-                    ddlCargos.DataTextField = "Nombre_Cargo"; 
-                    ddlCargos.DataValueField = "IDCargo";
-                    ddlCargos.DataBind();
-                }
-
+                Session.Add("Error", "Debes loguearte para ingresar");
+                Response.Redirect("Error.aspx", false);
             }
-            catch (Exception ex)
+            else
             {
-                Session.Add("error", ex);
-              
+                CargoNegocio cargonegocio = new CargoNegocio();
+                try
+                {
+                    if (!IsPostBack)
+                    {
+                        List<Cargo> listCargo = cargonegocio.listar();
+
+                        ddlCargos.DataSource = listCargo;
+                        ddlCargos.DataTextField = "Nombre_Cargo";
+                        ddlCargos.DataValueField = "IDCargo";
+                        ddlCargos.DataBind();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Session.Add("error", ex);
+
+                }
             }
 
         }

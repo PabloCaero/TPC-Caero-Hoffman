@@ -17,6 +17,14 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/bootstrap.min.js"></script>
 
+     <script>
+      function goBack()
+      {
+      window.history.back()
+      }
+     </script>
+
+
     <style>
     body{
         width: 1000px;
@@ -58,34 +66,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="Default.aspx">Inicio</a>
-        </li>
-       
-        <li class="nav-item dropdown">
-
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Administración
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="GestionClientes.aspx">Clientes</a></li>
-                        <li><a class="dropdown-item" href="GestionEmpleados.aspx">Empleados</a></li>
-                        <li><a class="dropdown-item" href="GestionIncidentes.aspx">Incidentes</a></li>
-                        <li><a class="dropdown-item" href="GestionDirecciones.aspx">Direcciones</a></li>
-                        <li><a class="dropdown-item" href="GestionCargos.aspx">Cargos</a></li>
-                        <li><a class="dropdown-item" href="GestionEstados.aspx">Estados</a></li>
-  
-          </ul>
-        </li>
-       
-          <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="frmLogin.aspx">Login</a>
-        </li>
-      </ul>
-      
-    </div>
+   
   </div>
 </nav>
 
@@ -102,4 +83,9 @@
     </form>
         
 </body>
+
+
+
+
+
 </html>

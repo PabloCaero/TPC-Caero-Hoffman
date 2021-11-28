@@ -14,11 +14,25 @@ namespace TPC_Caero_Hoffman
       
         protected void Page_Load(object sender, EventArgs e)
         {
-          if(Session["NombreUsuario"] == null)
-          {
+
+            if (Session["_NombreUsuario"] == null && (int)Session["_IDCargo"] != 1)
+            {
                 Session.Add("Error", "Debes loguearte para ingresar");
                 Response.Redirect("Error.aspx", false);
-          }
+            }
+            else
+            {
+                string Nombre = Session["_Nombre"] != null ? Session["_Nombre"].ToString() : "";
+                string Apellido = Session["_Apellido"] != null ? Session["_Apellido"].ToString() : "";
+                int Legajo = Convert.ToInt32(Session["_Legajo"]);
+                int IDCargo = Convert.ToInt32((int)Session["_IDCargo"]);
+                string NombreCargo = "Administrador";
+
+                lblNombre.Text = Apellido + ", " + Nombre;
+                lblLegajo.Text = Legajo.ToString();
+                lblNombreCargo.Text = NombreCargo;
+            }
+
 
         }
 
@@ -99,6 +113,15 @@ namespace TPC_Caero_Hoffman
             Response.Redirect("frmBuscarEmpleado.aspx");
         }
 
-       
+        protected void btnReporteIncidentes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ReportesExcel.aspx");
+        }
+
+
+        protected void btnCambiarContrasena_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmCambiarContraseña.aspx");
+        }
     }
 }

@@ -10,20 +10,11 @@ using Servicios;
 
 namespace TPC_Caero_Hoffman
 {
-    public partial class IncidenteForm : System.Web.UI.Page
+    public partial class frmCrearIncidentePropio : System.Web.UI.Page
     {
         private List<Cliente> buscaCliente;
-        private List<Empleado> buscaEmpleado;
-        
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["_NombreUsuario"] == null && (int)Session["_IDCargo"] != 2 || (int)Session["_IDCargo"] != 1)
-            {
-                Session.Add("Error", "Debes loguearte para ingresar");
-                Response.Redirect("Error.aspx", false);
-            }
-
             EspecialidadNegocio especialidadnegocio = new EspecialidadNegocio();
             PrioridadNegocio prioridadnegocio = new PrioridadNegocio();
             try
@@ -54,9 +45,9 @@ namespace TPC_Caero_Hoffman
                 Session.Add("error", ex);
 
             }
+
         }
 
-  
         protected void btnBuscarClientexDNI_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente();
@@ -75,27 +66,9 @@ namespace TPC_Caero_Hoffman
             }
         }
 
-        protected void btnBuscarEmpleadoxLegajo_Click(object sender, EventArgs e)
-        {
-            Empleado empleado = new Empleado();
-            EmpleadoNegocio empleadonegocio = new EmpleadoNegocio();
-
-            try
-            {
-                empleado.Legajo = int.Parse(txtBuscarEmpleadoxID.Text);
-                buscaEmpleado = empleadonegocio.buscarLegajo(empleado);
-                dgvEmpleados.DataSource = buscaEmpleado;
-                dgvEmpleados.DataBind();
-               
-            }
-            catch (Exception ex)
-            {
-                Session.Add("error", ex);
-            }
-        }
-
         protected void btnCrearIncidente_Click(object sender, EventArgs e)
-        {      
+        {
+
             IncidenteNegocio negocioIncidente = new IncidenteNegocio();
             Incidente nuevo = new Incidente();
 
@@ -103,7 +76,9 @@ namespace TPC_Caero_Hoffman
             nuevo.Cliente.IDCliente = int.Parse(lblIDCliente.Text);
 
             nuevo.Empleado = new Empleado();
-            nuevo.Empleado.Legajo = int.Parse(lblLegajoEmpleado.Text);
+           
+            int Legajo = Convert.ToInt32(Session["_Legajo"]);
+            nuevo.Empleado.Legajo = Legajo;
 
             nuevo.Especialidad = new Especialidad();
             nuevo.Especialidad.IDEspecialidad = int.Parse(ddlEspecialidad.SelectedValue);
@@ -120,7 +95,7 @@ namespace TPC_Caero_Hoffman
 
             ultimo = negocio.traerUltimoIncidente();
 
-            
+
             EmailService emailService = new EmailService();
             emailService.armarCorreoIncidenteAbierto(ultimo);
             try
@@ -152,13 +127,7 @@ namespace TPC_Caero_Hoffman
         protected void dgvClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvClientes.Rows[e.NewSelectedIndex];
-            lblIDCliente.Text = row.Cells[0].Text;     
-        }
-
-        protected void dgvEmpleados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            GridViewRow row = dgvEmpleados.Rows[e.NewSelectedIndex];
-            lblLegajoEmpleado.Text = row.Cells[0].Text;
+            lblIDCliente.Text = row.Cells[0].Text;
         }
     }
 }

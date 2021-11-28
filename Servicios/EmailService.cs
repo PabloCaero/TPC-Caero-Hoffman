@@ -20,7 +20,7 @@ namespace Servicios
             server = new SmtpClient();
             server.Credentials = new NetworkCredential("pcaero_programacion@hotmail.com", "123698745PROGRAMACION");
             server.EnableSsl = true;
-            server.Port = 587;
+            server.Port = 25;
             server.Host = "smtp.live.com";
         }
 
@@ -68,7 +68,7 @@ namespace Servicios
                 email = new MailMessage();
                 email.From = new MailAddress("pcaero_programacion@hotmail.com");
                 email.To.Add(incidente.Empleado.Email);
-                email.Subject = "SE TE HA REASIGNADO AL INCIDENTE #" + incidente.ID + " - Cliente: " + incidente.Cliente.Apellido + ", " + incidente.Cliente.Nombre;
+                email.Subject = "HA SIDO REASIGNADO AL INCIDENTE #" + incidente.ID + " - Cliente: " + incidente.Cliente.Apellido + ", " + incidente.Cliente.Nombre;
                 email.IsBodyHtml = true;
                 email.Body = "<p>&nbsp;ATENCION, HA SIDO REASIGNADO EN EL INCIDENTE #" + incidente.ID + "</p><p>&nbsp;***INICIO DETALLE DEL INCIDENTE***</p><p>NUMERO DE INCIDENTE: #" + incidente.ID + "</p><p>FECHA INICIO: " + incidente.Fecha_inicio.Date.ToString("dd/MM/yyyy") + "</p><p>CLIENTE: " + incidente.Cliente.Apellido + ", " + incidente.Cliente.Nombre + "</p><p>TÉCNICO ASIGNADO: " + incidente.Empleado.Apellido + ", " + incidente.Empleado.Nombre + "</p><p>ESPECIALIDAD: " + incidente.Especialidad.Nombre_Especialidad + "</p><p>ESTADO: " + incidente.Estado.Nombre_Estado + " </p><p>DETALLES: " + incidente.Detalles + "</p><p>PRIORIDAD: " + incidente.Prioridad.Nombre_Prioridad + "</p><p>***FIN DETALLE DEL INCIDENTE***</p><p><br></p><p><br></p><p><br></p>";
             }
@@ -86,7 +86,7 @@ namespace Servicios
                 email = new MailMessage();
                 email.From = new MailAddress("pcaero_programacion@hotmail.com");
                 email.To.Add(incidente.Empleado.Email);
-                email.Subject = "SE HA REASIGNADO AL INCIDENTE #" + incidente.ID + " - Cliente: " + incidente.Cliente.Apellido + ", " + incidente.Cliente.Nombre;
+                email.Subject = "SE HA REASIGNADO DE EMPLEADO EL INCIDENTE #" + incidente.ID + " - Cliente: " + incidente.Cliente.Apellido + ", " + incidente.Cliente.Nombre;
                 email.IsBodyHtml = true;
                 email.Body = "<p>&nbsp;ATENCION, HA SIDO REASIGNADO EL INCIDENTE #" + incidente.ID + "</p><p>&nbsp;***INICIO DETALLE DEL INCIDENTE***</p><p>NUMERO DE INCIDENTE: #" + incidente.ID + "</p><p>FECHA INICIO: " + incidente.Fecha_inicio.Date.ToString("dd/MM/yyyy") + "</p><p>CLIENTE: " + incidente.Cliente.Apellido + ", " + incidente.Cliente.Nombre + "</p><p>TÉCNICO ASIGNADO: " + incidente.Empleado.Apellido + ", " + incidente.Empleado.Nombre + "</p><p>ESPECIALIDAD: " + incidente.Especialidad.Nombre_Especialidad + "</p><p>ESTADO: " + incidente.Estado.Nombre_Estado + " </p><p>DETALLES: " + incidente.Detalles + "</p><p>PRIORIDAD: " + incidente.Prioridad.Nombre_Prioridad + "</p><p>***FIN DETALLE DEL INCIDENTE***</p><p><br></p><p><br></p><p><br></p>";
             }

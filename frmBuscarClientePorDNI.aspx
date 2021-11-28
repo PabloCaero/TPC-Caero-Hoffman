@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmBuscarClientePorDNI.aspx.cs" Inherits="TPC_Caero_Hoffman.frmBuscarClientePorDNI" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+     <!--BOTON VOLVER ATRÁS-->
+    <br />
+    <div style="text-align: right; width:990px" >
+     <button type="button" onclick="history.go(-1); return false;" class="btn btn-dark">Menú Principal</button>    
+
+    </div>
+
     <div>
     <h2>Buscar Cliente</h2>
     </div>

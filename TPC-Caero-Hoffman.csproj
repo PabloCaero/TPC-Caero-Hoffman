@@ -123,7 +123,8 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="frmCambiarContraseña.aspx" />
+    <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="EmpleadoForm.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
@@ -132,11 +133,13 @@
     <Content Include="frmBuscarEmpleado.aspx" />
     <Content Include="frmBuscarIncidentePorID.aspx" />
     <Content Include="frmCerrarResolverIncidente.aspx" />
+    <Content Include="frmCrearIncidentePropio.aspx" />
     <Content Include="frmEliminarCliente.aspx" />
     <Content Include="frmEliminarEmpleado.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmMenuSupervisor.aspx" />
     <Content Include="frmMenuTelefonista.aspx" />
+    <Content Include="frmMisIncidentes.aspx" />
     <Content Include="frmModificarCliente.aspx" />
     <Content Include="frmModificarDetallesIncidente.aspx" />
     <Content Include="frmModificarEmpleado.aspx" />
@@ -200,12 +203,19 @@
     <Compile Include="ClienteForm.aspx.designer.cs">
       <DependentUpon>ClienteForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="frmCambiarContraseña.aspx.cs">
+      <DependentUpon>frmCambiarContraseña.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="frmCambiarContraseña.aspx.designer.cs">
+      <DependentUpon>frmCambiarContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenuAdministrador.aspx.cs">
+      <DependentUpon>frmMenuAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMenuAdministrador.aspx.designer.cs">
+      <DependentUpon>frmMenuAdministrador.aspx</DependentUpon>
     </Compile>
     <Compile Include="EmpleadoForm.aspx.cs">
       <DependentUpon>EmpleadoForm.aspx</DependentUpon>
@@ -249,6 +259,13 @@
     <Compile Include="frmCerrarResolverIncidente.aspx.designer.cs">
       <DependentUpon>frmCerrarResolverIncidente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmCrearIncidentePropio.aspx.cs">
+      <DependentUpon>frmCrearIncidentePropio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCrearIncidentePropio.aspx.designer.cs">
+      <DependentUpon>frmCrearIncidentePropio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmEliminarCliente.aspx.cs">
       <DependentUpon>frmEliminarCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,6 +300,13 @@
     </Compile>
     <Compile Include="frmMenuTelefonista.aspx.designer.cs">
       <DependentUpon>frmMenuTelefonista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMisIncidentes.aspx.cs">
+      <DependentUpon>frmMisIncidentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMisIncidentes.aspx.designer.cs">
+      <DependentUpon>frmMisIncidentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmModificarCliente.aspx.cs">
       <DependentUpon>frmModificarCliente.aspx</DependentUpon>
