@@ -23,7 +23,7 @@ namespace TPC_Caero_Hoffman
             }
         }
 
-        
+
 
         protected void btnBuscarEmpleadoxLegajo_Click(object sender, EventArgs e)
         {
@@ -48,101 +48,112 @@ namespace TPC_Caero_Hoffman
         {
             GridViewRow row = dgvEmpleados.Rows[e.NewSelectedIndex];
             lblLegajoEmpleado.Text = row.Cells[0].Text;
+            lblSeleccionEmpleado.Text = "Empleado seleccionado.";
         }
 
         protected void dgvIncidentes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
             lblIDIncidente.Text = row.Cells[0].Text;
+            lblSeleccionEmpleado.Text = "Incidente seleccionado.";
         }
 
         protected void btnReasignarIncidente_Click(object sender, EventArgs e)
         {
-            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
-            Incidente nuevo = new Incidente();
-
-            nuevo.Empleado = new Empleado();
-            nuevo.Empleado.Legajo = int.Parse(lblLegajoEmpleado.Text);
-
-            nuevo.ID = int.Parse(lblIDIncidente.Text);
-            negocioIncidente.asignarIncidente(nuevo);
-
-
-            //ENVIA MAIL AL CLIENTE
-            IncidenteNegocio negocio = new IncidenteNegocio();
-            Incidente ultimo = new Incidente();
-
-            ultimo = negocio.buscarIndividualID(nuevo);
-
-            EmailService emailService = new EmailService();
-            emailService.armarCorreoIncidenteAsignadoCliente(ultimo);
             try
             {
-                emailService.enviarMail();
+
+                IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+                Incidente nuevo = new Incidente();
+
+                nuevo.Empleado = new Empleado();
+                nuevo.Empleado.Legajo = int.Parse(lblLegajoEmpleado.Text);
+
+                nuevo.ID = int.Parse(lblIDIncidente.Text);
+                negocioIncidente.asignarIncidente(nuevo);
+
+
+                //ENVIA MAIL AL CLIENTE
+                IncidenteNegocio negocio = new IncidenteNegocio();
+                Incidente ultimo = new Incidente();
+
+                ultimo = negocio.buscarIndividualID(nuevo);
+
+                EmailService emailService = new EmailService();
+                emailService.armarCorreoIncidenteAsignadoCliente(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+
+                }
+                catch (Exception ex)
+                {
+                    lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reasignado a Leg. " + ultimo.Empleado.Legajo + ". No se envió mail de reasignación al cliente.";
+                }
+
+                //ENVIA MAIL AL EMPLEADO  
+                emailService.armarCorreoIncidenteAsignadoEmpleado(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+                    lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reasignado a Leg. " + ultimo.Empleado.Legajo + ". Regrese al Menú Principal.";
+
+                }
+                catch (Exception ex)
+                {
+                    lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reasignado a Leg. " + ultimo.Empleado.Legajo + ". No se envió mail de reasignación al empleado. Regrese al Menú Principal.";
+                }
 
             }
             catch (Exception ex)
             {
-
-                throw ex;
-            }
-
-            //ENVIA MAIL AL EMPLEADO  
-            emailService.armarCorreoIncidenteAsignadoEmpleado(ultimo);
-            try
-            {
-                emailService.enviarMail();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-        }
-
-        protected void btnBuscarIncidentexID_Click(object sender, EventArgs e)
-        {
-            Incidente incidente = new Incidente();
-            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
-
-            try
-            {
-                incidente.ID = int.Parse(txtBuscarIncidentexID.Text);
-                buscaIncidente = incidentenegocio.buscarID(incidente);
-                dgvIncidentes.DataSource = buscaIncidente;
-                dgvIncidentes.DataBind();
-            }
-            catch (Exception ex)
-            {
-                Session.Add("error", ex);
+                lblConfirmacion.Text = "Atención: Ocurrió un error.";
 
             }
         }
 
-      
-
-        protected void btnMenuPrincipal_Click1(object sender, EventArgs e)
-        {
-            int IDCargo = Convert.ToInt32((int)Session["_IDCargo"]);
-
-            switch (IDCargo)
+            protected void btnBuscarIncidentexID_Click(object sender, EventArgs e)
             {
-                case 1:
-                    Response.Redirect("frmMenuAdministrador.aspx");
-                    break;
-                case 2:
-                    Response.Redirect("frmMenuSupervisor.aspx");
-                    break;
-                case 3:
-                    Response.Redirect("frmMenuTelefonista.aspx");
-                    break;
+                Incidente incidente = new Incidente();
+                IncidenteNegocio incidentenegocio = new IncidenteNegocio();
 
-                default:
-                    Response.Redirect("Error.aspx");
-                    break;
+                try
+                {
+                    incidente.ID = int.Parse(txtBuscarIncidentexID.Text);
+                    buscaIncidente = incidentenegocio.buscarID(incidente);
+                    dgvIncidentes.DataSource = buscaIncidente;
+                    dgvIncidentes.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    Session.Add("error", ex);
+
+                }
+            }
+
+
+
+            protected void btnMenuPrincipal_Click1(object sender, EventArgs e)
+            {
+                int IDCargo = Convert.ToInt32((int)Session["_IDCargo"]);
+
+                switch (IDCargo)
+                {
+                    case 1:
+                        Response.Redirect("frmMenuAdministrador.aspx");
+                        break;
+                    case 2:
+                        Response.Redirect("frmMenuSupervisor.aspx");
+                        break;
+                    case 3:
+                        Response.Redirect("frmMenuTelefonista.aspx");
+                        break;
+
+                    default:
+                        Response.Redirect("Error.aspx");
+                        break;
+                }
             }
         }
     }
-}
+

@@ -28,49 +28,56 @@ namespace TPC_Caero_Hoffman
             GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
 
             lblIDIncidente.Text = row.Cells[0].Text;
+            lblIncidenteSeleccionado.Text = "Incidente Seleccionado";
         }
 
         protected void btnCerrarIncidente_Click(object sender, EventArgs e)
         {
-            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
-            Incidente nuevo = new Incidente();
-
-            nuevo.ID = int.Parse(lblIDIncidente.Text);
-            nuevo.Detalles = txtComentarioFinal.Text;
-            negocioIncidente.cerrarIncidente(nuevo);
-
-            //ENVIA MAIL AL CLIENTE
-            IncidenteNegocio negocio = new IncidenteNegocio();
-            Incidente ultimo = new Incidente();
-
-            ultimo = negocio.buscarIndividualID(nuevo);
-
-            EmailService emailService = new EmailService();
-            emailService.armarCorreoIncidenteCerradoCliente(ultimo);
             try
             {
-                emailService.enviarMail();
+                IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+                Incidente nuevo = new Incidente();
 
+                nuevo.ID = int.Parse(lblIDIncidente.Text);
+                nuevo.Detalles = txtComentarioFinal.Text;
+                negocioIncidente.cerrarIncidente(nuevo);
+
+                //ENVIA MAIL AL CLIENTE
+                IncidenteNegocio negocio = new IncidenteNegocio();
+                Incidente ultimo = new Incidente();
+
+                ultimo = negocio.buscarIndividualID(nuevo);
+
+                EmailService emailService = new EmailService();
+                emailService.armarCorreoIncidenteCerradoCliente(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+
+                }
+                catch (Exception ex)
+                {
+
+                    lblConfirmacion.Text = "Atención: Incidente cerrado, mail a cliente no enviado.";
+                }
+
+                //ENVIA MAIL AL EMPLEADO  
+                emailService.armarCorreoIncidenteCerradoEmpleado(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+                    lblConfirmacion.Text = "Atención: Incidente cerrado, regrese al Menú Principal.";
+                }
+                catch (Exception ex)
+                {
+
+                    lblConfirmacion.Text = "Atención: Incidente cerrado, mail a empleado no enviado.";
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-
-                throw ex;
+                lblConfirmacion.Text = "Atención: No se pudo cerrar el incidente, intente nuevamente.";
             }
-
-            //ENVIA MAIL AL EMPLEADO  
-            emailService.armarCorreoIncidenteCerradoEmpleado(ultimo);
-            try
-            {
-                emailService.enviarMail();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
             
 
         }
@@ -98,46 +105,54 @@ namespace TPC_Caero_Hoffman
 
         protected void btnResolverIncidente_Click(object sender, EventArgs e)
         {
-            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
-            Incidente nuevo = new Incidente();
-
-            nuevo.ID = int.Parse(lblIDIncidente.Text);
-            nuevo.Detalles = txtComentarioFinal.Text;
-            negocioIncidente.resolverIncidente(nuevo);
-
-            //ENVIA MAIL AL CLIENTE
-            IncidenteNegocio negocio = new IncidenteNegocio();
-            Incidente ultimo = new Incidente();
-
-            ultimo = negocio.buscarIndividualID(nuevo);
-
-            EmailService emailService = new EmailService();
-            emailService.armarCorreoIncidenteResueltoCliente(ultimo);
             try
             {
-                emailService.enviarMail();
+                IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+                Incidente nuevo = new Incidente();
 
+                nuevo.ID = int.Parse(lblIDIncidente.Text);
+                nuevo.Detalles = txtComentarioFinal.Text;
+                negocioIncidente.resolverIncidente(nuevo);
+
+                //ENVIA MAIL AL CLIENTE
+                IncidenteNegocio negocio = new IncidenteNegocio();
+                Incidente ultimo = new Incidente();
+
+                ultimo = negocio.buscarIndividualID(nuevo);
+
+                EmailService emailService = new EmailService();
+                emailService.armarCorreoIncidenteResueltoCliente(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+
+                }
+                catch (Exception ex)
+                {
+
+                    lblConfirmacion.Text = "Atención: Incidente resuelto, mail a cliente no enviado.";
+                }
+
+                //ENVIA MAIL AL EMPLEADO  
+                emailService.armarCorreoIncidenteResueltoEmpleado(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+                    lblConfirmacion.Text = "Atención: Incidente resuelto, regrese al Menú Principal.";
+
+                }
+                catch (Exception ex)
+                {
+
+                    lblConfirmacion.Text = "Atención: Incidente resuelto, mail a empleado no enviado.";
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-
-                throw ex;
-            }
-
-            //ENVIA MAIL AL EMPLEADO  
-            emailService.armarCorreoIncidenteResueltoEmpleado(ultimo);
-            try
-            {
-                emailService.enviarMail();
+                lblConfirmacion.Text = "Atención: No se pudo resolver el incidente, intente nuevamente.";
 
             }
-            catch (Exception ex)
-            {
 
-                throw ex;
-            }
-
-            
 
         }
 

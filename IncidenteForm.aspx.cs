@@ -95,7 +95,10 @@ namespace TPC_Caero_Hoffman
         }
 
         protected void btnCrearIncidente_Click(object sender, EventArgs e)
-        {      
+        {
+            try
+            { 
+
             IncidenteNegocio negocioIncidente = new IncidenteNegocio();
             Incidente nuevo = new Incidente();
 
@@ -120,7 +123,7 @@ namespace TPC_Caero_Hoffman
 
             ultimo = negocio.traerUltimoIncidente();
 
-            
+
             EmailService emailService = new EmailService();
             emailService.armarCorreoIncidenteAbierto(ultimo);
             try
@@ -130,35 +133,45 @@ namespace TPC_Caero_Hoffman
             }
             catch (Exception ex)
             {
+                    lblConfirmacion.Text = "Atencion: Incidente creado, no se envió mail de apertura al cliente.";
 
-                throw ex;
-            }
-            //ENVIA MAIL AL EMPLEADO
-            emailService.armarCorreoIncidenteAbiertoEmpleado(ultimo);
+                }
+                //ENVIA MAIL AL EMPLEADO
+                emailService.armarCorreoIncidenteAbiertoEmpleado(ultimo);
             try
             {
                 emailService.enviarMail();
+              lblConfirmacion.Text = "Atención: Incidente creado, regrese al Menú Principal.";
 
+                }
+                catch (Exception ex)
+            {
+
+                    lblConfirmacion.Text = "Atencion: Incidente creado, no se envió mail de apertura al empleado.";
+
+                }
             }
             catch (Exception ex)
             {
+                lblConfirmacion.Text = "Atencion: Ocurrió un error.";
 
-                throw ex;
             }
 
-            
+
         }
 
         protected void dgvClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvClientes.Rows[e.NewSelectedIndex];
-            lblIDCliente.Text = row.Cells[0].Text;     
+            lblIDCliente.Text = row.Cells[0].Text;
+            lblSeleccionCliente.Text = "Cliente Seleccionado";
         }
 
         protected void dgvEmpleados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvEmpleados.Rows[e.NewSelectedIndex];
             lblLegajoEmpleado.Text = row.Cells[0].Text;
+            lblSeleccionEmpleado.Text = "Empleado Seleccionado";
         }
 
         protected void btnMenuPrincipal_Click(object sender, EventArgs e)

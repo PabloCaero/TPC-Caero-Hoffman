@@ -68,66 +68,74 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCrearIncidente_Click(object sender, EventArgs e)
         {
-
-            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
-            Incidente nuevo = new Incidente();
-
-            nuevo.Cliente = new Cliente();
-            nuevo.Cliente.IDCliente = int.Parse(lblIDCliente.Text);
-
-            nuevo.Empleado = new Empleado();
-           
-            int Legajo = Convert.ToInt32(Session["_Legajo"]);
-            nuevo.Empleado.Legajo = Legajo;
-
-            nuevo.Especialidad = new Especialidad();
-            nuevo.Especialidad.IDEspecialidad = int.Parse(ddlEspecialidad.SelectedValue);
-
-            nuevo.Prioridad = new Prioridad();
-            nuevo.Prioridad.IDPrioridad = int.Parse(ddlPrioridad.SelectedValue);
-
-            nuevo.Detalles = txtDetalles.Text;
-            negocioIncidente.agregar(nuevo);
-
-            //ENVIA MAIL AL CLIENTE
-            IncidenteNegocio negocio = new IncidenteNegocio();
-            Incidente ultimo = new Incidente();
-
-            ultimo = negocio.traerUltimoIncidente();
-
-
-            EmailService emailService = new EmailService();
-            emailService.armarCorreoIncidenteAbierto(ultimo);
             try
             {
-                emailService.enviarMail();
+                IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+                Incidente nuevo = new Incidente();
 
+                nuevo.Cliente = new Cliente();
+                nuevo.Cliente.IDCliente = int.Parse(lblIDCliente.Text);
+
+                nuevo.Empleado = new Empleado();
+
+                int Legajo = Convert.ToInt32(Session["_Legajo"]);
+                nuevo.Empleado.Legajo = Legajo;
+
+                nuevo.Especialidad = new Especialidad();
+                nuevo.Especialidad.IDEspecialidad = int.Parse(ddlEspecialidad.SelectedValue);
+
+                nuevo.Prioridad = new Prioridad();
+                nuevo.Prioridad.IDPrioridad = int.Parse(ddlPrioridad.SelectedValue);
+
+                nuevo.Detalles = txtDetalles.Text;
+                negocioIncidente.agregar(nuevo);
+
+                //ENVIA MAIL AL CLIENTE
+                IncidenteNegocio negocio = new IncidenteNegocio();
+                Incidente ultimo = new Incidente();
+
+                ultimo = negocio.traerUltimoIncidente();
+
+
+                EmailService emailService = new EmailService();
+                emailService.armarCorreoIncidenteAbierto(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+
+                }
+                catch (Exception ex)
+                {
+                    lblConfirmacion.Text = "Atencion: Incidente creado, no se envió mail de apertura al cliente.";
+
+                }
+                //ENVIA MAIL AL EMPLEADO
+                emailService.armarCorreoIncidenteAbiertoEmpleado(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+                    lblConfirmacion.Text = "Atención: Incidente creado, regrese al Menú Principal.";
+                }
+                catch (Exception ex)
+                {
+
+                    lblConfirmacion.Text = "Atencion: Incidente creado, no se envió mail de apertura al empleado.";
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-
-                throw ex;
-            }
-            //ENVIA MAIL AL EMPLEADO
-            emailService.armarCorreoIncidenteAbiertoEmpleado(ultimo);
-            try
-            {
-                emailService.enviarMail();
+                lblConfirmacion.Text = "Atencion: Ocurrió un error.";
 
             }
-            catch (Exception ex)
-            {
 
-                throw ex;
-            }
-
-            
         }
 
         protected void dgvClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            
             GridViewRow row = dgvClientes.Rows[e.NewSelectedIndex];
             lblIDCliente.Text = row.Cells[0].Text;
+            lblClienteSeleccionado.Text = "Cliente Seleccionado";
         }
 
         protected void btnMenuPrincipal_Click(object sender, EventArgs e)

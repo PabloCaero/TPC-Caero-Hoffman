@@ -50,50 +50,56 @@ namespace TPC_Caero_Hoffman
         {
             GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
             lblIDIncidente.Text = row.Cells[0].Text;
+            lblSeleccion.Text = "Incidente seleccionado";
         }
 
         protected void btnReabrirIncidente_Click(object sender, EventArgs e)
         {
-            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
-            Incidente nuevo = new Incidente();
-
-            nuevo.ID = int.Parse(lblIDIncidente.Text);
-            negocioIncidente.reabrirIncidente(nuevo);
-
-
-            //ENVIA MAIL AL CLIENTE
-            IncidenteNegocio negocio = new IncidenteNegocio();
-            Incidente ultimo = new Incidente();
-
-            ultimo = negocio.buscarIndividualID(nuevo);
-
-            EmailService emailService = new EmailService();
-            emailService.armarCorreoIncidenteReabierto(ultimo);
             try
             {
-                emailService.enviarMail();
+                IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+                Incidente nuevo = new Incidente();
 
+                nuevo.ID = int.Parse(lblIDIncidente.Text);
+                negocioIncidente.reabrirIncidente(nuevo);
+
+
+                //ENVIA MAIL AL CLIENTE
+                IncidenteNegocio negocio = new IncidenteNegocio();
+                Incidente ultimo = new Incidente();
+
+                ultimo = negocio.buscarIndividualID(nuevo);
+
+                EmailService emailService = new EmailService();
+                emailService.armarCorreoIncidenteReabierto(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+                }
+                catch (Exception ex)
+                {
+                    lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto . No se envió mail al cliente.";
+
+                }
+
+                //ENVIA MAIL AL EMPLEADO  
+                emailService.armarCorreoIncidenteReabiertoEmpleado(ultimo);
+                try
+                {
+                    emailService.enviarMail();
+                    lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto. Regrese al Menú Principal.";
+
+                }
+                catch (Exception ex)
+                {
+                    lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto . No se envió mail al empleado. Regrese al Menú Principal.";
+                }
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                lblConfirmacion.Text = "Atención: Ocurrió un error. Regrese al Menú Principal.";
             }
 
-            //ENVIA MAIL AL EMPLEADO  
-            emailService.armarCorreoIncidenteReabiertoEmpleado(ultimo);
-            try
-            {
-                emailService.enviarMail();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-          
 
         }
 

@@ -145,6 +145,7 @@
     <Content Include="frmModificarDetallesIncidente.aspx" />
     <Content Include="frmModificarDetallesIncidenteTelefonista.aspx" />
     <Content Include="frmModificarEmpleado.aspx" />
+    <Content Include="frmOlvideMiContraseña.aspx" />
     <Content Include="frmReabrirIncidente.aspx" />
     <Content Include="frmReasignarIncidente.aspx" />
     <Content Include="GestionCargos.aspx" />
@@ -344,6 +345,13 @@
     </Compile>
     <Compile Include="frmModificarEmpleado.aspx.designer.cs">
       <DependentUpon>frmModificarEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmOlvideMiContraseña.aspx.cs">
+      <DependentUpon>frmOlvideMiContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmOlvideMiContraseña.aspx.designer.cs">
+      <DependentUpon>frmOlvideMiContraseña.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmReabrirIncidente.aspx.cs">
       <DependentUpon>frmReabrirIncidente.aspx</DependentUpon>

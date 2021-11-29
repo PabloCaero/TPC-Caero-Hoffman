@@ -34,6 +34,7 @@
 
             <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblIDCliente" runat="server" Visible="false" />
+            <asp:Label ID="lblSeleccionCliente" Font-Bold="true" runat="server" />
 
         </div>
         </div>
@@ -63,7 +64,7 @@
             </asp:GridView>
             <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblLegajoEmpleado" runat="server" Visible="false"  />
-        
+            <asp:Label ID="lblSeleccionEmpleado" Font-Bold="true" runat="server" />
         </div>
         </div>
        </div>
@@ -90,7 +91,7 @@
         <asp:Button ID="btnCrearIncidente" runat="server" OnClick="btnCrearIncidente_Click" Text="Crear Incidente" />  
      </div>
 
-
+    <asp:Label ID="lblConfirmacion" Font-Bold="true" runat="server" />
 
 
     

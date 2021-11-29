@@ -39,14 +39,15 @@
 
             </asp:GridView>
 
-
               <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblIDIncidente" runat="server" Visible="false"/>
+            <asp:Label ID="lblSeleccion" Font-Bold="true" runat="server" />
+
            </div>
          </div>
 
     <asp:Button Text="Reabrir Incidente" ID="btnReabrirIncidente" OnClick="btnReabrirIncidente_Click" runat="server" />
-    
+    <asp:Label ID="lblConfirmacion" Font-Bold="true" runat="server" />
 
 
 </asp:Content>

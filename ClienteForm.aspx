@@ -61,6 +61,8 @@
       <asp:Button ID="btnCargarCliente" runat="server" OnClick="btnCargarCliente_Click" Text="Cargar Cliente" />
   </div>
 </div>
+
+    <asp:Label ID="lblConfirmacion" runat="server" Font-Bold="true"/>
     
  
 

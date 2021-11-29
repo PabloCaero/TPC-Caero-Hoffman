@@ -34,6 +34,7 @@
 
             <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblIDCliente" runat="server" Visible="false" />
+            <asp:Label ID="lblClienteSeleccionado" runat="server" />
 
         </div>
         </div>
@@ -62,6 +63,7 @@
         <asp:Button ID="btnCrearIncidente" runat="server" OnClick="btnCrearIncidente_Click" Text="Crear Incidente" />  
      </div>
 
+    <asp:Label ID="lblConfirmacion" runat="server" />
 
 
 </asp:Content>

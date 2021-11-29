@@ -79,4 +79,6 @@
   </div>
   </div>
 
+    <asp:Label ID="lblConfirmacion" runat="server" Font-Bold="true"/>
+
 </asp:Content>

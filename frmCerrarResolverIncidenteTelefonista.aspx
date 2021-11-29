@@ -39,6 +39,7 @@
                 </Columns>
 
             </asp:GridView>
+                    <asp:Label ID="lblIncidenteSeleccionado" runat="server" Font-Bold="true"/>
 
 
               <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
@@ -54,5 +55,7 @@
         <asp:Button ID="btnCerrarIncidente" runat="server" OnClick="btnCerrarIncidente_Click" Text="Cerrar Incidente" />  
          <asp:Button ID="btnResolverIncidente" runat="server" OnClick="btnResolverIncidente_Click" Text="Resolver Incidente" />  
      </div>
+
+    <asp:Label ID="lblConfirmacion" runat="server" Font-Bold="true"/>
 
 </asp:Content>

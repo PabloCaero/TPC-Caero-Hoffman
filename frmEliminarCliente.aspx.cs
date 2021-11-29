@@ -43,10 +43,19 @@ namespace TPC_Caero_Hoffman
         protected void rowDeletingEvent(object sender, GridViewDeleteEventArgs e)
         {
             //PASOS PARA ELIMINAR CLIENTE
-            ClienteNegocio negocioCliente = new ClienteNegocio();
-            Cliente cliente = new Cliente();
-            cliente.IDCliente = Convert.ToInt32(dgvClientes.DataKeys[e.RowIndex].Values[0]);
-            negocioCliente.eliminar(cliente);
+            try
+            {
+                ClienteNegocio negocioCliente = new ClienteNegocio();
+                Cliente cliente = new Cliente();
+                cliente.IDCliente = Convert.ToInt32(dgvClientes.DataKeys[e.RowIndex].Values[0]);
+                negocioCliente.eliminar(cliente);
+                lblConfirmacion.Text = "Atención: El cliente fue eliminado, regrese al Menú Principal.";
+
+            }
+            catch (Exception ex)
+            {
+                lblConfirmacion.Text = "Atención: Ocurrió un error";
+            }
             
         }
 

@@ -204,6 +204,23 @@ namespace Servicios
             }
         }
 
+        //ENVIO DE CORREO AL EMPLEADO (OLVIDE MI CONTRASEÑA)
+        public void armarCorreoOlvideMiContrasena(Empleado empleado)
+        {
+            try
+            {
+                email = new MailMessage();
+                email.From = new MailAddress("pcaero_programacion@hotmail.com");
+                email.To.Add(empleado.Email);
+                email.Subject = "HelpTech AR - Olvide mi Contraseña";
+                email.IsBodyHtml = true;
+                email.Body = "<p>Se ha solicitado recuperar la contrase&ntilde;a de ingreso a HelpTech AR</p><p><br></p><p>Usuario &nbsp; &nbsp; &nbsp;: "+empleado.NombreUsuario+" &nbsp;</p><p>Contrase&ntilde;a: "+empleado.Contrasena+" </p><p><br></p><p>Saludos.</p>";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
         public void enviarMail()

@@ -39,7 +39,6 @@ namespace TPC_Caero_Hoffman
             catch(Exception ex)
             {
                 lblContrasenaCambiada.Text = "No se pudo cambiar la contraseña. ";
-
             }
 
 

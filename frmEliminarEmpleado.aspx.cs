@@ -23,12 +23,21 @@ namespace TPC_Caero_Hoffman
 
         protected void rowDeletingEvent(object sender, GridViewDeleteEventArgs e)
         {
-            //PASOS PARA ELIMINAR CLIENTE
-            EmpleadoNegocio negocioEmpleado = new EmpleadoNegocio();
-            Empleado empleado = new Empleado();
-            empleado.Legajo = Convert.ToInt32(dgvEmpleados.DataKeys[e.RowIndex].Values[0]);
-            negocioEmpleado.eliminar(empleado);
-            
+            //PASOS PARA ELIMINAR EMPLEADO
+            try
+            {
+                EmpleadoNegocio negocioEmpleado = new EmpleadoNegocio();
+                Empleado empleado = new Empleado();
+                empleado.Legajo = Convert.ToInt32(dgvEmpleados.DataKeys[e.RowIndex].Values[0]);
+                negocioEmpleado.eliminar(empleado);
+                lblConfirmacion.Text = "Atención: El empleado fue eliminado, regrese al Menú Principal.";
+
+            }
+            catch (Exception ex)
+            {
+                lblConfirmacion.Text = "Atención: Ocurrió un error.";
+
+            }
         }
 
         protected void btnBuscarEmpleadoxLegajo_Click(object sender, EventArgs e)

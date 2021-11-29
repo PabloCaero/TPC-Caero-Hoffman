@@ -51,27 +51,32 @@ namespace TPC_Caero_Hoffman
 
         protected void rowUpdatingEvent(object sender, GridViewUpdateEventArgs e)
         {
-            Empleado empleado = new Empleado();
-            EmpleadoNegocio negocioEmpleado = new EmpleadoNegocio();
-            GridViewRow fila = dgvEmpleados.Rows[e.RowIndex];
+            try
+            {
+                Empleado empleado = new Empleado();
+                EmpleadoNegocio negocioEmpleado = new EmpleadoNegocio();
+                GridViewRow fila = dgvEmpleados.Rows[e.RowIndex];
 
-            CargoNegocio cargonegocio = new CargoNegocio();
-
-           
-            //PASOS PARA EDITAR EMPLEADO
-            empleado.Legajo = Convert.ToInt32(dgvEmpleados.DataKeys[e.RowIndex].Values[0]);
-            empleado.Dni = ((fila.FindControl("txtDNI")) as TextBox).Text.ToUpper();
-            empleado.Nombre = ((fila.FindControl("txtNombre")) as TextBox).Text.ToUpper();
-            empleado.Apellido = ((fila.FindControl("txtApellido")) as TextBox).Text.ToUpper();
-            empleado.Email = ((fila.FindControl("txtEmail")) as TextBox).Text.ToUpper();
-            empleado.Telefono = ((fila.FindControl("txtTelefono")) as TextBox).Text.ToUpper();
-
-            
+                CargoNegocio cargonegocio = new CargoNegocio();
 
 
+                //PASOS PARA EDITAR EMPLEADO
+                empleado.Legajo = Convert.ToInt32(dgvEmpleados.DataKeys[e.RowIndex].Values[0]);
+                empleado.Dni = ((fila.FindControl("txtDNI")) as TextBox).Text.ToUpper();
+                empleado.Nombre = ((fila.FindControl("txtNombre")) as TextBox).Text.ToUpper();
+                empleado.Apellido = ((fila.FindControl("txtApellido")) as TextBox).Text.ToUpper();
+                empleado.Email = ((fila.FindControl("txtEmail")) as TextBox).Text.ToUpper();
+                empleado.Telefono = ((fila.FindControl("txtTelefono")) as TextBox).Text.ToUpper();
 
-            negocioEmpleado.modificar(empleado);
 
+                negocioEmpleado.modificar(empleado);
+                lblConfirmacion.Text = "Atención: Empleado Modificado.Regrese al Menú Principal.";
+
+            }
+            catch (Exception ex)
+            {
+                lblConfirmacion.Text = "Atención: Ocurrió un error.";
+            }
             
         }
 

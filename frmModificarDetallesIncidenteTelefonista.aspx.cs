@@ -29,16 +29,26 @@ namespace TPC_Caero_Hoffman
 
         protected void dgvIncidentes_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            Incidente incidente = new Incidente();
-            IncidenteNegocio negocioincidente = new IncidenteNegocio();
-            GridViewRow fila = dgvIncidentes.Rows[e.RowIndex];
+            try
+            {
+                Incidente incidente = new Incidente();
+                IncidenteNegocio negocioincidente = new IncidenteNegocio();
+                GridViewRow fila = dgvIncidentes.Rows[e.RowIndex];
 
-            //MODIFICACION DE DETALLES DE INCIDENTE
-            incidente.ID = Convert.ToInt32(dgvIncidentes.DataKeys[e.RowIndex].Values[0]);
-            incidente.Detalles = ((fila.FindControl("txtDetalles")) as TextBox).Text.ToUpper();
+                //MODIFICACION DE DETALLES DE INCIDENTE
+                incidente.ID = Convert.ToInt32(dgvIncidentes.DataKeys[e.RowIndex].Values[0]);
+                incidente.Detalles = ((fila.FindControl("txtDetalles")) as TextBox).Text.ToUpper();
 
 
-            negocioincidente.modificarDetalles(incidente);
+                negocioincidente.modificarDetalles(incidente);
+                lblConfirmacion.Text = "Atención: El detalle del incidente #" + incidente.ID + " fue modificado. Regrese al Menú Principal";
+
+            }
+            catch (Exception ex)
+            {
+                lblConfirmacion.Text = "Atención: Ocurrió un error.";
+
+            }
         }
 
         protected void dgvIncidentes_RowEditing(object sender, GridViewEditEventArgs e)

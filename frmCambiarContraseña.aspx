@@ -7,19 +7,28 @@
        <asp:Button Text="Menú Principal" CssClass="btn btn-dark" ID="btnMenuPrincipal" OnClick="btnMenuPrincipal_Click" runat="server" />
     </div>
 
-    <div class="col-auto">
-      <asp:Label Text="Escriba su contraseña anterior: " runat="server" />
+    <div>
+    <h3>Cambiar Contraseña</h3>
+    </div>
+    
+    <br />
+    <div class="d-grid gap-2 col-6 mx-auto" style="border: solid; border-radius:10px 10px  ; text-align: center; background-color: black ">
+  <div class="d-grid gap-2 col-6 mx-auto">
+      <br />
+      <asp:Label Text="Escriba su contraseña anterior: " runat="server"  ForeColor="White" />
       <asp:TextBox runat="server" type="password" ID="txtContrasenaAnterior" CssClass="form-control"/>
   </div>
-  <div class="col-auto">
-      <asp:Label Text="Escriba su nueva contraseña: " runat="server" />
-      <asp:TextBox runat="server" type="password" CssClass="form-control" id="txtContrasenaNueva"/>
-   
+  <div class="d-grid gap-2 col-6 mx-auto">
+     <asp:Label Text="Escriba su nueva contraseña: " runat="server"  ForeColor="White" />
+     <asp:TextBox runat="server" type="password" CssClass="form-control" id="txtContrasenaNueva"/>
+    
   </div>
-  <div class="col-auto">
-      <asp:Button Text="Ingresar" OnClick="btnCambiarContrasena_Click" runat="server" type="submit" CssClass="btn btn-primary mb-3" ID="btnCambiarContrasena"/>
+       
+  <div>
+      <asp:Label ID="lblContrasenaCambiada" runat="server" />
+      <asp:Button Text="Cambiar" OnClick="btnCambiarContrasena_Click" runat="server" type="submit" CssClass="btn btn-primary mb-3" ID="Button1"/>
   </div>
+     </div>
 
-    <asp:Label ID="lblContrasenaCambiada" runat="server" />
 
 </asp:Content>

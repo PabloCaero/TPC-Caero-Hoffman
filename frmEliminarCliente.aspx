@@ -65,6 +65,8 @@
                 </Columns>
 
             </asp:GridView>
+
+            <asp:Label ID="lblConfirmacion" runat="server" Font-Bold="true"/>
         </div>
         </div>
        </div>
