@@ -11,7 +11,7 @@ namespace TPC_Caero_Hoffman
 {
 
 
-    public partial class frmBuscarClientePorDNI
+    public partial class frmModificarDetallesIncidenteTelefonista
     {
 
         /// <summary>
@@ -24,30 +24,30 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnMenuPrincipal;
 
         /// <summary>
-        /// Control txtBuscarClientexDNI.
+        /// Control txtBuscarIncidentexID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarClientexDNI;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarIncidentexID;
 
         /// <summary>
-        /// Control btnBuscarClientexDNI.
+        /// Control btnBuscarIncidentexID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarClientexDNI;
+        protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexID;
 
         /// <summary>
-        /// Control dgvClientes.
+        /// Control dgvIncidentes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvClientes;
+        protected global::System.Web.UI.WebControls.GridView dgvIncidentes;
     }
 }

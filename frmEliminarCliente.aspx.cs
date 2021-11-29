@@ -47,7 +47,29 @@ namespace TPC_Caero_Hoffman
             Cliente cliente = new Cliente();
             cliente.IDCliente = Convert.ToInt32(dgvClientes.DataKeys[e.RowIndex].Values[0]);
             negocioCliente.eliminar(cliente);
-            Response.Redirect("Default.aspx");
+            
+        }
+
+        protected void btnMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            int IDCargo = Convert.ToInt32((int)Session["_IDCargo"]);
+
+            switch (IDCargo)
+            {
+                case 1:
+                    Response.Redirect("frmMenuAdministrador.aspx");
+                    break;
+                case 2:
+                    Response.Redirect("frmMenuSupervisor.aspx");
+                    break;
+                case 3:
+                    Response.Redirect("frmMenuTelefonista.aspx");
+                    break;
+
+                default:
+                    Response.Redirect("Error.aspx");
+                    break;
+            }
         }
     }
 }

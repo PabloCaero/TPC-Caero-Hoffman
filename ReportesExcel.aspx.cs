@@ -17,6 +17,12 @@ namespace TPC_Caero_Hoffman
         private List<Incidente> buscaIncidente;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["_NombreUsuario"] == null && (int)Session["_IDCargo"] != 2 || (int)Session["_IDCargo"] != 1)
+            {
+                Session.Add("Error", "Debes loguearte para ingresar");
+                Response.Redirect("Error.aspx", false);
+            }
+
             EstadoNegocio estadonegocio = new EstadoNegocio();
             try
             {
@@ -78,6 +84,28 @@ namespace TPC_Caero_Hoffman
             Response.Write(sw.ToString());
             dgvIncidentes.AllowPaging = false;
             Response.End();
+        }
+
+        protected void btnMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            int IDCargo = Convert.ToInt32((int)Session["_IDCargo"]);
+
+            switch (IDCargo)
+            {
+                case 1:
+                    Response.Redirect("frmMenuAdministrador.aspx");
+                    break;
+                case 2:
+                    Response.Redirect("frmMenuSupervisor.aspx");
+                    break;
+                case 3:
+                    Response.Redirect("frmMenuTelefonista.aspx");
+                    break;
+
+                default:
+                    Response.Redirect("Error.aspx");
+                    break;
+            }
         }
     }
 }

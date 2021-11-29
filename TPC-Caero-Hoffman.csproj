@@ -124,6 +124,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="frmCambiarContraseña.aspx" />
+    <Content Include="frmCerrarResolverIncidenteTelefonista.aspx" />
     <Content Include="frmMenuAdministrador.aspx" />
     <Content Include="EmpleadoForm.aspx" />
     <Content Include="Error.aspx" />
@@ -142,6 +143,7 @@
     <Content Include="frmMisIncidentes.aspx" />
     <Content Include="frmModificarCliente.aspx" />
     <Content Include="frmModificarDetallesIncidente.aspx" />
+    <Content Include="frmModificarDetallesIncidenteTelefonista.aspx" />
     <Content Include="frmModificarEmpleado.aspx" />
     <Content Include="frmReabrirIncidente.aspx" />
     <Content Include="frmReasignarIncidente.aspx" />
@@ -209,6 +211,13 @@
     </Compile>
     <Compile Include="frmCambiarContraseña.aspx.designer.cs">
       <DependentUpon>frmCambiarContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCerrarResolverIncidenteTelefonista.aspx.cs">
+      <DependentUpon>frmCerrarResolverIncidenteTelefonista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCerrarResolverIncidenteTelefonista.aspx.designer.cs">
+      <DependentUpon>frmCerrarResolverIncidenteTelefonista.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmMenuAdministrador.aspx.cs">
       <DependentUpon>frmMenuAdministrador.aspx</DependentUpon>
@@ -321,6 +330,13 @@
     </Compile>
     <Compile Include="frmModificarDetallesIncidente.aspx.designer.cs">
       <DependentUpon>frmModificarDetallesIncidente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmModificarDetallesIncidenteTelefonista.aspx.cs">
+      <DependentUpon>frmModificarDetallesIncidenteTelefonista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmModificarDetallesIncidenteTelefonista.aspx.designer.cs">
+      <DependentUpon>frmModificarDetallesIncidenteTelefonista.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmModificarEmpleado.aspx.cs">
       <DependentUpon>frmModificarEmpleado.aspx</DependentUpon>

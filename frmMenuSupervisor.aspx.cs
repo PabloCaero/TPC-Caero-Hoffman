@@ -28,57 +28,60 @@ namespace TPC_Caero_Hoffman
                 lblLegajo.Text = Legajo.ToString();
                 lblNombreCargo.Text = NombreCargo;
             }
-
-
-
-
         }
 
 
 
         protected void btnModificarIncidente_Click(object sender, EventArgs e)
         {
+            Response.Redirect("frmModificarDetallesIncidente.aspx");
 
         }
 
         protected void btnCrearIncidente_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("IncidenteForm.aspx");
         }
 
         protected void btnCerrarIncidente_Click(object sender, EventArgs e)
         {
+            Response.Redirect("frmCerrarResolverIncidente.aspx");
 
         }
 
         protected void btnIngresarCliente_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ClienteForm.aspx");
         }
 
         protected void btnBuscarClientexDNI_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("frmBuscarClientePorDNI.aspx");
         }
 
         protected void btnReabrirIncidente_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("frmReabrirIncidente.aspx");
         }
 
         protected void btnMisIncidentes_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("frmMisIncidentes.aspx");
         }
 
         protected void btnReasignarIncidente_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("frmReasignarIncidente.aspx");
         }
 
         protected void btnCambiarContrasena_Click(object sender, EventArgs e)
         {
+            Response.Redirect("frmCambiarContraseña.aspx");
+        }
 
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmLogin.aspx");
         }
     }
 }

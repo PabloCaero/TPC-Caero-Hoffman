@@ -35,18 +35,19 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCerrarIncidente_Click(object sender, EventArgs e)
         {
+            Response.Redirect("frmCerrarResolverIncidenteTelefonista.aspx");
 
         }
 
         protected void btnModificarIncidente_Click(object sender, EventArgs e)
         {
+            Response.Redirect("frmModificarDetallesIncidenteTelefonista.aspx");
 
         }
 
         protected void btnCrearIncidente_Click(object sender, EventArgs e)
         {
             Response.Redirect("frmCrearIncidentePropio.aspx");
-
         }
 
         protected void btnBuscarClientexDNI_Click(object sender, EventArgs e)
@@ -56,7 +57,7 @@ namespace TPC_Caero_Hoffman
 
         protected void btnIngresarCliente_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("ClienteForm.aspx");
         }
 
 
@@ -67,7 +68,12 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCambiarContrasena_Click(object sender, EventArgs e)
         {
+            Response.Redirect("frmCambiarContraseña.aspx");
+        }
 
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmLogin.aspx");
         }
     }
 }

@@ -17,14 +17,16 @@
 
         <div class="col" style="text-align: right; width:990px" >
         <asp:Button Text="Cambiar Contraseña" CssClass="btn btn-dark" ID="btnCambiarContrasena" OnClick="btnCambiarContrasena_Click" runat="server" />
-        <button type="button" onclick="goBack()" class="btn btn-danger">Cerrar Sesión</button>     
+        <asp:Button Text="Cerrar Sesión" CssClass="btn btn-danger" ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" runat="server" />
+
+            
         </div>   
 
       </div>
      </div>
     <br />
 
-    <div class="d-grid gap-2 col-6 mx-auto" style="border:solid">
+    <div class="d-grid gap-2 col-6 mx-auto" style="border:solid; border-radius:10px 10px ">
         <div style="text-align: center">
         <h2>Clientes</h2>
             </div>
@@ -34,7 +36,7 @@
     <asp:Button Text="Eliminar Cliente" ID="brnEliminarCliente" CssClass="btn btn-dark" runat="server" OnClick="brnEliminarCliente_Click" />
     </div>
     <br />
-    <div class="d-grid gap-2 col-6 mx-auto" style="border:solid ">
+    <div class="d-grid gap-2 col-6 mx-auto" style="border:solid; border-radius:10px 10px ">
     <div style="text-align: center">
         <h2>Incidentes</h2>
             </div>
@@ -47,7 +49,7 @@
     <asp:Button Text="Reportes de Incidentes" ID="btnReporteIncidentes" CssClass="btn btn-dark" runat="server" OnClick="btnReporteIncidentes_Click" />
     </div>
     <br />
-    <div class="d-grid gap-2 col-6 mx-auto" style="border:solid">
+    <div class="d-grid gap-2 col-6 mx-auto" style="border:solid; border-radius:10px 10px">
     <div style="text-align: center">
         <h2>Empleados</h2>
             </div>

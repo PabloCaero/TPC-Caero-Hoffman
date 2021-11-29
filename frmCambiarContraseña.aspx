@@ -4,8 +4,7 @@
      <!--BOTON VOLVER ATRÁS-->
     <br />
     <div style="text-align: right; width:990px" >
-     <button type="button" onclick="goBack()" class="btn btn-dark">Menú Principal</button>    
-
+       <asp:Button Text="Menú Principal" CssClass="btn btn-dark" ID="btnMenuPrincipal" OnClick="btnMenuPrincipal_Click" runat="server" />
     </div>
 
     <div class="col-auto">

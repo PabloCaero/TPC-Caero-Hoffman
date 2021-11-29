@@ -1,8 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCerrarResolverIncidente.aspx.cs" Inherits="TPC_Caero_Hoffman.frmCerrarIncidente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <!--BOTON VOLVER ATRÁS-->
+    <br />
+    <div style="text-align: right; width:990px" >
+       <asp:Button Text="Menú Principal" CssClass="btn btn-dark" ID="btnMenuPrincipal" OnClick="btnMenuPrincipal_Click" runat="server" />
+    </div>
+
     <div>
-    <h2>Cerrar Incidente</h2>
+    <h3>Cerrar Incidente</h3>
     </div>
     
      <div class="col-9">
@@ -35,7 +41,7 @@
 
 
               <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
-            <asp:Label ID="lblIDIncidente" runat="server" />
+            <asp:Label ID="lblIDIncidente" runat="server" Visible ="false" />
            </div>
          </div>
 

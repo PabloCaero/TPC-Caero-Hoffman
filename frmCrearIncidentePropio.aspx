@@ -1,7 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCrearIncidentePropio.aspx.cs" Inherits="TPC_Caero_Hoffman.frmCrearIncidentePropio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-     <h2>Crear Incidente</h2>
+
+    <!--BOTON VOLVER ATRÁS-->
+    <br />
+    <div style="text-align: right; width:990px" >
+       <asp:Button Text="Menú Principal" CssClass="btn btn-dark" ID="btnMenuPrincipal" OnClick="btnMenuPrincipal_Click" runat="server" />
+    </div>
+
+     <h3>Crear Incidente</h3>
 
 
     <!--BUSQUEDA DE CLIENTE-->

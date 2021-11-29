@@ -123,5 +123,11 @@ namespace TPC_Caero_Hoffman
         {
             Response.Redirect("frmCambiarContraseña.aspx");
         }
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("frmLogin.aspx");
+
+        }
     }
 }

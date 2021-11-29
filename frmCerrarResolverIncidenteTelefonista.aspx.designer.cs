@@ -11,7 +11,7 @@ namespace TPC_Caero_Hoffman
 {
 
 
-    public partial class ReportesExcel
+    public partial class frmCerrarResolverIncidenteTelefonista
     {
 
         /// <summary>
@@ -24,31 +24,22 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnMenuPrincipal;
 
         /// <summary>
-        /// Control ddlEstados.
+        /// Control txtBuscarIncidentexID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstados;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarIncidentexID;
 
         /// <summary>
-        /// Control btnBuscarIncidentes.
+        /// Control btnBuscarIncidentexID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarIncidentes;
-
-        /// <summary>
-        /// Control btnExportar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExportar;
+        protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexID;
 
         /// <summary>
         /// Control dgvIncidentes.
@@ -58,5 +49,41 @@ namespace TPC_Caero_Hoffman
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvIncidentes;
+
+        /// <summary>
+        /// Control lblIDIncidente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIDIncidente;
+
+        /// <summary>
+        /// Control txtComentarioFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtComentarioFinal;
+
+        /// <summary>
+        /// Control btnCerrarIncidente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCerrarIncidente;
+
+        /// <summary>
+        /// Control btnResolverIncidente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnResolverIncidente;
     }
 }

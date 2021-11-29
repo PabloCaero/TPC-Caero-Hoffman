@@ -4,69 +4,40 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Servicios;
 using Dominio;
 using Negocio;
-using Servicios;
 
 namespace TPC_Caero_Hoffman
 {
-    public partial class frmReasignarIncidente : System.Web.UI.Page
+    public partial class frmCerrarResolverIncidenteTelefonista : System.Web.UI.Page
     {
-        private List<Empleado> buscaEmpleado;
         private List<Incidente> buscaIncidente;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["_NombreUsuario"] == null && (int)Session["_IDCargo"] != 2 || (int)Session["_IDCargo"] != 1)
+            if (Session["_NombreUsuario"] == null && (int)Session["_Cargo"] != 1)
             {
                 Session.Add("Error", "Debes loguearte para ingresar");
                 Response.Redirect("Error.aspx", false);
             }
-        }
 
-        
-
-        protected void btnBuscarEmpleadoxLegajo_Click(object sender, EventArgs e)
-        {
-            Empleado empleado = new Empleado();
-            EmpleadoNegocio empleadonegocio = new EmpleadoNegocio();
-
-            try
-            {
-                empleado.Legajo = int.Parse(txtBuscarEmpleadoxID.Text);
-                buscaEmpleado = empleadonegocio.buscarLegajo(empleado);
-                dgvEmpleados.DataSource = buscaEmpleado;
-                dgvEmpleados.DataBind();
-
-            }
-            catch (Exception ex)
-            {
-                Session.Add("error", ex);
-            }
-        }
-
-        protected void dgvEmpleados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            GridViewRow row = dgvEmpleados.Rows[e.NewSelectedIndex];
-            lblLegajoEmpleado.Text = row.Cells[0].Text;
         }
 
         protected void dgvIncidentes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
+
             lblIDIncidente.Text = row.Cells[0].Text;
         }
 
-        protected void btnReasignarIncidente_Click(object sender, EventArgs e)
+        protected void btnCerrarIncidente_Click(object sender, EventArgs e)
         {
             IncidenteNegocio negocioIncidente = new IncidenteNegocio();
             Incidente nuevo = new Incidente();
 
-            nuevo.Empleado = new Empleado();
-            nuevo.Empleado.Legajo = int.Parse(lblLegajoEmpleado.Text);
-
             nuevo.ID = int.Parse(lblIDIncidente.Text);
-            negocioIncidente.asignarIncidente(nuevo);
-
+            nuevo.Detalles = txtComentarioFinal.Text;
+            negocioIncidente.cerrarIncidente(nuevo);
 
             //ENVIA MAIL AL CLIENTE
             IncidenteNegocio negocio = new IncidenteNegocio();
@@ -75,7 +46,7 @@ namespace TPC_Caero_Hoffman
             ultimo = negocio.buscarIndividualID(nuevo);
 
             EmailService emailService = new EmailService();
-            emailService.armarCorreoIncidenteAsignadoCliente(ultimo);
+            emailService.armarCorreoIncidenteCerradoCliente(ultimo);
             try
             {
                 emailService.enviarMail();
@@ -88,7 +59,7 @@ namespace TPC_Caero_Hoffman
             }
 
             //ENVIA MAIL AL EMPLEADO  
-            emailService.armarCorreoIncidenteAsignadoEmpleado(ultimo);
+            emailService.armarCorreoIncidenteCerradoEmpleado(ultimo);
             try
             {
                 emailService.enviarMail();
@@ -100,17 +71,21 @@ namespace TPC_Caero_Hoffman
                 throw ex;
             }
 
+            
+
         }
 
         protected void btnBuscarIncidentexID_Click(object sender, EventArgs e)
         {
             Incidente incidente = new Incidente();
             IncidenteNegocio incidentenegocio = new IncidenteNegocio();
-
+            int Legajo = Convert.ToInt32(Session["_Legajo"]);
             try
             {
                 incidente.ID = int.Parse(txtBuscarIncidentexID.Text);
-                buscaIncidente = incidentenegocio.buscarID(incidente);
+                incidente.Empleado = new Empleado();
+                incidente.Empleado.Legajo = Legajo;
+                buscaIncidente = incidentenegocio.buscarIncidentePorIDyLegajo(incidente);
                 dgvIncidentes.DataSource = buscaIncidente;
                 dgvIncidentes.DataBind();
             }
@@ -121,9 +96,52 @@ namespace TPC_Caero_Hoffman
             }
         }
 
-      
+        protected void btnResolverIncidente_Click(object sender, EventArgs e)
+        {
+            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+            Incidente nuevo = new Incidente();
 
-        protected void btnMenuPrincipal_Click1(object sender, EventArgs e)
+            nuevo.ID = int.Parse(lblIDIncidente.Text);
+            nuevo.Detalles = txtComentarioFinal.Text;
+            negocioIncidente.resolverIncidente(nuevo);
+
+            //ENVIA MAIL AL CLIENTE
+            IncidenteNegocio negocio = new IncidenteNegocio();
+            Incidente ultimo = new Incidente();
+
+            ultimo = negocio.buscarIndividualID(nuevo);
+
+            EmailService emailService = new EmailService();
+            emailService.armarCorreoIncidenteResueltoCliente(ultimo);
+            try
+            {
+                emailService.enviarMail();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            //ENVIA MAIL AL EMPLEADO  
+            emailService.armarCorreoIncidenteResueltoEmpleado(ultimo);
+            try
+            {
+                emailService.enviarMail();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            
+
+        }
+
+        protected void btnMenuPrincipal_Click(object sender, EventArgs e)
         {
             int IDCargo = Convert.ToInt32((int)Session["_IDCargo"]);
 

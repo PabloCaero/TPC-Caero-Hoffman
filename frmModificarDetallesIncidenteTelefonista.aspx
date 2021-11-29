@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmModificarDetallesIncidente.aspx.cs" Inherits="TPC_Caero_Hoffman.frmModificarDetallesIncidente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmModificarDetallesIncidenteTelefonista.aspx.cs" Inherits="TPC_Caero_Hoffman.frmModificarDetallesIncidenteTelefonista" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
      <!--BOTON VOLVER ATRÁS-->
@@ -21,6 +21,7 @@
             <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false"
                 OnRowEditing="dgvIncidentes_RowEditing"
                 OnRowUpdating="dgvIncidentes_RowUpdating"
+                 OnSelectedIndexChanged="dgvIncidentes_SelectedIndexChanged"
                 
                 DataKeyNames="ID" OnRowCancelingEdit="dgvIncidentes_RowCancelingEdit"
                 >

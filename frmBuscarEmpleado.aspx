@@ -1,8 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmBuscarEmpleado.aspx.cs" Inherits="TPC_Caero_Hoffman.frmBuscarEmpleado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <!--BOTON VOLVER ATRÁS-->
+    <br />
+    <div style="text-align: right; width:990px" >
+       <asp:Button Text="Menú Principal" CssClass="btn btn-dark" ID="btnMenuPrincipal" OnClick="btnMenuPrincipal_Click" runat="server" />
+    </div>
+
      <div>
-    <h2>Buscar Empleado</h2>
+    <h3>Buscar Empleado</h3>
     </div>
     <div>
      <div class="col-9">

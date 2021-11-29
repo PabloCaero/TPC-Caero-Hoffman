@@ -9,35 +9,22 @@ using Negocio;
 
 namespace TPC_Caero_Hoffman
 {
-    public partial class frmModificarDetallesIncidente : System.Web.UI.Page
+    public partial class frmModificarDetallesIncidenteTelefonista : System.Web.UI.Page
     {
         private List<Incidente> buscaIncidente;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["_NombreUsuario"] == null && (int)Session["_IDCargo"] != 1)
+
+            if (Session["_NombreUsuario"] == null)
             {
                 Session.Add("Error", "Debes loguearte para ingresar");
                 Response.Redirect("Error.aspx", false);
             }
         }
 
-        protected void btnBuscarIncidentexID_Click(object sender, EventArgs e)
+        protected void dgvIncidentes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            Incidente incidente = new Incidente();
-            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
-
-            try
-            {
-                incidente.ID = int.Parse(txtBuscarIncidentexID.Text);
-                buscaIncidente = incidentenegocio.buscarID(incidente);
-                dgvIncidentes.DataSource = buscaIncidente;
-                dgvIncidentes.DataBind();
-            }
-            catch (Exception ex)
-            {
-                Session.Add("error", ex);
-
-            }
+            Response.Redirect("frmModificarDetallesIncidenteTelefonista.aspx");
         }
 
         protected void dgvIncidentes_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -52,7 +39,6 @@ namespace TPC_Caero_Hoffman
 
 
             negocioincidente.modificarDetalles(incidente);
-
         }
 
         protected void dgvIncidentes_RowEditing(object sender, GridViewEditEventArgs e)
@@ -60,9 +46,32 @@ namespace TPC_Caero_Hoffman
 
         }
 
-        protected void dgvIncidentes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void btnBuscarIncidentexID_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmModificarDetallesIncidente.aspx");
+            Incidente incidente = new Incidente();
+            IncidenteNegocio incidentenegocio = new IncidenteNegocio();        
+            int Legajo = Convert.ToInt32(Session["_Legajo"]);
+                
+            try
+            {
+                incidente.ID = int.Parse(txtBuscarIncidentexID.Text);
+                incidente.Empleado = new Empleado();
+                incidente.Empleado.Legajo = Legajo;
+                buscaIncidente = incidentenegocio.buscarIncidentePorIDyLegajo(incidente);
+                dgvIncidentes.DataSource = buscaIncidente;
+                dgvIncidentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex);
+
+            }
+        }
+
+        protected void dgvIncidentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvIncidentes.SelectedRow.BackColor = System.Drawing.Color.FromName("#24cb5f");       
+               
         }
 
         protected void btnMenuPrincipal_Click(object sender, EventArgs e)

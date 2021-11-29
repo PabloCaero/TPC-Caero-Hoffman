@@ -70,7 +70,7 @@ namespace TPC_Caero_Hoffman
                 throw ex;
             }
 
-            Response.Redirect("Default.aspx");
+            
 
         }
 
@@ -134,8 +134,30 @@ namespace TPC_Caero_Hoffman
                 throw ex;
             }
 
-            Response.Redirect("Default.aspx");
+            
 
+        }
+
+        protected void btnMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            int IDCargo = Convert.ToInt32((int)Session["_IDCargo"]);
+
+            switch (IDCargo)
+            {
+                case 1:
+                    Response.Redirect("frmMenuAdministrador.aspx");
+                    break;
+                case 2:
+                    Response.Redirect("frmMenuSupervisor.aspx");
+                    break;
+                case 3:
+                    Response.Redirect("frmMenuTelefonista.aspx");
+                    break;
+
+                default:
+                    Response.Redirect("Error.aspx");
+                    break;
+            }
         }
     }
 }

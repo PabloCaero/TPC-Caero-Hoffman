@@ -1,7 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmModificarCliente.aspx.cs" Inherits="TPC_Caero_Hoffman.frmModificarCliente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <div>
-    <h2>Modificar Cliente</h2>
+    
+     <!--BOTON VOLVER ATRÁS-->
+    <br />
+    <div style="text-align: right; width:990px" >
+       <asp:Button Text="Menú Principal" CssClass="btn btn-dark" ID="btnMenuPrincipal" OnClick="btnMenuPrincipal_Click" runat="server" />
+    </div>
+    
+    <div>
+    <h3>Modificar Cliente</h3>
     </div>
     <div>
      <div class="col-9">

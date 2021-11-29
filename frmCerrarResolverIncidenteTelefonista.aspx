@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmReabrirIncidente.aspx.cs" Inherits="TPC_Caero_Hoffman.frmReabrirIncidente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCerrarResolverIncidenteTelefonista.aspx.cs" Inherits="TPC_Caero_Hoffman.frmCerrarResolverIncidenteTelefonista" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-     <!--BOTON VOLVER ATRÁS-->
+    <!--BOTON VOLVER ATRÁS-->
     <br />
     <div style="text-align: right; width:990px" >
        <asp:Button Text="Menú Principal" CssClass="btn btn-dark" ID="btnMenuPrincipal" OnClick="btnMenuPrincipal_Click" runat="server" />
     </div>
 
-    <div>
-    <h3>Reabrir Incidente</h3>
+     <div>
+    <h3>Cerrar Incidente</h3>
     </div>
     
      <div class="col-9">
@@ -21,6 +21,7 @@
             <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false"
           
                 DataKeyNames="ID" OnSelectedIndexChanging="dgvIncidentes_SelectedIndexChanging"
+                
                 >
                 <Columns>
                   
@@ -41,12 +42,17 @@
 
 
               <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
-            <asp:Label ID="lblIDIncidente" runat="server" Visible="false"/>
+            <asp:Label ID="lblIDIncidente" runat="server" Visible ="false" />
            </div>
          </div>
 
-    <asp:Button Text="Reabrir Incidente" ID="btnReabrirIncidente" OnClick="btnReabrirIncidente_Click" runat="server" />
     
-
+    <!--COMENTARIO FINAL DEL INCIDENTE-->
+     <div class="col-9">
+    <label for="inputEmail4" class="form-label">Describa los detalles de cierre del incidente: </label>
+        <asp:TextBox type="text" runat="server"  class="form-control" id="txtComentarioFinal" Height="50px" />
+        <asp:Button ID="btnCerrarIncidente" runat="server" OnClick="btnCerrarIncidente_Click" Text="Cerrar Incidente" />  
+         <asp:Button ID="btnResolverIncidente" runat="server" OnClick="btnResolverIncidente_Click" Text="Resolver Incidente" />  
+     </div>
 
 </asp:Content>
