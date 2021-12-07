@@ -220,6 +220,52 @@ namespace Negocio
 
         }
 
+        public List<Cliente> buscarApellido(Cliente buscar)
+        {
+            List<Cliente> lista = new List<Cliente>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select C.ID, C.NOMBRE, C.APELLIDO, C.DNI, C.IDDIRECCION, D.CALLE, D.ALTURA, D.LOCALIDAD, D.CODIGOPOSTAL, D.PROVINCIA, C.EMAIL, C.TELEFONO, C.FECHANACIMIENTO From Clientes C INNER JOIN Direccion D ON C.IDDIRECCION = D.ID AND C.APELLIDO LIKE '%" + buscar.Apellido + "%'");
+                datos.ejecturaLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Cliente aux = new Cliente();
+                    aux.IDCliente = (int)datos.Lector["ID"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Dni = (string)datos.Lector["DNI"];
+                    aux.Email = (string)datos.Lector["EMAIL"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Fecha_Nac = (DateTime)datos.Lector["FECHANACIMIENTO"];//ES ESTO
+
+                    aux.Direccion = new Direccion();
+                    aux.Direccion.IDDireccion = (int)datos.Lector["IDDIRECCION"];
+                    aux.Direccion.Calle = (string)datos.Lector["CALLE"];
+                    aux.Direccion.Numero = (int)datos.Lector["ALTURA"];
+                    aux.Direccion.Localidad = (string)datos.Lector["LOCALIDAD"];
+                    aux.Direccion.Codigo_Postal = (string)datos.Lector["CODIGOPOSTAL"];
+                    aux.Direccion.Provincia = (string)datos.Lector["PROVINCIA"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
         public List<Cliente> buscarFecha(Cliente buscar)
         {
             List<Cliente> lista = new List<Cliente>();

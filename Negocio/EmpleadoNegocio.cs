@@ -227,6 +227,44 @@ namespace Negocio
 
         }
 
+        public List<Empleado> buscarApellido(Empleado buscar)
+        {
+            List<Empleado> lista = new List<Empleado>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select E.ID, E.DNI, E.NOMBRE, E.APELLIDO, E.IDCARGO, C.NOMBRECARGO, E.EMAIL, E.TELEFONO From Empleados E INNER JOIN Cargos C ON C.ID = E.IDCARGO Where E.APELLIDO LIKE '%" + buscar.Apellido + "%'");
+                datos.ejecturaLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Empleado aux = new Empleado();
+                    aux.Legajo = (int)datos.Lector["ID"];
+                    aux.Dni = (string)datos.Lector["DNI"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Email = (string)datos.Lector["EMAIL"];
+                    aux.Cargo = new Cargo();
+                    aux.Cargo.IDCargo = (int)datos.Lector["IDCARGO"];
+                    aux.Cargo.Nombre_Cargo = (string)datos.Lector["NOMBRECARGO"];
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
         public Empleado buscarNombreUsuario(Empleado buscar)
         {
             
