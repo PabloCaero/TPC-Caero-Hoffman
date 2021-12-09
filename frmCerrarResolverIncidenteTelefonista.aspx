@@ -16,7 +16,8 @@
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexID" />
         <asp:Button ID="btnBuscarIncidentexID" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
    
-       
+         <asp:Button ID="btnMisIncidentesPendientes" runat="server" OnClick="btnMisIncidentesPendientes_Click" Text="Mis Incidentes" />
+
         <div class="row" > 
             <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false"
           

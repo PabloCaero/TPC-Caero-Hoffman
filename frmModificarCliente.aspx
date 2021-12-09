@@ -14,7 +14,11 @@
      <div class="col-9">
     <label for="inputEmail4" class="form-label">Ingrese DNI</label>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
-        <asp:Button ID="btnBuscarClientexDNI" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />  
+        <asp:Button ID="btnBuscarClientexDNI" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />
+         
+          <label for="inputEmail4" class="form-label">Ingrese Apellido</label>
+        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexApellido" />
+        <asp:Button ID="btnBuscarClientexApellido" runat="server" OnClick="btnBuscarClientexApellido_Click" Text="Buscar" />  
    
         <div class="row" > 
             <asp:GridView ID="dgvClientes" CssClass="table table-success table-striped" runat="server"

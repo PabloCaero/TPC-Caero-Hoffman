@@ -42,6 +42,15 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexID;
 
         /// <summary>
+        /// Control btnMisIncidentesPendientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMisIncidentesPendientes;
+
+        /// <summary>
         /// Control dgvIncidentes.
         /// </summary>
         /// <remarks>

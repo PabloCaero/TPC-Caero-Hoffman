@@ -177,5 +177,23 @@ namespace TPC_Caero_Hoffman
                     break;
             }
         }
+
+        protected void btnMisIncidentesPendientes_Click(object sender, EventArgs e)
+        {
+            Incidente incidente = new Incidente();
+            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
+            int Legajo = Convert.ToInt32(Session["_Legajo"]);
+            try
+            {              
+                buscaIncidente = incidentenegocio.buscarIncidentesxLegajoAsignado(Legajo);
+                dgvIncidentes.DataSource = buscaIncidente;
+                dgvIncidentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
+        }
     }
 }

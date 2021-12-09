@@ -61,5 +61,23 @@ namespace TPC_Caero_Hoffman
                     break;
             }
         }
+
+        protected void btnBuscarEmpleadoxApellido_Click(object sender, EventArgs e)
+        {
+            Empleado empleado = new Empleado();
+            EmpleadoNegocio empleadonegocio = new EmpleadoNegocio();
+
+            try
+            {
+                empleado.Apellido = txtBuscarEmpleadoxApellido.Text;
+                buscaEmpleado = empleadonegocio.buscarApellido(empleado);
+                dgvEmpleados.DataSource = buscaEmpleado;
+                dgvEmpleados.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
+        }
     }
 }

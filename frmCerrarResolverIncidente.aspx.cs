@@ -172,5 +172,45 @@ namespace TPC_Caero_Hoffman
                     break;
             }
         }
+
+        protected void btnBuscarIncidentexApeEmpleado_Click(object sender, EventArgs e)
+        {
+            Incidente incidente = new Incidente();
+            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
+
+            try
+            {
+                incidente.Empleado = new Empleado();
+                incidente.Empleado.Apellido = txtBuscarIncidentexApeEmpleado.Text;
+                buscaIncidente = incidentenegocio.buscarApellidoEmpleado(incidente);
+                dgvIncidentes.DataSource = buscaIncidente;
+                dgvIncidentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
+        }
+
+        protected void btnBuscarIncidentexApeCliente_Click(object sender, EventArgs e)
+        {
+            Incidente incidente = new Incidente();
+            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
+
+            try
+            {
+                incidente.Cliente = new Cliente();
+                incidente.Cliente.Apellido = txtBuscarIncidentexApeCliente.Text;
+                buscaIncidente = incidentenegocio.buscarApellidoCliente(incidente);
+                dgvIncidentes.DataSource = buscaIncidente;
+                dgvIncidentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
+        }
     }
 }

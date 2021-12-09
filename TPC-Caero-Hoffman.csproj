@@ -148,12 +148,6 @@
     <Content Include="frmOlvideMiContraseña.aspx" />
     <Content Include="frmReabrirIncidente.aspx" />
     <Content Include="frmReasignarIncidente.aspx" />
-    <Content Include="GestionCargos.aspx" />
-    <Content Include="GestionClientes.aspx" />
-    <Content Include="GestionDirecciones.aspx" />
-    <Content Include="GestionEmpleados.aspx" />
-    <Content Include="GestionEstados.aspx" />
-    <Content Include="GestionIncidentes.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -366,48 +360,6 @@
     </Compile>
     <Compile Include="frmReasignarIncidente.aspx.designer.cs">
       <DependentUpon>frmReasignarIncidente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestionCargos.aspx.cs">
-      <DependentUpon>GestionCargos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestionCargos.aspx.designer.cs">
-      <DependentUpon>GestionCargos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestionClientes.aspx.cs">
-      <DependentUpon>GestionClientes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestionClientes.aspx.designer.cs">
-      <DependentUpon>GestionClientes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestionDirecciones.aspx.cs">
-      <DependentUpon>GestionDirecciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestionDirecciones.aspx.designer.cs">
-      <DependentUpon>GestionDirecciones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestionEmpleados.aspx.cs">
-      <DependentUpon>GestionEmpleados.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestionEmpleados.aspx.designer.cs">
-      <DependentUpon>GestionEmpleados.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestionEstados.aspx.cs">
-      <DependentUpon>GestionEstados.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestionEstados.aspx.designer.cs">
-      <DependentUpon>GestionEstados.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestionIncidentes.aspx.cs">
-      <DependentUpon>GestionIncidentes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestionIncidentes.aspx.designer.cs">
-      <DependentUpon>GestionIncidentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
