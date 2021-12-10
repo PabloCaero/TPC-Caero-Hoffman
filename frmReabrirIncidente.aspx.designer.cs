@@ -42,6 +42,42 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexID;
 
         /// <summary>
+        /// Control txtBuscarIncidentexApeCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarIncidentexApeCliente;
+
+        /// <summary>
+        /// Control btnBuscarIncidentexApeCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexApeCliente;
+
+        /// <summary>
+        /// Control txtBuscarIncidentexApeEmpleado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarIncidentexApeEmpleado;
+
+        /// <summary>
+        /// Control btnBuscarIncidentexApeEmpleado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexApeEmpleado;
+
+        /// <summary>
         /// Control dgvIncidentes.
         /// </summary>
         /// <remarks>

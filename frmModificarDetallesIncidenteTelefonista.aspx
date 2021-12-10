@@ -14,7 +14,11 @@
      <div class="col-9">
     <label for="inputEmail4" class="form-label">Buscar por ID de Incidente</label>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexID" />
-        <asp:Button ID="btnBuscarIncidentexID" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
+        <asp:Button ID="btnBuscarIncidentexID" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" /> 
+         
+             <label for="inputEmail4" class="form-label">Buscar por Apellido Cliente</label>
+        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeCliente" />
+        <asp:Button ID="btnBuscarIncidentexApeClienteyLegajo" runat="server" OnClick="btnBuscarIncidentexApeClienteyLegajo_Click" Text="Buscar" /> 
    
          <div>
         <div class="row" > 

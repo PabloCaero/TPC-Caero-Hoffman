@@ -14,7 +14,13 @@
      <div class="col-9">
     <label for="inputEmail4" class="form-label">Ingrese Legajo</label>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxID" />
-        <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />  
+        <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" /> 
+         
+          <label for="inputEmail4" class="form-label">Ingrese Apellido</label>
+        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxApellido" />
+        <asp:Button ID="btnBuscarEmpleadoxApellido" runat="server" OnClick="btnBuscarEmpleadoxApellido_Click" Text="Buscar" />
+
+
    
         <div class="row" > 
             <asp:GridView ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server"
