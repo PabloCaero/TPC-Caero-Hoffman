@@ -20,6 +20,11 @@ namespace TPC_Caero_Hoffman
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
+            //IMPORTANTE PARA VALIDAR
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+            
             Empleado empleado = new Empleado();
             EmpleadoNegocio negocio = new EmpleadoNegocio();
             

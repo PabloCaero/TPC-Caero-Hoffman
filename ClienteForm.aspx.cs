@@ -22,6 +22,11 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCargarCliente_Click(object sender, EventArgs e)
         {
+            //IMPORTANTE PARA VALIDAR
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+
             try
             {
                 Cliente cliente = new Cliente();
