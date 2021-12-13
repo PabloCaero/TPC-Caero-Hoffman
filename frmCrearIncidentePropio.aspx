@@ -1,6 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmCrearIncidentePropio.aspx.cs" Inherits="TPC_Caero_Hoffman.frmCrearIncidentePropio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <script>    
+        function validar() {
+            var detalles = document.getElementById("txtDetalles").value;
+            var valido = true;
+
+            if (detalles === "") {
+                $("#txtDetalles").removeClass("is-valid");
+                $("#txtDetalles").addClass("is-invalid");
+                valido = false;
+            }
+            else {
+                $("#txtDetalles").removeClass("is-invalid");
+                $("#txtDetalles").addClass("is-valid");
+            }
+
+           
+
+            if (!valido) {
+                return false;
+            }
+
+            return true;
+
+        }
+
+    </script>
 
     <!--BOTON VOLVER ATRÁS-->
     <br />
@@ -63,7 +89,7 @@
     <!--DETALLES DEL INCIDENTE-->
      <div class="col-9">
     <label for="inputEmail4" class="form-label">Describa los detalles del incidente: </label>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtDetalles" Height="50px" />
+        <asp:TextBox type="text" runat="server"  ClientIDMode="Static"  CssClass="form-control" id="txtDetalles" Height="50px" />
         <asp:Button ID="btnCrearIncidente" runat="server" OnClick="btnCrearIncidente_Click" Text="Crear Incidente" />  
      </div>
 

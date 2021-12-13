@@ -96,6 +96,11 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCrearIncidente_Click(object sender, EventArgs e)
         {
+            //IMPORTANTE PARA VALIDAR
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+
             try
             { 
 
@@ -141,15 +146,15 @@ namespace TPC_Caero_Hoffman
             try
             {
                 emailService.enviarMail();
-              lblConfirmacion.Text = "Atención: Incidente creado, regrese al Menú Principal.";
+                lblConfirmacion.Text = "Atención: Incidente creado, regrese al Menú Principal.";
 
-                }
-                catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
-                    lblConfirmacion.Text = "Atencion: Incidente creado, no se envió mail de apertura al empleado.";
+                lblConfirmacion.Text = "Atencion: Incidente creado, no se envió mail de apertura al empleado.";
 
-                }
+            }
             }
             catch (Exception ex)
             {

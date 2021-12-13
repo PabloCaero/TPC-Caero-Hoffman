@@ -137,11 +137,6 @@
                 $("#txtProvincia").addClass("is-valid");
             }
 
-
-
-
-            
-
             if (!valido) {
                 return false;
             }
@@ -172,43 +167,43 @@
   </div>
   <div class="col-md-6">
     <label for="inputAddress" class="form-label">Apellido/s</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static"  class="form-control" id="txtApellido" />
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static"  CssClass="form-control" id="txtApellido" />
   </div>
           <div class="col-md-6">
     <label for="inputAddress" class="form-label">DNI</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtDNI"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtDNI"/>
   </div>
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Email</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtEmail"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtEmail"/>
   </div>
      <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Teléfono</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtTelefono"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtTelefono"/>
   </div>
          <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Fecha de Nacimiento</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtFechaNacimiento" placeholder="DD/MM/AAAA"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtFechaNacimiento" placeholder="DD/MM/AAAA"/>
   </div>
   <div class="col-md-6">
     <label for="inputAddress" class="form-label">Calle</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtCalle"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtCalle"/>
   </div>
         <div class="col-md-2">
     <label for="inputAddress" class="form-label">Altura</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtAltura" placeholder="1234"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtAltura" placeholder="1234"/>
   </div>
         <div class="col-md-2">
     <label for="inputZip" class="form-label">Código Postal</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtCodigoPostal"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtCodigoPostal"/>
   </div>
   <div class="col-md-6">
     <label for="inputCity" class="form-label">Localidad</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtLocalidad"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtLocalidad"/>
   </div>
    <div class="col-md-6">
     <label for="inputCity" class="form-label">Provincia</label>
-    <asp:TextBox type="text" runat="server" ClientIDMode="Static" class="form-control" id="txtProvincia"/>
+    <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtProvincia"/>
   </div>
   
   <div class="col-md-6">

@@ -32,12 +32,23 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCerrarIncidente_Click(object sender, EventArgs e)
         {
+
             try
             {
                 IncidenteNegocio negocioIncidente = new IncidenteNegocio();
                 Incidente nuevo = new Incidente();
+                Incidente consulta = new Incidente();
 
+                
                 nuevo.ID = int.Parse(lblIDIncidente.Text);
+
+                //VERIFICO EL ESTADO DEL INCIDENTE
+                consulta = negocioIncidente.buscarIndividualID(nuevo);
+                if(consulta.Estado.IDEstado == 6)
+                {
+                    lblConfirmacion.Text = "Este incidente se encuentra RESUELTO, no se puede CERRAR";        
+                }
+
                 nuevo.Detalles = txtComentarioFinal.Text;
                 negocioIncidente.cerrarIncidente(nuevo);
 

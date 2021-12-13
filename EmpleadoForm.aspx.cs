@@ -45,6 +45,11 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCargarEmpleado_Click(object sender, EventArgs e)
         {
+            //IMPORTANTE PARA VALIDAR
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+
             try
             {
                 Empleado empleado = new Empleado();
