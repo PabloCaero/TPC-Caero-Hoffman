@@ -64,7 +64,7 @@
 
             <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblIDCliente" runat="server" Visible="false" />
-            <asp:Label ID="lblClienteSeleccionado" runat="server" />
+            <asp:Label ID="lblClienteSeleccionado" Font-Bold="true" runat="server" />
 
         </div>
         </div>
