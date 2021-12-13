@@ -11,23 +11,34 @@
     <h3>Buscar Incidente</h3>
     </div>
     
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Buscar por ID de Incidente</label>
+     
+    <label for="inputEmail4" class="form-label">Por ID</label>
+       <div class="alinear">
+         <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexID" />
-        <asp:Button ID="btnBuscarIncidentexID" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
-   
-        <label for="inputEmail4" class="form-label">Buscar por Apellido Cliente</label>
+         </div>
+        <asp:Button ID="btnBuscarIncidentexID" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" /> 
+        </div>
+         
+        <label for="inputEmail4" class="form-label">Por Apellido Cliente</label>
+    <div class="alinear">
+         <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeCliente" />
-        <asp:Button ID="btnBuscarIncidentexApeCliente" runat="server" OnClick="btnBuscarIncidentexApeCliente_Click" Text="Buscar" /> 
+         </div>
+        <asp:Button ID="btnBuscarIncidentexApeCliente" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeCliente_Click" Text="Buscar" /> 
+       </div>
 
-         <label for="inputEmail4" class="form-label">Buscar por Apellido Empleado</label>
+         <label for="inputEmail4" class="form-label">Por Apellido Empleado</label>
+    <div class="alinear">
+         <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeEmpleado" />
-        <asp:Button ID="btnBuscarIncidentexApeEmpleado" runat="server" OnClick="btnBuscarIncidentexApeEmpleado_Click" Text="Buscar" /> 
-
+          </div>
+        <asp:Button ID="btnBuscarIncidentexApeEmpleado" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeEmpleado_Click" Text="Buscar" /> 
+       </div>
 
          <div>
         <div class="row" > 
-            <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false" >
+            <asp:GridView ID="dgvIncidentes" CssClass="table table-hover table-info" runat="server" AutoGenerateColumns="false" >
                 <Columns>
                   <asp:BoundField DataField="ID" HeaderText="Numero de Incidente"/>   
                   <asp:BoundField DataField="Fecha_inicio" HeaderText="Fecha de Inicio" DataFormatString="{0:d}"  HtmlEncode=false />   
@@ -46,6 +57,6 @@
             </asp:GridView>
         </div>
         </div>
-         </div>
+       
 
 </asp:Content>

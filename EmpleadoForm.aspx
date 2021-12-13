@@ -202,7 +202,8 @@
 
          <div class="col-md-6">
          <label for="inputEmail4" class="form-label">Cargo</label>
-         <asp:DropDownList runat="server" ID="ddlCargos" CssClass="btn btn-outline-dark dropdown-toggle" AutoPostBack="true" >
+             <br />
+         <asp:DropDownList runat="server" ID="ddlCargos" CssClass="btn btn-primary dropdown-toggle" AutoPostBack="true" >
          </asp:DropDownList>
              </div>
 

@@ -10,18 +10,26 @@
      <div>
     <h3>Buscar Empleado</h3>
     </div>
-    <div>
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Ingrese Legajo</label>
+    
+     
+        <label for="inputEmail4" class="form-label">Por Legajo</label>
+    <div class="alinear">
+        <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxID" />
-        <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />
+        </div>
+        <asp:Button ID="btnBuscarEmpleadoxLegajo" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />
+      </div>
          
-         <label for="inputEmail4" class="form-label">Ingrese Apellido</label>
+         <label for="inputEmail4" class="form-label">Por Apellido</label>
+    <div class="alinear">
+        <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxApellido" />
-        <asp:Button ID="btnBuscarEmpleadoxApellido" runat="server" OnClick="btnBuscarEmpleadoxApellido_Click" Text="Buscar" />
-   
+        </div>
+        <asp:Button ID="btnBuscarEmpleadoxApellido" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarEmpleadoxApellido_Click" Text="Buscar" />
+       </div>
+
         <div class="row" > 
-            <asp:GridView ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server"
+            <asp:GridView ID="dgvEmpleados" CssClass="table table-hover table-info" runat="server"
                 AutoGenerateColumns="false"          
                 DataKeyNames="Legajo" 
                 >
@@ -56,7 +64,7 @@
 
             </asp:GridView>
         </div>
-        </div>
-       </div>
+      
+    
 
 </asp:Content>
