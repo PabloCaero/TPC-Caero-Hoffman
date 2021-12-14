@@ -13,17 +13,19 @@
     <h3>Buscar Cliente</h3>
     </div>
     
-         <div>
+       <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
          <label for="inputEmail4" class="form-label">Por DNI</label>
-         </div>
-
      <div class="alinear"> 
          <div>
          <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
          </div>        
          <asp:Button ID="btnBuscarClientexDNI" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />          
       </div>
+               </div>
 
+              <div class="col-md-4">
           <label for="inputEmail4" class="form-label">Por Apellido</label>
          <div class="alinear">
              <div>
@@ -31,6 +33,9 @@
                </div>
         <asp:Button ID="btnBuscarClientexApellido" runat="server" CssClass="btn btn-primary mb-2" OnClick="btnBuscarClientexApellido_Click" Text="Buscar" />
               </div>
+                  </div>
+            </div>
+        </div>
 
         <div class="row" > 
             <asp:GridView ID="dgvClientes" CssClass="table table-hover table-info" runat="server" AutoGenerateColumns="false">

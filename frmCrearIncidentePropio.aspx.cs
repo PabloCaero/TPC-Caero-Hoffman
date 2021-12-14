@@ -136,11 +136,10 @@ namespace TPC_Caero_Hoffman
         }
 
         protected void dgvClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            
+        {         
             GridViewRow row = dgvClientes.Rows[e.NewSelectedIndex];
             lblIDCliente.Text = row.Cells[0].Text;
-            lblClienteSeleccionado.Text = "Cliente Seleccionado";
+            lblClienteSeleccionado.Text = "Cliente #" + lblIDCliente.Text+" Seleccionado";
         }
 
         protected void btnMenuPrincipal_Click(object sender, EventArgs e)

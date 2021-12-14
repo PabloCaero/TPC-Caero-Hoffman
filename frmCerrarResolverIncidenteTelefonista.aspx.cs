@@ -26,9 +26,8 @@ namespace TPC_Caero_Hoffman
         protected void dgvIncidentes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
-
             lblIDIncidente.Text = row.Cells[0].Text;
-            lblIncidenteSeleccionado.Text = "Incidente Seleccionado";
+            lblIncidenteSeleccionado.Text = "Incidente #" + lblIDIncidente.Text + " Seleccionado";
         }
 
         protected void btnCerrarIncidente_Click(object sender, EventArgs e)
@@ -209,13 +208,86 @@ namespace TPC_Caero_Hoffman
             }
         }
 
-        protected void btnMisIncidentesPendientes_Click(object sender, EventArgs e)
+
+        protected void btnAbiertos_Click(object sender, EventArgs e)
         {
             Incidente incidente = new Incidente();
             IncidenteNegocio incidentenegocio = new IncidenteNegocio();
             int Legajo = Convert.ToInt32(Session["_Legajo"]);
             try
-            {              
+            {
+                buscaIncidente = incidentenegocio.buscarIncidentesxLegajoAsignadoyEstadoAbierto(Legajo);
+                dgvIncidentes.DataSource = buscaIncidente;
+                dgvIncidentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
+        }
+
+        protected void btnEnAnalisis_Click(object sender, EventArgs e)
+        {
+            Incidente incidente = new Incidente();
+            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
+            int Legajo = Convert.ToInt32(Session["_Legajo"]);
+            try
+            {
+                buscaIncidente = incidentenegocio.buscarIncidentesxLegajoAsignadoyEstadoEnAnalisis(Legajo);
+                dgvIncidentes.DataSource = buscaIncidente;
+                dgvIncidentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
+        }
+
+        protected void btnAsignados_Click(object sender, EventArgs e)
+        {
+            Incidente incidente = new Incidente();
+            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
+            int Legajo = Convert.ToInt32(Session["_Legajo"]);
+            try
+            {
+                buscaIncidente = incidentenegocio.buscarIncidentesxLegajoAsignadoyEstadoAsignado(Legajo);
+                dgvIncidentes.DataSource = buscaIncidente;
+                dgvIncidentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
+        }
+
+        protected void btnReabiertos_Click(object sender, EventArgs e)
+        {
+            Incidente incidente = new Incidente();
+            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
+            int Legajo = Convert.ToInt32(Session["_Legajo"]);
+            try
+            {
+                buscaIncidente = incidentenegocio.buscarIncidentesxLegajoAsignadoyEstadoReabierto(Legajo);
+                dgvIncidentes.DataSource = buscaIncidente;
+                dgvIncidentes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
+        }
+
+        protected void btnTodos_Click(object sender, EventArgs e)
+        {
+            Incidente incidente = new Incidente();
+            IncidenteNegocio incidentenegocio = new IncidenteNegocio();
+            int Legajo = Convert.ToInt32(Session["_Legajo"]);
+            try
+            {
                 buscaIncidente = incidentenegocio.buscarIncidentesxLegajoAsignado(Legajo);
                 dgvIncidentes.DataSource = buscaIncidente;
                 dgvIncidentes.DataBind();

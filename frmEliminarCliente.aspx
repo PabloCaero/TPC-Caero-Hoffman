@@ -10,18 +10,34 @@
      <div>
     <h3>Eliminar Cliente</h3>
     </div>
-    <div>
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Ingrese DNI</label>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
-        <asp:Button ID="btnBuscarClientexDNI" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />  
-   
-         <label for="inputEmail4" class="form-label">Ingrese Apellido</label>
+      
+
+      <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+         <label for="inputEmail4" class="form-label">Por DNI</label>
+     <div class="alinear"> 
+         <div>
+         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
+         </div>        
+         <asp:Button ID="btnBuscarClientexDNI" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />          
+      </div>
+               </div>
+
+              <div class="col-md-4">
+          <label for="inputEmail4" class="form-label">Por Apellido</label>
+         <div class="alinear">
+             <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexApellido" />
-        <asp:Button ID="btnBuscarClientexApellido" runat="server" OnClick="btnBuscarClientexApellido_Click" Text="Buscar" /> 
+               </div>
+        <asp:Button ID="btnBuscarClientexApellido" runat="server" CssClass="btn btn-primary mb-2" OnClick="btnBuscarClientexApellido_Click" Text="Buscar" />
+              </div>
+                  </div>
+            </div>
+        </div>
 
         <div class="row" > 
-            <asp:GridView ID="dgvClientes" CssClass="table table-success table-striped" runat="server"
+            <asp:GridView ID="dgvClientes" CssClass="table table-hover table-info" runat="server"
                 AutoGenerateColumns="false" 
                 
                           
@@ -70,10 +86,14 @@
 
             </asp:GridView>
 
-            <asp:Label ID="lblConfirmacion" runat="server" Font-Bold="true"/>
+            <br />
+
+          <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+              <asp:Label ID="lblConfirmacion" CssClass="center" runat="server" Font-Bold="true"/>                                   
+              </div>
+
         </div>
-        </div>
-       </div>
+        
 
 
 </asp:Content>

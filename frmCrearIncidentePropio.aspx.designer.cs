@@ -60,6 +60,15 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnBuscarClientexApellido;
 
         /// <summary>
+        /// Control lblClienteSeleccionado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblClienteSeleccionado;
+
+        /// <summary>
         /// Control dgvClientes.
         /// </summary>
         /// <remarks>
@@ -76,15 +85,6 @@ namespace TPC_Caero_Hoffman
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIDCliente;
-
-        /// <summary>
-        /// Control lblClienteSeleccionado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblClienteSeleccionado;
 
         /// <summary>
         /// Control ddlEspecialidad.
