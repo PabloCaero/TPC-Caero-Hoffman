@@ -5,29 +5,58 @@
     <br />
     <div style="text-align: right; width:990px" >
        <asp:Button Text="Menú Principal" CssClass="btn btn-dark" ID="btnMenuPrincipal" OnClick="btnMenuPrincipal_Click" runat="server" />
+   
     </div>
 
     <div>
     <h3>Cerrar Incidente</h3>
     </div>
     
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Buscar Incidente por ID</label>
+    <div class="container">
+        <div class="row align-items-start">
+
+            <div class="col">
+    <label for="inputEmail4" class="form-label">Buscar por ID</label>
+    <div class="alinear">
+        <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexID" />
-        <asp:Button ID="btnBuscarIncidentexID" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
-   
+          </div>
+            <asp:Button ID="btnBuscarIncidentexID" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
+       </div>
+                </div>
+
+             <div class="col">
           <label for="inputEmail4" class="form-label">Buscar por Apellido Cliente</label>
+    <div class="alinear">
+        <div>    
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeCliente" />
-        <asp:Button ID="btnBuscarIncidentexApeCliente" runat="server" OnClick="btnBuscarIncidentexApeCliente_Click" Text="Buscar" /> 
+         </div>
+            <asp:Button ID="btnBuscarIncidentexApeCliente" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeCliente_Click" Text="Buscar" /> 
+       </div>
+                </div>
 
-         <label for="inputEmail4" class="form-label">Buscar por Apellido Empleado</label>
+             <div class="col">
+        <label for="inputEmail4" class="form-label">Buscar por Apellido Empleado</label>
+    <div class="alinear">
+        <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeEmpleado" />
-        <asp:Button ID="btnBuscarIncidentexApeEmpleado" runat="server" OnClick="btnBuscarIncidentexApeEmpleado_Click" Text="Buscar" /> 
+          </div>
+        <asp:Button ID="btnBuscarIncidentexApeEmpleado" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeEmpleado_Click" Text="Buscar" /> 
+        </div>
+            </div>
+            </div>
 
+        </div>
+     
+        <br />
 
-       
+          <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+        <asp:Label ID="lblIncidenteSeleccionado" CssClass="center" runat="server" Font-Bold="true"/>
+              </div>
+
+        <br />
         <div class="row" > 
-            <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false"
+            <asp:GridView ID="dgvIncidentes" CssClass="table table-hover table-info" runat="server" AutoGenerateColumns="false"
           
                 DataKeyNames="ID" OnSelectedIndexChanging="dgvIncidentes_SelectedIndexChanging"
                 >
@@ -47,23 +76,36 @@
                 </Columns>
 
             </asp:GridView>
-            <asp:Label ID="lblIncidenteSeleccionado" runat="server" Font-Bold="true"/>
+            
 
               <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblIDIncidente" runat="server" Visible ="false" />
            </div>
-         </div>
+        
 
     
     <!--COMENTARIO FINAL DEL INCIDENTE-->
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Describa los detalles de cierre del incidente: </label>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtComentarioFinal" Height="50px" />
-        <asp:Button ID="btnCerrarIncidente" runat="server" OnClick="btnCerrarIncidente_Click" Text="Cerrar Incidente" />  
-         <asp:Button ID="btnResolverIncidente" runat="server" OnClick="btnResolverIncidente_Click" Text="Resolver Incidente" />  
-     </div>
 
-        <asp:Label ID="lblConfirmacion" runat="server" Font-Bold="true"/>
+        <div class="container">
+        <div class="row">
+         <div class="col-sm-5 col-md-6">
+         <asp:TextBox type="text" runat="server" PlaceHolder="COMENTARIO FINAL"   class="form-control" id="txtComentarioFinal" Height="80px" />
+           </div>
+        
+         
+        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+         <asp:Button ID="btnCerrarIncidente" CssClass="btn btn-lg btn-danger" runat="server" OnClick="btnCerrarIncidente_Click" Text="Cerrar Incidente" />  
+        <asp:Button ID="btnResolverIncidente" CssClass="btn btn-lg btn-success" runat="server" OnClick="btnResolverIncidente_Click" Text="Resolver Incidente" />            
+            </div>
+
+            </div>
+          </div>
+
+        <br />
+
+          <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+              <asp:Label ID="lblConfirmacion" CssClass="center" runat="server" Font-Bold="true"/>                                   
+              </div>
 
 
 </asp:Content>

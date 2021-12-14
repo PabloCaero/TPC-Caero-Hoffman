@@ -25,6 +25,9 @@
      </script>
 
     <script type="text/javascript">
+
+       
+
         function mostrarPassword() {
             var cambio = document.getElementById("txtPassword");
             if (cambio.type == "password") {
@@ -46,6 +49,11 @@
 
 
     <style>
+        .center{
+          text-align:center;          
+        }
+
+
     body{
         width: 1000px;
         height: 800px;

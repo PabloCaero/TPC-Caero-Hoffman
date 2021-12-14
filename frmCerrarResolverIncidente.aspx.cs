@@ -27,7 +27,7 @@ namespace TPC_Caero_Hoffman
         {
             GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
             lblIDIncidente.Text = row.Cells[0].Text;
-            lblIncidenteSeleccionado.Text = "Incidente Seleccionado";
+            lblIncidenteSeleccionado.Text = "Incidente #" + lblIDIncidente.Text + " Seleccionado";
         }
 
         protected void btnCerrarIncidente_Click(object sender, EventArgs e)
