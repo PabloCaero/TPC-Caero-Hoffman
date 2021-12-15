@@ -15,9 +15,8 @@ namespace TPC_Caero_Hoffman
         private List<Incidente> buscaIncidente;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["_NombreUsuario"] == null && (int)Session["_Cargo"] != 1)
-            {
-                Session.Add("Error", "Debes loguearte para ingresar");
+            if (Session["_NombreUsuario"] == null && (int)Session["_Cargo"] == 3)
+            {           
                 Response.Redirect("Error.aspx", false);
             }
 

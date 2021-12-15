@@ -13,12 +13,7 @@ namespace TPC_Caero_Hoffman
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["_NombreUsuario"] == null)
-            {
-                Session.Add("Error", "Debes loguearte para ingresar");
-                Response.Redirect("Error.aspx", false);
-            }
-            else
+            if (Session["_NombreUsuario"] != null && (int)Session["_IDCargo"] == 3)
             {
                 string Nombre = Session["_Nombre"] != null ? Session["_Nombre"].ToString() : "";
                 string Apellido = Session["_Apellido"] != null ? Session["_Apellido"].ToString() : "";
@@ -29,6 +24,11 @@ namespace TPC_Caero_Hoffman
                 lblNombre.Text = Apellido + ", " + Nombre;
                 lblLegajo.Text = Legajo.ToString();
                 lblNombreCargo.Text = NombreCargo;
+            }
+            else
+            {
+                Session.Add("Error", "Debes loguearte para ingresar");
+                Response.Redirect("Error.aspx", false);
             }
 
         }
