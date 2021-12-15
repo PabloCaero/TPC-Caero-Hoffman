@@ -235,11 +235,20 @@
     <label for="inputZip" class="form-label">Código Postal</label>
     <asp:TextBox type="text" runat="server" CssClass="form-control" ClientIDMode="Static" id="txtCodigoPostal"/>
   </div>
-  <div class="col-12">
-      <asp:Button Text="Cargar Empleado" runat="server" ID="btnCargarEmpleado" OnClientClick="return validar()" OnClick="btnCargarEmpleado_Click" />
-  </div>
   </div>
 
-    <asp:Label ID="lblConfirmacion" runat="server" Font-Bold="true"/>
+  
+     <br />
+    <div class="container">
+        <div class="row align-content-center">
+               <asp:Button Text="Cargar Empleado"  CssClass="btn btn-primary btn-lg" runat="server" ID="btnCargarEmpleado" OnClientClick="return validar()" OnClick="btnCargarEmpleado_Click" />     
+            </div>
+        </div>
+
+     <br />
+
+          <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+              <asp:Label ID="lblConfirmacion" CssClass="center" runat="server" Font-Bold="true"/>                                   
+              </div>
 
 </asp:Content>

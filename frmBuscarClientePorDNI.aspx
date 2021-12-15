@@ -36,6 +36,7 @@
                   </div>
             </div>
         </div>
+    <br />
 
         <div class="row" > 
             <asp:GridView ID="dgvClientes" CssClass="table table-hover table-info" runat="server" AutoGenerateColumns="false">

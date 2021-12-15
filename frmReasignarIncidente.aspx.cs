@@ -48,14 +48,14 @@ namespace TPC_Caero_Hoffman
         {
             GridViewRow row = dgvEmpleados.Rows[e.NewSelectedIndex];
             lblLegajoEmpleado.Text = row.Cells[0].Text;
-            lblSeleccionEmpleado.Text = "Empleado seleccionado.";
+            lblSeleccionEmpleado.Text = "Empleado de Leg. " + lblLegajoEmpleado.Text+ " Seleccionado.";
         }
 
         protected void dgvIncidentes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
             lblIDIncidente.Text = row.Cells[0].Text;
-            lblSeleccionEmpleado.Text = "Incidente seleccionado.";
+            lblSeleccionIncidente.Text = "Incidente #"+ lblIDIncidente.Text+ " Seleccionado.";
         }
 
         protected void btnReasignarIncidente_Click(object sender, EventArgs e)
@@ -192,6 +192,25 @@ namespace TPC_Caero_Hoffman
             {
                 Session.Add("error", ex);
 
+            }
+        }
+
+        protected void btnBuscarEmpleadoxApellido_Click(object sender, EventArgs e)
+        {
+            Empleado empleado = new Empleado();
+            EmpleadoNegocio empleadonegocio = new EmpleadoNegocio();
+
+            try
+            {
+                empleado.Apellido = txtBuscarEmpleadoxApellido.Text;
+                buscaEmpleado = empleadonegocio.buscarApellido(empleado);
+                dgvEmpleados.DataSource = buscaEmpleado;
+                dgvEmpleados.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
             }
         }
     }

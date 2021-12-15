@@ -50,77 +50,84 @@ namespace TPC_Caero_Hoffman
         {
             GridViewRow row = dgvIncidentes.Rows[e.NewSelectedIndex];
             lblIDIncidente.Text = row.Cells[0].Text;
-            lblSeleccion.Text = "Incidente seleccionado";
+            lblSeleccion.Text = "Incidente #" + lblIDIncidente.Text +" Seleccionado";
         }
 
         protected void btnReabrirIncidente_Click(object sender, EventArgs e)
         {
-            IncidenteNegocio negocioIncidente = new IncidenteNegocio();
-            Incidente nuevo = new Incidente();
-            Incidente consulta = new Incidente();
-
-            nuevo.ID = int.Parse(lblIDIncidente.Text);
-
-            //VERIFICO EL ESTADO DEL INCIDENTE
-            consulta = negocioIncidente.buscarIndividualID(nuevo);
-
-            switch (consulta.Estado.IDEstado)
+            try
             {
-                case 1:
-                    lblConfirmacion.Text = "Este incidente se encuentra ABIERTO, no se puede REABRIR";
-                    break;
-                case 2:
-                    lblConfirmacion.Text = "Este incidente se encuentra EN ANALISIS, no se puede REABRIR";
-                    break;
-                case 4:
-                    lblConfirmacion.Text = "Este incidente se encuentra REABIERTO, no se puede REABRIR";
-                    break;
-                case 5:
-                    lblConfirmacion.Text = "Este incidente se encuentra ASIGNADO, no se puede REABRIR";
-                    break;
-                default:
-                    try
-                    {
-                        negocioIncidente.reabrirIncidente(nuevo);
+                IncidenteNegocio negocioIncidente = new IncidenteNegocio();
+                Incidente nuevo = new Incidente();
+                Incidente consulta = new Incidente();
 
+                nuevo.ID = int.Parse(lblIDIncidente.Text);
 
-                        //ENVIA MAIL AL CLIENTE
-                        IncidenteNegocio negocio = new IncidenteNegocio();
-                        Incidente ultimo = new Incidente();
+                //VERIFICO EL ESTADO DEL INCIDENTE
+                consulta = negocioIncidente.buscarIndividualID(nuevo);
 
-                        ultimo = negocio.buscarIndividualID(nuevo);
-
-                        EmailService emailService = new EmailService();
-                        emailService.armarCorreoIncidenteReabierto(ultimo);
+                switch (consulta.Estado.IDEstado)
+                {
+                    case 1:
+                        lblConfirmacion.Text = "Este incidente se encuentra ABIERTO, no se puede REABRIR";
+                        break;
+                    case 2:
+                        lblConfirmacion.Text = "Este incidente se encuentra EN ANALISIS, no se puede REABRIR";
+                        break;
+                    case 4:
+                        lblConfirmacion.Text = "Este incidente se encuentra REABIERTO, no se puede REABRIR";
+                        break;
+                    case 5:
+                        lblConfirmacion.Text = "Este incidente se encuentra ASIGNADO, no se puede REABRIR";
+                        break;
+                    default:
                         try
                         {
-                            emailService.enviarMail();
+                            negocioIncidente.reabrirIncidente(nuevo);
+
+
+                            //ENVIA MAIL AL CLIENTE
+                            IncidenteNegocio negocio = new IncidenteNegocio();
+                            Incidente ultimo = new Incidente();
+
+                            ultimo = negocio.buscarIndividualID(nuevo);
+
+                            EmailService emailService = new EmailService();
+                            emailService.armarCorreoIncidenteReabierto(ultimo);
+                            try
+                            {
+                                emailService.enviarMail();
+                            }
+                            catch (Exception ex)
+                            {
+                                lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto . No se envió mail al cliente.";
+
+                            }
+
+                            //ENVIA MAIL AL EMPLEADO  
+                            emailService.armarCorreoIncidenteReabiertoEmpleado(ultimo);
+                            try
+                            {
+                                emailService.enviarMail();
+                                lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto. Regrese al Menú Principal.";
+
+                            }
+                            catch (Exception ex)
+                            {
+                                lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto . No se envió mail al empleado. Regrese al Menú Principal.";
+                            }
                         }
                         catch (Exception ex)
                         {
-                            lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto . No se envió mail al cliente.";
-
+                            lblConfirmacion.Text = "Atención: Ocurrió un error. Regrese al Menú Principal.";
                         }
 
-                        //ENVIA MAIL AL EMPLEADO  
-                        emailService.armarCorreoIncidenteReabiertoEmpleado(ultimo);
-                        try
-                        {
-                            emailService.enviarMail();
-                            lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto. Regrese al Menú Principal.";
-
-                        }
-                        catch (Exception ex)
-                        {
-                            lblConfirmacion.Text = "Atención: Incidente #" + ultimo.ID + " reabierto . No se envió mail al empleado. Regrese al Menú Principal.";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        lblConfirmacion.Text = "Atención: Ocurrió un error. Regrese al Menú Principal.";
-                    }
-
-                    break;
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                lblConfirmacion.Text = "Atención: Ocurrió un error. Regrese al Menú Principal.";
             }
         }
 

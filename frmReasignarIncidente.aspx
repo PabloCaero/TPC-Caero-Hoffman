@@ -9,25 +9,55 @@
 
 
     <div>
-    <h3>Reasignar Incidente</h3>
+    <h3 >Reasignar Incidente</h3>
+    </div>
+    <div>
+        <h4 class="center">Seleccionar un Incidente</h4>
     </div>
     
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Buscar por ID de Incidente</label>
+    <div class="container">
+        <div class="row align-items-start">
+
+            <div class="col">
+    <label for="inputEmail4" class="form-label">Buscar por ID</label>
+    <div class="alinear">
+        <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexID" />
-        <asp:Button ID="btnBuscarIncidentexID" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
-   
-       
-            <label for="inputEmail4" class="form-label">Buscar por Apellido Cliente</label>
+          </div>
+            <asp:Button ID="btnBuscarIncidentexID" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
+       </div>
+                </div>
+
+             <div class="col">
+          <label for="inputEmail4" class="form-label">Buscar por Apellido Cliente</label>
+    <div class="alinear">
+        <div>    
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeCliente" />
-        <asp:Button ID="btnBuscarIncidentexApeCliente" runat="server" OnClick="btnBuscarIncidentexApeCliente_Click" Text="Buscar" /> 
+         </div>
+            <asp:Button ID="btnBuscarIncidentexApeCliente" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeCliente_Click" Text="Buscar" /> 
+       </div>
+                </div>
 
-         <label for="inputEmail4" class="form-label">Buscar por Apellido Empleado</label>
+             <div class="col">
+        <label for="inputEmail4" class="form-label">Buscar por Apellido Empleado</label>
+    <div class="alinear">
+        <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeEmpleado" />
-        <asp:Button ID="btnBuscarIncidentexApeEmpleado" runat="server" OnClick="btnBuscarIncidentexApeEmpleado_Click" Text="Buscar" /> 
+          </div>
+        <asp:Button ID="btnBuscarIncidentexApeEmpleado" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeEmpleado_Click" Text="Buscar" /> 
+        </div>
+            </div>
+            </div>
 
+        </div>
+     
+        <br />
+     <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+            <asp:Label ID="lblSeleccionIncidente" CssClass="center" runat="server" Font-Bold="true"/>
+              </div>
+    <br />
         <div class="row" > 
-            <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="false"
+            <asp:GridView ID="dgvIncidentes" CssClass="table table-hover table-info" runat="server" AutoGenerateColumns="false"
           
                 DataKeyNames="ID" OnSelectedIndexChanging="dgvIncidentes_SelectedIndexChanging"
                 >
@@ -49,17 +79,47 @@
 
               <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblIDIncidente" runat="server" Visible="false" />
-            <asp:Label ID="lblSeleccionIncidente" Font-Bold="true" runat="server" />
+      
            </div>
-         </div>
+    
           
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Busque un legajo para reasignar el incidente: </label>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxID" />
-        <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />  
+     
+    <div>
+        <h4 class="center">Seleccionar un Empleado</h4>
+    </div>
+          <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+         <label for="inputEmail4" class="form-label">Por Legajo</label>
+     <div class="alinear"> 
+         <div>
+         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxID" />
+         </div>        
+         <asp:Button ID="btnBuscarEmpleadoxLegajo" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />          
+      </div>
+               </div>
+
+              <div class="col-md-4">
+          <label for="inputEmail4" class="form-label">Por Apellido</label>
+         <div class="alinear">
+             <div>
+        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxApellido" />
+               </div>
+        <asp:Button ID="btnBuscarEmpleadoxApellido" runat="server" CssClass="btn btn-primary mb-2" OnClick="btnBuscarEmpleadoxApellido_Click" Text="Buscar" />
+              </div>
+                  </div>
+            </div>
+        </div> 
+
+           <br />
+     <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+           <asp:Label ID="lblSeleccionEmpleado" CssClass="center" Font-Bold="true" runat="server" />
+     
+              </div>
+    <br />
    
         <div class="row" > 
-            <asp:GridView ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server"
+            <asp:GridView ID="dgvEmpleados" CssClass="table table-hover table-info" runat="server"
                 AutoGenerateColumns="false"          
                 DataKeyNames="Legajo" OnSelectedIndexChanging="dgvEmpleados_SelectedIndexChanging" >
                 <Columns>
@@ -74,15 +134,19 @@
             </asp:GridView>
             <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblLegajoEmpleado" runat="server" Visible="false" />
-             <asp:Label ID="lblSeleccionEmpleado" Font-Bold="true" runat="server" />
+            
 
         </div>
-        </div>
-     
-    <div class="col-9">
-        <asp:Button ID="btnReasignarIncidente" runat="server" OnClick="btnReasignarIncidente_Click" Text="Reasignar Incidente" />  
-     </div>
-        <asp:Label ID="lblConfirmacion" Font-Bold="true" runat="server" />
+       
 
+    <div class="d-grid gap-2 col-6 mx-auto">
+    <asp:Button Text="Reasignar Incidente" CssClass="btn btn-primary btn-lg" ID="btnReasignarIncidente" OnClick="btnReasignarIncidente_Click" runat="server" />
+      </div>
+
+    <br />
+
+          <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+              <asp:Label ID="lblConfirmacion" CssClass="center" runat="server" Font-Bold="true"/>                                   
+              </div>
 
 </asp:Content>

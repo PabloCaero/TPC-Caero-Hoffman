@@ -206,12 +206,22 @@
     <asp:TextBox type="text" runat="server" ClientIDMode="Static" CssClass="form-control" id="txtProvincia"/>
   </div>
   
-  <div class="col-md-6">
-      <asp:Button ID="btnCargarCliente" runat="server" OnClientClick="return validar()" OnClick="btnCargarCliente_Click" Text="Cargar Cliente" />
-  </div>
+ 
 </div>
+    <br />
+    <div class="container">
+        <div class="row align-content-center">
+         
+          <asp:Button ID="btnCargarCliente" CssClass="btn btn-primary btn-lg" runat="server" OnClientClick="return validar()" OnClick="btnCargarCliente_Click" Text="Cargar Cliente" />
+      
+            </div>
+        </div>
 
-    <asp:Label ID="lblConfirmacion" runat="server" Font-Bold="true"/>
+     <br />
+
+          <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+              <asp:Label ID="lblConfirmacion" CssClass="center" runat="server" Font-Bold="true"/>                                   
+              </div>
     
  
 

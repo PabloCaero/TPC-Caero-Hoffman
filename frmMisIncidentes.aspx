@@ -11,18 +11,22 @@
     <h3>Mis Incidentes - <asp:Label ID="lblDatosEmpleado" runat="server" /></h3>
     </div>
     
-     <div class="col-9">
     <label for="inputEmail4" class="form-label">Seleccione un estado: </label>
+     <div class="container">
          <div class="col-md-6">
-         <asp:DropDownList runat="server" ID="ddlEstados" CssClass="btn btn-outline-dark dropdown-toggle" AutoPostBack="true" >
+             <div class="alinear">
+                 <div>
+         <asp:DropDownList runat="server" ID="ddlEstados" CssClass="btn btn-info dropdown-toggle dropdown-toggle-split" AutoPostBack="true" >
          </asp:DropDownList>
-             </div>     
-        <asp:Button ID="btnBuscarIncidentes" runat="server" OnClick="btnBuscarIncidentes_Click" Text="Buscar" />
+                     </div>
+        <asp:Button ID="btnBuscarIncidentes" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentes_Click" Text="Buscar" />
+                 </div>
+                 </div>     
+         </div>
          
-         <div>
-            
+             <br />  
         <div class="row" > 
-            <asp:GridView ID="dgvIncidentes" CssClass="table table-success table-striped" runat="server" AutoGenerateColumns="False" >
+            <asp:GridView ID="dgvIncidentes" CssClass="table table-hover table-info" runat="server" AutoGenerateColumns="False" >
                 <Columns>
                    
                   <asp:BoundField DataField="ID" HeaderText="Numero de Incidente"/>   
@@ -42,7 +46,7 @@
         
           </div>     
         </div>
-         </div>
+         
 
       
 

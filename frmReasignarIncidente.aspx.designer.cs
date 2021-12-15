@@ -78,6 +78,15 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnBuscarIncidentexApeEmpleado;
 
         /// <summary>
+        /// Control lblSeleccionIncidente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSeleccionIncidente;
+
+        /// <summary>
         /// Control dgvIncidentes.
         /// </summary>
         /// <remarks>
@@ -94,15 +103,6 @@ namespace TPC_Caero_Hoffman
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIDIncidente;
-
-        /// <summary>
-        /// Control lblSeleccionIncidente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSeleccionIncidente;
 
         /// <summary>
         /// Control txtBuscarEmpleadoxID.
@@ -123,6 +123,33 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnBuscarEmpleadoxLegajo;
 
         /// <summary>
+        /// Control txtBuscarEmpleadoxApellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarEmpleadoxApellido;
+
+        /// <summary>
+        /// Control btnBuscarEmpleadoxApellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarEmpleadoxApellido;
+
+        /// <summary>
+        /// Control lblSeleccionEmpleado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSeleccionEmpleado;
+
+        /// <summary>
         /// Control dgvEmpleados.
         /// </summary>
         /// <remarks>
@@ -139,15 +166,6 @@ namespace TPC_Caero_Hoffman
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLegajoEmpleado;
-
-        /// <summary>
-        /// Control lblSeleccionEmpleado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSeleccionEmpleado;
 
         /// <summary>
         /// Control btnReasignarIncidente.
