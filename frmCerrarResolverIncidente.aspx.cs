@@ -32,17 +32,18 @@ namespace TPC_Caero_Hoffman
 
         protected void btnCerrarIncidente_Click(object sender, EventArgs e)
         {
-
+            try
+            {
                 IncidenteNegocio negocioIncidente = new IncidenteNegocio();
                 Incidente nuevo = new Incidente();
                 Incidente consulta = new Incidente();
 
-                
+
                 nuevo.ID = int.Parse(lblIDIncidente.Text);
 
                 //VERIFICO EL ESTADO DEL INCIDENTE
                 consulta = negocioIncidente.buscarIndividualID(nuevo);
-                switch(consulta.Estado.IDEstado)
+                switch (consulta.Estado.IDEstado)
                 {
                     case 6:
                         lblConfirmacion.Text = "Este incidente se encuentra RESUELTO, no se puede CERRAR";
@@ -51,48 +52,53 @@ namespace TPC_Caero_Hoffman
                         lblConfirmacion.Text = "Este incidente se encuentra CERRADO, no se puede CERRAR";
                         break;
                     default:
-                    try
-                    {
-
-                        nuevo.Detalles = txtComentarioFinal.Text;
-                        negocioIncidente.cerrarIncidente(nuevo);
-
-                        //ENVIA MAIL AL CLIENTE
-                        IncidenteNegocio negocio = new IncidenteNegocio();
-                        Incidente ultimo = new Incidente();
-
-                        ultimo = negocio.buscarIndividualID(nuevo);
-
-                        EmailService emailService = new EmailService();
-                        emailService.armarCorreoIncidenteCerradoCliente(ultimo);
                         try
                         {
-                            emailService.enviarMail();
+
+                            nuevo.Detalles = txtComentarioFinal.Text;
+                            negocioIncidente.cerrarIncidente(nuevo);
+
+                            //ENVIA MAIL AL CLIENTE
+                            IncidenteNegocio negocio = new IncidenteNegocio();
+                            Incidente ultimo = new Incidente();
+
+                            ultimo = negocio.buscarIndividualID(nuevo);
+
+                            EmailService emailService = new EmailService();
+                            emailService.armarCorreoIncidenteCerradoCliente(ultimo);
+                            try
+                            {
+                                emailService.enviarMail();
+                            }
+                            catch (Exception ex)
+                            {
+                                lblConfirmacion.Text = "Atención: Incidente cerrado, mail a cliente no enviado";
+                            }
+
+                            //ENVIA MAIL AL EMPLEADO  
+                            emailService.armarCorreoIncidenteCerradoEmpleado(ultimo);
+                            try
+                            {
+                                emailService.enviarMail();
+                                lblConfirmacion.Text = "Atención: Incidente cerrado, regrese al Menú Principal.";
+                            }
+                            catch (Exception ex)
+                            {
+                                lblConfirmacion.Text = "Atención: Incidente cerrado, mail a empleado no enviado.";
+                            }
                         }
                         catch (Exception ex)
                         {
-                            lblConfirmacion.Text = "Atención: Incidente cerrado, mail a cliente no enviado";
+                            lblConfirmacion.Text = "Atención: No se pudo cerrar el incidente, intente nuevamente.";
                         }
 
-                        //ENVIA MAIL AL EMPLEADO  
-                        emailService.armarCorreoIncidenteCerradoEmpleado(ultimo);
-                        try
-                        {
-                            emailService.enviarMail();
-                            lblConfirmacion.Text = "Atención: Incidente cerrado, regrese al Menú Principal.";
-                        }
-                        catch (Exception ex)
-                        {
-                            lblConfirmacion.Text = "Atención: Incidente cerrado, mail a empleado no enviado.";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        lblConfirmacion.Text = "Atención: No se pudo cerrar el incidente, intente nuevamente.";
-                    }
-
-                    break;
+                        break;
                 }
+            }
+            catch(Exception ex)
+            {
+                lblConfirmacion.Text = "Atención: Ocurrió un Error, regrese al Menú Principal.";
+            }
             
         }
 

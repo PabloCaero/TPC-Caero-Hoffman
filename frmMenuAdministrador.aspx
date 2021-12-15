@@ -31,7 +31,7 @@
         <h2>Clientes</h2>
             </div>
     <asp:Button Text="Ingresar Cliente" ID="btnIngresarCliente" CssClass="btn btn-dark" runat="server" OnClick="btnIngresarCliente_Click" />
-    <asp:Button Text="Buscar Cliente Por DNI" ID="btnBuscarClientexDNI" OnClick="btnBuscarClientexDNI_Click" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Buscar Cliente" ID="btnBuscarClientexDNI" OnClick="btnBuscarClientexDNI_Click" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Modificar Cliente" ID="btnModificarCliente" OnClick="btnModificarCliente_Click" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Eliminar Cliente" ID="brnEliminarCliente" CssClass="btn btn-dark" runat="server" OnClick="brnEliminarCliente_Click" />
     </div>
@@ -41,7 +41,7 @@
         <h2>Incidentes</h2>
             </div>
     <asp:Button Text="Crear Incidente" ID="btnCrearIncidente" OnClick="btnCrearIncidente_Click" CssClass="btn btn-dark" runat="server" />
-    <asp:Button Text="Buscar Por Numero de Incidente" ID="btnBuscarIncidentexID" OnClick="btnBuscarIncidentexID_Click" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Buscar Incidente" ID="btnBuscarIncidentexID" OnClick="btnBuscarIncidentexID_Click" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Modificar Incidente" ID="btnModificarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnModificarIncidente_Click" />
     <asp:Button Text="Reasignar Incidente" ID="btnReasignarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnReasignarIncidente_Click" />
     <asp:Button Text="Cerrar/Resolver Incidente" ID="btnCerrarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnCerrarIncidente_Click" />

@@ -11,30 +11,43 @@
     <h3>Buscar Incidente</h3>
     </div>
     
-     
-    <label for="inputEmail4" class="form-label">Por ID</label>
-       <div class="alinear">
-         <div>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexID" />
-         </div>
-        <asp:Button ID="btnBuscarIncidentexID" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" /> 
-        </div>
-         
-        <label for="inputEmail4" class="form-label">Por Apellido Cliente</label>
+    <div class="container">
+        <div class="row align-items-start">
+
+            <div class="col">
+    <label for="inputEmail4" class="form-label">Buscar por ID</label>
     <div class="alinear">
-         <div>
+        <div>
+        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexID" />
+          </div>
+            <asp:Button ID="btnBuscarIncidentexID" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexID_Click" Text="Buscar" />  
+       </div>
+                </div>
+
+             <div class="col">
+          <label for="inputEmail4" class="form-label">Buscar por Apellido Cliente</label>
+    <div class="alinear">
+        <div>    
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeCliente" />
          </div>
-        <asp:Button ID="btnBuscarIncidentexApeCliente" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeCliente_Click" Text="Buscar" /> 
+            <asp:Button ID="btnBuscarIncidentexApeCliente" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeCliente_Click" Text="Buscar" /> 
        </div>
+                </div>
 
-         <label for="inputEmail4" class="form-label">Por Apellido Empleado</label>
+             <div class="col">
+        <label for="inputEmail4" class="form-label">Buscar por Apellido Empleado</label>
     <div class="alinear">
-         <div>
+        <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarIncidentexApeEmpleado" />
           </div>
         <asp:Button ID="btnBuscarIncidentexApeEmpleado" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarIncidentexApeEmpleado_Click" Text="Buscar" /> 
-       </div>
+        </div>
+            </div>
+            </div>
+
+        </div>
+     
+        <br />
 
          <div>
         <div class="row" > 

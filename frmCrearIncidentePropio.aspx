@@ -38,7 +38,9 @@
 
 
     <!--BUSQUEDA DE CLIENTE-->
-   
+   <div>
+        <h4 class="center">Seleccionar un Cliente</h4>
+    </div>
         
 
     <div class="container">
@@ -112,12 +114,15 @@
     <br />
     <!--DETALLES DEL INCIDENTE-->
      
+    <div>
+        <h4 class="center">Detalles del Incidente</h4>
+    </div>
 
      <div class="container">
         <div class="row">
             <div class="alinear">
          <div class="col">
-        <asp:TextBox type="text" runat="server" PlaceHolder="DETALLES DEL INCIDENTE"  ClientIDMode="Static"  CssClass="form-control" id="txtDetalles" Height="80px" />
+        <asp:TextBox type="text" runat="server" PlaceHolder="DETALLES"  ClientIDMode="Static"  CssClass="form-control" id="txtDetalles" Height="80px" />
            </div>
         <asp:Button ID="btnCrearIncidente" CssClass="btn btn-primary btn-lg" runat="server" OnClick="btnCrearIncidente_Click" Text="Crear Incidente" />          
            

@@ -40,18 +40,40 @@
     </div>
 
     <!--BUSQUEDA DE CLIENTE-->
+
     <div>
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Ingrese DNI de Cliente: </label>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
-        <asp:Button ID="btnBuscarClientexDNI" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" /> 
-         
-          <label for="inputEmail4" class="form-label">Ingrese Apellido de Cliente: </label>
+        <h4 class="center">Seleccionar un Cliente</h4>
+    </div>
+     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+         <label for="inputEmail4" class="form-label">Por DNI</label>
+     <div class="alinear"> 
+         <div>
+         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexDNI" />
+         </div>        
+         <asp:Button ID="btnBuscarClientexDNI" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarClientexDNI_Click" Text="Buscar" />          
+      </div>
+               </div>
+
+              <div class="col-md-4">
+          <label for="inputEmail4" class="form-label">Por Apellido</label>
+         <div class="alinear">
+             <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarClientexApellido" />
-        <asp:Button ID="btnBuscarClientexApellido" runat="server" OnClick="btnBuscarClientexApellido_Click" Text="Buscar" /> 
-   
+               </div>
+        <asp:Button ID="btnBuscarClientexApellido" runat="server" CssClass="btn btn-primary mb-2" OnClick="btnBuscarClientexApellido_Click" Text="Buscar" />
+              </div>
+                  </div>
+            </div>
+        </div>
+    <br />
+    <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+            <asp:Label ID="lblSeleccionCliente" CssClass="center" runat="server" Font-Bold="true"/>
+              </div>
+    <br />
         <div class="row" > 
-            <asp:GridView ID="dgvClientes" CssClass="table table-success table-striped" runat="server"
+            <asp:GridView ID="dgvClientes" CssClass="table table-hover table-info" runat="server"
                 AutoGenerateColumns="false"        
                 DataKeyNames="IDCliente" OnSelectedIndexChanging="dgvClientes_SelectedIndexChanging">
                 <Columns>
@@ -66,24 +88,47 @@
 
             <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblIDCliente" runat="server" Visible="false" />
-            <asp:Label ID="lblSeleccionCliente" Font-Bold="true" runat="server" />
+            
 
         </div>
-        </div>
-       </div>
+        
 
     <!--BUSQUEDA DE EMPLEADO-->
+    <br />
 
     <div>
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Asigne a un empleado por su Legajo: </label>
-        <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxID" />
-        <asp:Button ID="btnBuscarEmpleadoxLegajo" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />  
+        <h4 class="center">Seleccionar un Empleado</h4>
+    </div>
 
-         <label for="inputEmail4" class="form-label">Ingrese Apellido de Empleado: </label>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+         <label for="inputEmail4" class="form-label">Por Legajo</label>
+     <div class="alinear"> 
+         <div>
+         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxID" />
+         </div>        
+         <asp:Button ID="btnBuscarEmpleadoxLegajo" CssClass="btn btn-primary mb-2" runat="server" OnClick="btnBuscarEmpleadoxLegajo_Click" Text="Buscar" />          
+      </div>
+               </div>
+
+              <div class="col-md-4">
+          <label for="inputEmail4" class="form-label">Por Apellido</label>
+         <div class="alinear">
+             <div>
         <asp:TextBox type="text" runat="server"  class="form-control" id="txtBuscarEmpleadoxApellido" />
-        <asp:Button ID="btnBuscarEmpleadoxApellido" runat="server" OnClick="btnBuscarEmpleadoxApellido_Click" Text="Buscar" /> 
-   
+               </div>
+        <asp:Button ID="btnBuscarEmpleadoxApellido" runat="server" CssClass="btn btn-primary mb-2" OnClick="btnBuscarEmpleadoxApellido_Click" Text="Buscar" />
+              </div>
+                  </div>
+            </div>
+        </div>
+    <br />
+                 <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+           <asp:Label ID="lblSeleccionEmpleado" CssClass="center" Font-Bold="true" runat="server" />
+     
+              </div>
+    <br />
         <div class="row" > 
             <asp:GridView ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server"
                 AutoGenerateColumns="false"          
@@ -100,34 +145,57 @@
             </asp:GridView>
             <!--IMPORTANTE PARA ASIGNAR ATRIBUTO-->
             <asp:Label ID="lblLegajoEmpleado" runat="server" Visible="false"  />
-            <asp:Label ID="lblSeleccionEmpleado" Font-Bold="true" runat="server" />
         </div>
-        </div>
-       </div>
+    <br />
 
-    <!--ESPECIALIDAD DEL INCIDENTE-->
+   <!--ESPECIALIDAD DEL INCIDENTE-->
+
+    <div>
+        <h4 class="center">Detalles del Incidente</h4>
+    </div>
+
+    <div class="container">
+        <div class ="row justify-content-center">
     <div class="col-md-6">
          <label for="inputEmail4" class="form-label">Especialidad</label>
-         <asp:DropDownList runat="server" ID="ddlEspecialidad" CssClass="btn btn-outline-dark dropdown-toggle" AutoPostBack="true" >
+         <asp:DropDownList runat="server" ID="ddlEspecialidad" CssClass="btn btn-info dropdown-toggle dropdown-toggle-split" AutoPostBack="true" >
          </asp:DropDownList>
              </div>
 
     <!--PRIORIDAD DEL INCIDENTE-->
-    <div class="col-md-6">
+    <div class="col-md-4">
          <label for="inputEmail4" class="form-label">Prioridad</label>
-         <asp:DropDownList runat="server" ID="ddlPrioridad" CssClass="btn btn-outline-dark dropdown-toggle" AutoPostBack="true" >
+         <asp:DropDownList runat="server" ID="ddlPrioridad" CssClass="btn btn-info dropdown-toggle dropdown-toggle-split" AutoPostBack="true" >
          </asp:DropDownList>
              </div>
+            </div>
+        </div>
+
+    <br />
     
 
     <!--DETALLES DEL INCIDENTE-->
-     <div class="col-9">
-    <label for="inputEmail4" class="form-label">Describa los detalles del incidente: </label>
-        <asp:TextBox type="text" runat="server" ClientIDMode="Static"  CssClass="form-control" id="txtDetalles" Height="50px" />
-        <asp:Button ID="btnCrearIncidente" runat="server" OnClientClick="return validar()" OnClick="btnCrearIncidente_Click" Text="Crear Incidente" />  
-     </div>
+    <div class="container">
+        <div class="row">
+            <div class="alinear">
+         <div class="col">
+        <asp:TextBox type="text" runat="server" PlaceHolder="DETALLES"  ClientIDMode="Static"  CssClass="form-control" id="txtDetalles" Height="80px" />
+           </div>
+        <asp:Button ID="btnCrearIncidente" CssClass="btn btn-primary btn-lg" runat="server" OnClick="btnCrearIncidente_Click" Text="Crear Incidente" />          
+           
+                </div>
+            </div>
+          </div>
+              
+           
 
-    <asp:Label ID="lblConfirmacion" Font-Bold="true" runat="server" />
+
+
+      <br />
+
+          <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+              <asp:Label ID="lblConfirmacion" CssClass="center" runat="server" Font-Bold="true"/>                                   
+              </div>
 
 
     

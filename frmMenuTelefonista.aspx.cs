@@ -52,7 +52,7 @@ namespace TPC_Caero_Hoffman
 
         protected void btnBuscarClientexDNI_Click(object sender, EventArgs e)
         {
-            Response.Redirect("frmBuscarEmpleadoPorDNI.aspx");
+            Response.Redirect("frmBuscarClientePorDNI.aspx");
         }
 
         protected void btnIngresarCliente_Click(object sender, EventArgs e)

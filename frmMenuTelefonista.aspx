@@ -25,7 +25,7 @@
     <div class="d-grid gap-2 col-6 mx-auto" style="border:solid; text-align: center; border-radius:10px 10px ">
     <h2>Clientes</h2>
     <asp:Button Text="Ingresar Cliente" ID="btnIngresarCliente" CssClass="btn btn-dark" runat="server" OnClick="btnIngresarCliente_Click" />
-    <asp:Button Text="Buscar Cliente Por DNI" ID="btnBuscarClientexDNI" OnClick="btnBuscarClientexDNI_Click" CssClass="btn btn-dark" runat="server" />
+    <asp:Button Text="Buscar Cliente" ID="btnBuscarClientexDNI" OnClick="btnBuscarClientexDNI_Click" CssClass="btn btn-dark" runat="server" />
     </div>
     <br />
     <div class="d-grid gap-2 col-6 mx-auto" style="border:solid; text-align: center; border-radius:10px 10px ">
