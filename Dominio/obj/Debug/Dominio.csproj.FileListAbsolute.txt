@@ -9,4 +9,3 @@ C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Dominio\obj\Debug\Dominio.csp
 C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Dominio\obj\Debug\Dominio.dll
 C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Dominio\obj\Debug\Dominio.pdb
 C:\Users\Pablo Ezequiel Caero\Desktop\TPC-Caero-Hoffman\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
-C:\Users\pcaero\Documents\GitHub\TPC-Caero-Hoffman\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache

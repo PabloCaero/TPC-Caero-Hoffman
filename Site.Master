@@ -59,9 +59,12 @@
         height: 800px;
         margin: 0 auto;
         background-origin: content-box;
-        border: 5px solid gray;
-        border-radius:10px 10px;
-        background-color: gray;
+      
+        background-color: lightblue;
+        background-image: url("Imagenes/FONDO.png"), url("imagenes/AURI.png"), url("imagenes/AURIF.png");   
+        background-size:auto, 150px, 170px;
+        background-repeat: repeat, no-repeat, no-repeat;
+        background-position: center, right bottom, left bottom;
         
     }
 

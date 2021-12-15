@@ -96,7 +96,7 @@ namespace TPC_Caero_Hoffman
                 }
             }
             catch(Exception ex)
-            {
+            {              
                 lblConfirmacion.Text = "Atención: Ocurrió un Error, regrese al Menú Principal.";
             }
             

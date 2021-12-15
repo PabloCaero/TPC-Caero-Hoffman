@@ -169,14 +169,14 @@ namespace TPC_Caero_Hoffman
         {
             GridViewRow row = dgvClientes.Rows[e.NewSelectedIndex];
             lblIDCliente.Text = row.Cells[0].Text;
-            lblSeleccionCliente.Text = "Cliente Seleccionado";
+            lblSeleccionCliente.Text = "Cliente #"+ lblIDCliente.Text + " Seleccionado";
         }
 
         protected void dgvEmpleados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvEmpleados.Rows[e.NewSelectedIndex];
             lblLegajoEmpleado.Text = row.Cells[0].Text;
-            lblSeleccionEmpleado.Text = "Empleado Seleccionado";
+            lblSeleccionEmpleado.Text = "Empleado de Leg. "+lblLegajoEmpleado.Text+" Seleccionado";
         }
 
         protected void btnMenuPrincipal_Click(object sender, EventArgs e)
