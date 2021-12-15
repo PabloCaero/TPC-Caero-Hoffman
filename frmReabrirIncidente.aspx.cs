@@ -119,7 +119,7 @@ namespace TPC_Caero_Hoffman
                         }
                         catch (Exception ex)
                         {
-                            lblConfirmacion.Text = "Atención: Ocurrió un error. Regrese al Menú Principal.";
+                            lblConfirmacion.Text = "Atención: Ocurrió un error.";
                         }
 
                         break;
@@ -127,7 +127,7 @@ namespace TPC_Caero_Hoffman
             }
             catch(Exception ex)
             {
-                lblConfirmacion.Text = "Atención: Ocurrió un error. Regrese al Menú Principal.";
+                lblConfirmacion.Text = "Atención: Ocurrió un error.";
             }
         }
 

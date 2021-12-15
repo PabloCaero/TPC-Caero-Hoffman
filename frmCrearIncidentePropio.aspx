@@ -91,7 +91,11 @@
           
    
         </div>
-       
+    <br />  
+    <div>
+        <h4 class="center">Detalles del Incidente</h4>
+    </div>
+    <br />
 
     <!--ESPECIALIDAD DEL INCIDENTE-->
     <div class="container">
@@ -114,9 +118,7 @@
     <br />
     <!--DETALLES DEL INCIDENTE-->
      
-    <div>
-        <h4 class="center">Detalles del Incidente</h4>
-    </div>
+    
 
      <div class="container">
         <div class="row">

@@ -130,7 +130,7 @@
               </div>
     <br />
         <div class="row" > 
-            <asp:GridView ID="dgvEmpleados" CssClass="table table-success table-striped" runat="server"
+            <asp:GridView ID="dgvEmpleados" CssClass="table table-hover table-info" runat="server"
                 AutoGenerateColumns="false"          
                 DataKeyNames="Legajo" OnSelectedIndexChanging="dgvEmpleados_SelectedIndexChanging" >
                 <Columns>
@@ -153,7 +153,7 @@
     <div>
         <h4 class="center">Detalles del Incidente</h4>
     </div>
-
+    <br />
     <div class="container">
         <div class ="row justify-content-center">
     <div class="col-md-6">

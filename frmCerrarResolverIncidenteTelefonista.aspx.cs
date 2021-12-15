@@ -97,7 +97,7 @@ namespace TPC_Caero_Hoffman
             }
             catch(Exception ex)
             {
-                lblConfirmacion.Text = "Atención: Ocurrió un Error, regrese al Menú Principal.";
+                lblConfirmacion.Text = "Atención: Ocurrió un Error.";
             }
             
             
@@ -127,67 +127,74 @@ namespace TPC_Caero_Hoffman
 
         protected void btnResolverIncidente_Click(object sender, EventArgs e)
         {
+            try
+            {
                 IncidenteNegocio negocioIncidente = new IncidenteNegocio();
                 Incidente nuevo = new Incidente();
                 Incidente consulta = new Incidente();
 
-            nuevo.ID = int.Parse(lblIDIncidente.Text);
+                nuevo.ID = int.Parse(lblIDIncidente.Text);
 
-            //VERIFICO EL ESTADO DEL INCIDENTE
-            consulta = negocioIncidente.buscarIndividualID(nuevo);
-            switch (consulta.Estado.IDEstado)
+                //VERIFICO EL ESTADO DEL INCIDENTE
+                consulta = negocioIncidente.buscarIndividualID(nuevo);
+                switch (consulta.Estado.IDEstado)
+                {
+                    case 6:
+                        lblConfirmacion.Text = "Este incidente se encuentra RESUELTO, no se puede RESOLVER";
+                        break;
+                    case 3:
+                        lblConfirmacion.Text = "Este incidente se encuentra CERRADO, no se puede RESOLVER";
+                        break;
+                    default:
+                        try
+                        {
+                            nuevo.Detalles = txtComentarioFinal.Text;
+                            negocioIncidente.resolverIncidente(nuevo);
+
+                            //ENVIA MAIL AL CLIENTE
+                            IncidenteNegocio negocio = new IncidenteNegocio();
+                            Incidente ultimo = new Incidente();
+
+                            ultimo = negocio.buscarIndividualID(nuevo);
+
+                            EmailService emailService = new EmailService();
+                            emailService.armarCorreoIncidenteResueltoCliente(ultimo);
+                            try
+                            {
+                                emailService.enviarMail();
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                                lblConfirmacion.Text = "Atención: Incidente resuelto, mail a cliente no enviado.";
+                            }
+
+                            //ENVIA MAIL AL EMPLEADO  
+                            emailService.armarCorreoIncidenteResueltoEmpleado(ultimo);
+                            try
+                            {
+                                emailService.enviarMail();
+                                lblConfirmacion.Text = "Atención: Incidente resuelto, regrese al Menú Principal.";
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                                lblConfirmacion.Text = "Atención: Incidente resuelto, mail a empleado no enviado.";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            lblConfirmacion.Text = "Atención: No se pudo resolver el incidente, intente nuevamente.";
+
+                        }
+                        break;
+                }
+            }
+            catch(Exception ex)
             {
-                case 6:
-                    lblConfirmacion.Text = "Este incidente se encuentra RESUELTO, no se puede RESOLVER";
-                    break;
-                case 3:
-                    lblConfirmacion.Text = "Este incidente se encuentra CERRADO, no se puede RESOLVER";
-                    break;
-                default:
-                    try
-                    {
-                        nuevo.Detalles = txtComentarioFinal.Text;
-                        negocioIncidente.resolverIncidente(nuevo);
-
-                        //ENVIA MAIL AL CLIENTE
-                        IncidenteNegocio negocio = new IncidenteNegocio();
-                        Incidente ultimo = new Incidente();
-
-                        ultimo = negocio.buscarIndividualID(nuevo);
-
-                        EmailService emailService = new EmailService();
-                        emailService.armarCorreoIncidenteResueltoCliente(ultimo);
-                        try
-                        {
-                            emailService.enviarMail();
-
-                        }
-                        catch (Exception ex)
-                        {
-
-                            lblConfirmacion.Text = "Atención: Incidente resuelto, mail a cliente no enviado.";
-                        }
-
-                        //ENVIA MAIL AL EMPLEADO  
-                        emailService.armarCorreoIncidenteResueltoEmpleado(ultimo);
-                        try
-                        {
-                            emailService.enviarMail();
-                            lblConfirmacion.Text = "Atención: Incidente resuelto, regrese al Menú Principal.";
-
-                        }
-                        catch (Exception ex)
-                        {
-
-                            lblConfirmacion.Text = "Atención: Incidente resuelto, mail a empleado no enviado.";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        lblConfirmacion.Text = "Atención: No se pudo resolver el incidente, intente nuevamente.";
-
-                    }
-                    break;
+                lblConfirmacion.Text = "Atención: Ocurrió un Error.";
             }
            
 
