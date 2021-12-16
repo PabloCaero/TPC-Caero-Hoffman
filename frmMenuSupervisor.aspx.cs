@@ -82,5 +82,10 @@ namespace TPC_Caero_Hoffman
         {
             Response.Redirect("frmLogin.aspx");
         }
+
+        protected void btnReporteIncidente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ReportesExcel.aspx");
+        }
     }
 }

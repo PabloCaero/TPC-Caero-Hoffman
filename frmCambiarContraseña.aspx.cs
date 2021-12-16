@@ -26,21 +26,33 @@ namespace TPC_Caero_Hoffman
             string nuevoPassword;
             Empleado empleado = new Empleado();
             EmpleadoNegocio empleadoNegocio = new EmpleadoNegocio();
+            Empleado comparar = new Empleado();
 
             empleado.Legajo = Legajo;
             empleado.Contrasena = txtContrasenaAnterior.Text;
 
-            nuevoPassword = txtContrasenaNueva.Text;
-            try
-            {
-                empleadoNegocio.modificarPassword(empleado, nuevoPassword);
-                lblContrasenaCambiada.Text = "Contraseña cambiada con éxito, regrese al menu principal.";
-            }
-            catch(Exception ex)
-            {
-                lblContrasenaCambiada.Text = "No se pudo cambiar la contraseña. ";
-            }
+            comparar = empleadoNegocio.buscarLegajoIndividual(empleado.Legajo);
 
+            if (comparar.Contrasena == empleado.Contrasena)
+            {
+
+                nuevoPassword = txtContrasenaNueva.Text;
+                try
+                {
+                    empleadoNegocio.modificarPassword(empleado, nuevoPassword);
+                    lblContrasenaCambiada.Text = "Contraseña cambiada con éxito, regrese al menu principal.";
+                }
+                catch (Exception ex)
+                {
+                    lblContrasenaCambiada.Text = "No se pudo cambiar la contraseña. ";
+                }
+
+            }
+            else
+            {
+                lblContrasenaCambiada.Text = "La contraseña anterior no es correcta. ";
+
+            }
 
         }
 

@@ -343,5 +343,44 @@ namespace Negocio
 
         }
 
+        public Empleado buscarLegajoIndividual(int legajo)
+        {
+            Empleado aux = new Empleado();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select E.ID, E.DNI, E.NOMBRE, E.APELLIDO, E.CONTRASEÑA, E.IDCARGO, C.NOMBRECARGO, E.EMAIL, E.TELEFONO From Empleados E INNER JOIN Cargos C ON C.ID = E.IDCARGO Where E.ID = '" + legajo + "'");
+                datos.ejecturaLectura();
+
+                while (datos.Lector.Read())
+                {
+                    
+                    aux.Legajo = (int)datos.Lector["ID"];
+                    aux.Dni = (string)datos.Lector["DNI"];
+                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    aux.Apellido = (string)datos.Lector["APELLIDO"];
+                    aux.Contrasena = (string)datos.Lector["CONTRASEÑA"];
+                    aux.Telefono = (string)datos.Lector["TELEFONO"];
+                    aux.Email = (string)datos.Lector["EMAIL"];
+                    aux.Cargo = new Cargo();
+                    aux.Cargo.IDCargo = (int)datos.Lector["IDCARGO"];
+                    aux.Cargo.Nombre_Cargo = (string)datos.Lector["NOMBRECARGO"];
+            
+                }
+
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 }

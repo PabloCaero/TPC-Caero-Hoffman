@@ -96,6 +96,15 @@ namespace TPC_Caero_Hoffman
         protected global::System.Web.UI.WebControls.Button btnModificarIncidente;
 
         /// <summary>
+        /// Control btnReporteIncidente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReporteIncidente;
+
+        /// <summary>
         /// Control btnReasignarIncidente.
         /// </summary>
         /// <remarks>

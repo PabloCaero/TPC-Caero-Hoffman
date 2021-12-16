@@ -24,11 +24,14 @@
     
   </div>
        
+      
   <div>
-      <asp:Label ID="lblContrasenaCambiada" runat="server" />
       <asp:Button Text="Cambiar" OnClick="btnCambiarContrasena_Click" runat="server" type="submit" CssClass="btn btn-primary mb-3" ID="Button1"/>
   </div>
      </div>
+    <div class="d-grid gap-2 col-6 mx-auto" style="border: none; background-color: yellow ; border-radius:10px 10px">
+              <asp:Label ID="lblContrasenaCambiada" CssClass="center" runat="server" Font-Bold="true"/>                                   
+              </div>
 
 
 </asp:Content>

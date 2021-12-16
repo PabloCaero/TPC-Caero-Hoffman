@@ -31,6 +31,7 @@
     <h2>Incidentes</h2>
     <asp:Button Text="Crear Incidente" ID="btnCrearIncidente" OnClick="btnCrearIncidente_Click" CssClass="btn btn-dark" runat="server" />
     <asp:Button Text="Modificar Incidente" ID="btnModificarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnModificarIncidente_Click"/>
+    <asp:Button Text="Reporte de Incidentes" ID="btnReporteIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnReporteIncidente_Click" />
     <asp:Button Text="Reasignar Incidente" ID="btnReasignarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnReasignarIncidente_Click" />
     <asp:Button Text="Mis Incidentes" ID="btnMisIncidentes" CssClass="btn btn-dark" runat="server" OnClick="btnMisIncidentes_Click" />
     <asp:Button Text="Cerrar/Resolver Incidente" ID="btnCerrarIncidente" CssClass="btn btn-dark" runat="server" OnClick="btnCerrarIncidente_Click" />
